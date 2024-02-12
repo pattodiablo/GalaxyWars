@@ -1,0 +1,78 @@
+{
+    "id": "66982e0e-e8d7-4fb6-879a-4c27e0b17563",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "4c148ab4-e1f2-4476-bb1e-3c0319a52fc6",
+            "label": "container_1",
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "7cd1a3ab-e0bf-42a0-be1f-afc7adb25914",
+                    "label": "joystickBg",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "joystickBg"
+                    }
+                },
+                {
+                    "type": "Image",
+                    "id": "9f670323-9d2f-44c4-872f-f2192c8bfc2b",
+                    "label": "joystickBtn",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "joystickBtn"
+                    }
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    },
+    "prefabProperties": [
+        {
+            "name": "Player",
+            "label": "Player",
+            "tooltip": "",
+            "defValue": "",
+            "customDefinition": false,
+            "type": {
+                "id": "object-var",
+                "expressionType": "Phaser.GameObjects.GameObject"
+            }
+        },
+        {
+            "name": "maxDistance",
+            "label": "maxDistance",
+            "tooltip": "",
+            "defValue": 200,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "maxSpeed",
+            "label": "maxSpeed",
+            "tooltip": "",
+            "defValue": 350,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        }
+    ]
+}

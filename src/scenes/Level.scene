@@ -1,0 +1,76 @@
+{
+    "id": "01aefa93-6044-4159-8358-7e91310aa05f",
+    "sceneType": "SCENE",
+    "settings": {
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Level",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "29ce22f7-54c4-43df-be99-516191ee5053",
+            "label": "bg1",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg1"
+            },
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "Image",
+            "id": "e40e910f-4c23-4b3f-8628-2344eae81b7b",
+            "label": "bg2",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg2"
+            },
+            "scaleX": 0,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "prefabId": "b6174116-d521-4865-b627-0699e4d1a25f",
+            "id": "876b220c-c434-454c-9c40-0fa821f90165",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "playerShip",
+            "scope": "PUBLIC",
+            "x": 0,
+            "y": 0,
+            "scaleX": 0.5,
+            "scaleY": 0.5
+        },
+        {
+            "prefabId": "66982e0e-e8d7-4fb6-879a-4c27e0b17563",
+            "id": "e692c87d-ec43-4236-897e-cf5c49bad73c",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY",
+                "Player"
+            ],
+            "label": "joystickBg",
+            "Player": "playerShip",
+            "x": 0,
+            "y": 0,
+            "scaleX": 0.4,
+            "scaleY": 0.4
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

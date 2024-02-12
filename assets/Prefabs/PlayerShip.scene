@@ -1,0 +1,51 @@
+{
+    "id": "b6174116-d521-4865-b627-0699e4d1a25f",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Sprite",
+            "id": "141f7fc3-0619-4e80-812c-974533fa024d",
+            "label": "shipV1",
+            "hitArea.shape": "PIXEL_PERFECT",
+            "texture": {
+                "key": "ShipV1"
+            }
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    },
+    "prefabProperties": [
+        {
+            "name": "speed",
+            "label": "speed",
+            "tooltip": "speed",
+            "defValue": 300,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "rotationSpeed",
+            "label": "rotationSpeed",
+            "tooltip": "rotationSpeed",
+            "defValue": 250,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        }
+    ]
+}

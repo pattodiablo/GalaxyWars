@@ -1,0 +1,53 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/images/bg1.png",
+                "type": "image",
+                "key": "bg1"
+            },
+            {
+                "url": "assets/images/bg2.png",
+                "type": "image",
+                "key": "bg2"
+            },
+            {
+                "url": "assets/images/joystickBg.png",
+                "type": "image",
+                "key": "joystickBg"
+            },
+            {
+                "url": "assets/images/joystickBtn.png",
+                "type": "image",
+                "key": "joystickBtn"
+            },
+            {
+                "url": "assets/images/particleShip.png",
+                "type": "image",
+                "key": "particleShip"
+            },
+            {
+                "url": "assets/Prefabs/PlayerShip.js",
+                "type": "script",
+                "key": "PlayerShip"
+            },
+            {
+                "url": "assets/images/ShipV1.png",
+                "type": "image",
+                "key": "ShipV1"
+            },
+            {
+                "url": "assets/Prefabs/VitualJoystick.js",
+                "type": "script",
+                "key": "VitualJoystick"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
