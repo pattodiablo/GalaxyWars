@@ -46,6 +46,16 @@
             "type": {
                 "id": "number"
             }
+        },
+        {
+            "name": "BulletRate",
+            "label": "BulletRate",
+            "tooltip": "",
+            "defValue": 120,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
         }
     ]
 }

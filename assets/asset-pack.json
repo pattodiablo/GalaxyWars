@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/images/BasicBullet.png",
+                "type": "image",
+                "key": "BasicBullet"
+            },
+            {
                 "url": "assets/images/bg1.png",
                 "type": "image",
                 "key": "bg1"
@@ -10,6 +15,11 @@
                 "url": "assets/images/bg2.png",
                 "type": "image",
                 "key": "bg2"
+            },
+            {
+                "url": "assets/Prefabs/Bullet.js",
+                "type": "script",
+                "key": "Bullet"
             },
             {
                 "url": "assets/images/joystickBg.png",

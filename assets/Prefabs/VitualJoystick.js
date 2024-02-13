@@ -47,7 +47,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.setAlpha(0.5);
 		this.visible=false;
 		this.canGo=0;
-	
+
 	}
 
 	mouseClickDown(pointer){
@@ -56,7 +56,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.y=pointer.y;
 		this.visible=true;
 		this.canGo=1;
-		
+
 	}
 	mouseClickUp(pointer){
 		this.canGo=0;
@@ -70,10 +70,10 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.distancia = Phaser.Math.Distance.BetweenPoints(this.joystickBg,this.joystickBtn);
 		this.direction.set(pointer.x - this.x, pointer.y - this.y).normalize();
 
-		
+
 	}
 	update(pointer){
-		
+
 		this.clampedDistance = Phaser.Math.Clamp(this.distancia, 0, this.maxDistance);
 		this.force = this.clampedDistance / this.maxDistance;
 
@@ -94,7 +94,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		if(this.canGo){
 			this.Player.body.velocity.set(this.velocityX, this.velocityY);
 		}
-			
+
 
 	}
 

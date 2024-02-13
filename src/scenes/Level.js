@@ -63,6 +63,8 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 		this.initCamera();
 
+		this.bullets = this.physics.add.group();
+
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
 		this.bg1.displayWidth = this.gameWidth;
@@ -77,31 +79,31 @@ class Level extends Phaser.Scene {
 	initCamera() {
 
 		const cam = this.cameras.main;
-		
+
 		//cam.setBounds(0, 0, this.layer.width, this.layer.height);
 		cam.setRoundPixels(true);
 		cam.disableCull = true; 
-		
+
 		//cam.startFollow(this.playerShip, true, 10, 10);
 		//cam.clampX(this.layer.width);
-	
+
 		cam.setLerp(0.1);
 		this.fadeInAndCheck();
-		
+
 	}
 
 	fadeInAndCheck(){
 
 
-		
+
 		this.cameras.main.fadeIn(2000);
 		this.cameras.main.once('camerafadeincomplete', function () {	
 
-	
-		
+
+
 			}, this);
 
-		
+
 	}
 	/* END-USER-CODE */
 }

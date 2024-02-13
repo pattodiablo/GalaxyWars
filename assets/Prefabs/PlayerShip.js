@@ -20,6 +20,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	speed = 300;
 	/** @type {number} */
 	rotationSpeed = 250;
+	/** @type {number} */
+	BulletRate = 120;
 
 	/* START-USER-CODE */
 
@@ -34,6 +36,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		 this.body.setMaxVelocity(this.speed);
 		 this.body.setCollideWorldBounds(true);
 		 this.startEmmiter();
+		 this.startBulletSystem();
 		 this.emitter.startFollow(this,true,0,0,0,0);
 		 //this.emitter.setDepth(-1);
 		 //this.preFX.addPixelate(0.5);
@@ -55,6 +58,71 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		this.lastFrameTime = 0;
 		this.deltaTime = 0;
 
+	}
+
+	startBulletSystem(){
+
+		 // Crear un grupo para almacenar las balas
+		 this.bulletGroup = this.scene.physics.add.group({
+			classType: Bullet,
+			maxSize: 20, // Definir el número máximo de balas en el grupo
+			runChildUpdate: true // Actualizar automáticamente las balas hijas
+		});
+
+
+		this.timerEvento = this.scene.time.addEvent({
+			delay: this.BulletRate,
+			callback: this.createBullet,
+			callbackScope: this,
+			loop: true
+		});
+
+
+
+	}
+
+	createBullet(){
+
+		const bullet = this.bulletGroup.get(this.x, this.y);
+		if (bullet) {
+			// Establecer la rotación de la bala
+			bullet.rotation = this.rotation;
+			bullet.updateBulletRotationAndSpeed();
+
+			// Activar la bala
+			bullet.setActive(true);
+			bullet.setVisible(true);
+		}
+
+
+
+	}
+
+	returnBullet(bullet) {
+		bullet.setActive(false);
+		bullet.setVisible(false);
+		this.bulletGroup.killAndHide(bullet);
+
+
+		const explosionParticles =  this.scene.add.particles(0, 0, 'particleShip', {
+
+			x: bullet.x,
+			y: bullet.y,
+			speed: { min: -500, max: 500 },
+			angle: { min: 0, max: 360 },
+			lifespan: { min: 30, max: 250 },
+			blendMode: 'ADD',
+			tint: 0xFFFFFF, // Color de las chispas (blanco)
+			scale: { start: 0.5, end: 0 },
+			quantity: 1,
+			maxParticles: 5,
+			frequency: 10
+		});
+
+		// Detener el sistema de partículas después de un tiempo y luego destruirlo
+		this.scene.time.delayedCall(1000, function() {
+			explosionParticles.destroy();
+		});
 	}
 
 	startEmmiter(){
@@ -112,10 +180,10 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
         if (up.isDown)
         {
-		
+
 			this.scene.physics.velocityFromRotation(this.rotation, this.speed*this.deltaTime*100, this.body.velocity);
         }
-        
+
 
 
 
