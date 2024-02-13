@@ -82,7 +82,7 @@ class Level extends Phaser.Scene {
 		cam.setRoundPixels(true);
 		cam.disableCull = true; 
 		
-		cam.startFollow(this.playerShip, true, 10, 10);
+		//cam.startFollow(this.playerShip, true, 10, 10);
 		//cam.clampX(this.layer.width);
 	
 		cam.setLerp(0.1);
