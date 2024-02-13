@@ -22,6 +22,16 @@
                 "key": "Bullet"
             },
             {
+                "url": "assets/images/Enemy.png",
+                "type": "image",
+                "key": "Enemy"
+            },
+            {
+                "url": "assets/Prefabs/Enemy.js",
+                "type": "script",
+                "key": "Enemy_1"
+            },
+            {
                 "url": "assets/images/joystickBg.png",
                 "type": "image",
                 "key": "joystickBg"

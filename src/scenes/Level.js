@@ -37,6 +37,10 @@ class Level extends Phaser.Scene {
 		joystickBg.scaleX = 0.4;
 		joystickBg.scaleY = 0.4;
 
+		// enemy
+		const enemy = new Enemy(this, 257, 863);
+		this.add.existing(enemy);
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -62,8 +66,9 @@ class Level extends Phaser.Scene {
 
 		this.editorCreate();
 		this.initCamera();
+		this.configurarColisiones();
 
-		this.bullets = this.physics.add.group();
+	
 
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
@@ -74,6 +79,27 @@ class Level extends Phaser.Scene {
 		this.playerShip.x=this.gameWidth/2;
 		this.playerShip.y=this.gameHeight/2;
 		this.playerShip.angle=-90;
+
+	
+	}
+
+	configurarColisiones(){
+
+		this.enemyGroup = this.physics.add.group({
+			classType: Enemy,
+			runChildUpdate: true // Actualizar automáticamente las balas hijas
+		});
+
+
+		this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
+	}
+
+	colisionBalaEnemigo(bala, enemigo) {
+		// Emitir partículas en el lugar de la colisión
+	
+	
+		// Destruir la bala
+		//this.PlayerShip.returnBullet();
 	}
 
 	initCamera() {

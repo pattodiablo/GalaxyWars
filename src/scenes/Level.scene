@@ -64,6 +64,17 @@
             "y": 0,
             "scaleX": 0.4,
             "scaleY": 0.4
+        },
+        {
+            "prefabId": "b951bf12-d171-4fdb-8020-4fd6dd997d2c",
+            "id": "1989ec74-b2be-48f6-afe4-12987b7c78ba",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "enemy",
+            "x": 257,
+            "y": 863
         }
     ],
     "plainObjects": [],
