@@ -70,6 +70,10 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.distancia = Phaser.Math.Distance.BetweenPoints(this.joystickBg,this.joystickBtn);
 		this.direction.set(pointer.x - this.x, pointer.y - this.y).normalize();
 
+		
+	}
+	update(pointer){
+		
 		this.clampedDistance = Phaser.Math.Clamp(this.distancia, 0, this.maxDistance);
 		this.force = this.clampedDistance / this.maxDistance;
 
@@ -78,8 +82,6 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.angleOfJoystick = Phaser.Math.RadToDeg(Math.atan2(this.direction.y, this.direction.x));
 		this.Player.angle = this.angleOfJoystick;
 
-	}
-	update(){
 
 		if(this.distancia<20){
 			this.velocityX = this.direction.x * this.maxSpeed * this.force;

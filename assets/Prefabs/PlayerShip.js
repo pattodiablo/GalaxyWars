@@ -89,8 +89,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	updatePlayer(){
 
 		var currentTime = Date.now();
-    this.deltaTime = (currentTime - this.lastFrameTime)/1000; // Delta time in seconds
-    this.lastFrameTime = currentTime;
+    	this.deltaTime = (currentTime - this.lastFrameTime)/1000; // Delta time in seconds
+   		this.lastFrameTime = currentTime;
 
 
 
