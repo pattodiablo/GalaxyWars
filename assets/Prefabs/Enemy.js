@@ -11,8 +11,10 @@ class Enemy extends Phaser.GameObjects.Image {
 		this.setInteractive(this.scene.input.makePixelPerfect());
 
 		/* START-USER-CTR-CODE */
+	
 		this.createEvent =	this.scene.events.once(Phaser.Scenes.Events.UPDATE, this.create, this);
 		this.scene.events.on("update", () => this.update())
+		this.setScale(0,0);
 		/* END-USER-CTR-CODE */
 	}
 
@@ -25,7 +27,7 @@ class Enemy extends Phaser.GameObjects.Image {
 
 		this.scene.physics.world.enable(this);
 		this.scene.enemyGroup.add(this);
-		this.setScale(0.1,0.1);
+		
 
 			// Crear el primer tween y asignarlo a una variable
 		this.tween1 = this.scene.tweens.add({
