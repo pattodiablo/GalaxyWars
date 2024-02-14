@@ -41,6 +41,30 @@ class Level extends Phaser.Scene {
 		const enemy = new Enemy(this, 257, 863);
 		this.add.existing(enemy);
 
+		// enemy_1
+		const enemy_1 = new Enemy(this, 100, 207);
+		this.add.existing(enemy_1);
+
+		// enemy_2
+		const enemy_2 = new Enemy(this, 504, 753);
+		this.add.existing(enemy_2);
+
+		// enemy_3
+		const enemy_3 = new Enemy(this, 495, 215);
+		this.add.existing(enemy_3);
+
+		// enemy_4
+		const enemy_4 = new Enemy(this, 490, 485);
+		this.add.existing(enemy_4);
+
+		// enemy_5
+		const enemy_5 = new Enemy(this, 168, 546);
+		this.add.existing(enemy_5);
+
+		// enemy_6
+		const enemy_6 = new Enemy(this, 321, 396);
+		this.add.existing(enemy_6);
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -68,7 +92,7 @@ class Level extends Phaser.Scene {
 		this.initCamera();
 		this.configurarColisiones();
 
-	
+
 
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
@@ -80,26 +104,31 @@ class Level extends Phaser.Scene {
 		this.playerShip.y=this.gameHeight/2;
 		this.playerShip.angle=-90;
 
-	
+
 	}
 
 	configurarColisiones(){
+
+		this.bulletGroup = this.physics.add.group({
+			classType: Bullet,
+			maxSize: 20, // Definir el número máximo de balas en el grupo
+			runChildUpdate: true // Actualizar automáticamente las balas hijas
+		});
 
 		this.enemyGroup = this.physics.add.group({
 			classType: Enemy,
 			runChildUpdate: true // Actualizar automáticamente las balas hijas
 		});
-
-
-		this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
+		console.log(this);
+		this.physics.add.overlap(this.bulletGroup, this.enemyGroup,this.colisionBalaEnemigo, null, this);
+//	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}
 
 	colisionBalaEnemigo(bala, enemigo) {
 		// Emitir partículas en el lugar de la colisión
-	
-	
-		// Destruir la bala
-		//this.PlayerShip.returnBullet();
+
+		this.playerShip.returnBullet(bala);
+
 	}
 
 	initCamera() {

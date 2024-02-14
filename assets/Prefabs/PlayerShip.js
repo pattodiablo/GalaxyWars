@@ -21,7 +21,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	rotationSpeed = 250;
 	/** @type {number} */
-	BulletRate = 120;
+	BulletRate = 250;
 
 	/* START-USER-CODE */
 
@@ -63,11 +63,6 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	startBulletSystem(){
 
 		 // Crear un grupo para almacenar las balas
-		 this.bulletGroup = this.scene.physics.add.group({
-			classType: Bullet,
-			maxSize: 20, // Definir el número máximo de balas en el grupo
-			runChildUpdate: true // Actualizar automáticamente las balas hijas
-		});
 
 
 		this.timerEvento = this.scene.time.addEvent({
@@ -83,7 +78,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 	createBullet(){
 
-		const bullet = this.bulletGroup.get(this.x, this.y);
+		const bullet = this.scene.bulletGroup.get(this.x, this.y);
 		if (bullet) {
 			// Establecer la rotación de la bala
 			bullet.rotation = this.rotation;
@@ -101,7 +96,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	returnBullet(bullet) {
 		bullet.setActive(false);
 		bullet.setVisible(false);
-		this.bulletGroup.killAndHide(bullet);
+		this.scene.bulletGroup.killAndHide(bullet);
 
 
 		const explosionParticles =  this.scene.add.particles(0, 0, 'particleShip', {

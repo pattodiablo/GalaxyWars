@@ -51,7 +51,7 @@
             "name": "BulletRate",
             "label": "BulletRate",
             "tooltip": "",
-            "defValue": 120,
+            "defValue": 250,
             "customDefinition": false,
             "type": {
                 "id": "number"
