@@ -56,6 +56,16 @@
             "type": {
                 "id": "number"
             }
+        },
+        {
+            "name": "damage",
+            "label": "damage",
+            "tooltip": "",
+            "defValue": 1,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
         }
     ]
 }

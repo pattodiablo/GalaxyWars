@@ -22,6 +22,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	rotationSpeed = 250;
 	/** @type {number} */
 	BulletRate = 250;
+	/** @type {number} */
+	damage = 1;
 
 	/* START-USER-CODE */
 

@@ -25,5 +25,17 @@
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 5
-    }
+    },
+    "prefabProperties": [
+        {
+            "name": "enemyLife",
+            "label": "enemyLife",
+            "tooltip": "",
+            "defValue": 1,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        }
+    ]
 }

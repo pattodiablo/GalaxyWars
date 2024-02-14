@@ -38,32 +38,8 @@ class Level extends Phaser.Scene {
 		joystickBg.scaleY = 0.4;
 
 		// enemy
-		const enemy = new Enemy(this, 257, 863);
+		const enemy = new Enemy(this, -765, 579);
 		this.add.existing(enemy);
-
-		// enemy_1
-		const enemy_1 = new Enemy(this, 100, 207);
-		this.add.existing(enemy_1);
-
-		// enemy_2
-		const enemy_2 = new Enemy(this, 504, 753);
-		this.add.existing(enemy_2);
-
-		// enemy_3
-		const enemy_3 = new Enemy(this, 495, 215);
-		this.add.existing(enemy_3);
-
-		// enemy_4
-		const enemy_4 = new Enemy(this, 490, 485);
-		this.add.existing(enemy_4);
-
-		// enemy_5
-		const enemy_5 = new Enemy(this, 168, 546);
-		this.add.existing(enemy_5);
-
-		// enemy_6
-		const enemy_6 = new Enemy(this, 321, 396);
-		this.add.existing(enemy_6);
 
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
@@ -91,8 +67,14 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 		this.initCamera();
 		this.configurarColisiones();
+		this.enemySpawner();
 
-
+		this.time.addEvent({
+            delay: 1000, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
+            callback: this.enemySpawner,
+            callbackScope: this,
+            loop: true // Para que el evento se repita indefinidamente
+        });
 
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
@@ -105,6 +87,28 @@ class Level extends Phaser.Scene {
 		this.playerShip.angle=-90;
 
 
+	}
+
+	enemySpawner(){
+
+		const screenWidth = this.sys.game.config.width;
+        const screenHeight = this.sys.game.config.height;
+
+        // Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
+        const spawnAreaWidth = screenWidth * 0.8; // Por ejemplo, el 80% del ancho de la pantalla
+        const spawnAreaHeight = screenHeight * 0.8; // Por ejemplo, el 80% de la altura de la pantalla
+        const spawnAreaX = (screenWidth - spawnAreaWidth) / 2; // Centrar horizontalmente
+        const spawnAreaY = (screenHeight - spawnAreaHeight) / 2; // Centrar verticalmente
+
+        // Generar coordenadas x e y aleatorias dentro del rango definido
+        const randomX = Phaser.Math.Between(spawnAreaX, spawnAreaX + spawnAreaWidth);
+        const randomY = Phaser.Math.Between(spawnAreaY, spawnAreaY + spawnAreaHeight);
+
+        // Crear un nuevo enemigo en las coordenadas aleatorias
+		const enemy = new Enemy(this, randomX, randomY);
+		this.add.existing(enemy);
+
+		
 	}
 
 	configurarColisiones(){
@@ -128,6 +132,7 @@ class Level extends Phaser.Scene {
 		// Emitir partículas en el lugar de la colisión
 
 		this.playerShip.returnBullet(bala);
+		enemigo.reducirVida(this.playerShip.damage);
 
 	}
 
