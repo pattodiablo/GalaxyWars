@@ -41,6 +41,10 @@ class Level extends Phaser.Scene {
 		const enemy = new Enemy(this, -765, 579);
 		this.add.existing(enemy);
 
+		// enemy2
+		const enemy2 = new Enemy2(this, 113, 748);
+		this.add.existing(enemy2);
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -108,7 +112,7 @@ class Level extends Phaser.Scene {
 		const enemy = new Enemy(this, randomX, randomY);
 		this.add.existing(enemy);
 
-		
+
 	}
 
 	configurarColisiones(){
@@ -123,7 +127,7 @@ class Level extends Phaser.Scene {
 			classType: Enemy,
 			runChildUpdate: true // Actualizar automáticamente las balas hijas
 		});
-		console.log(this);
+
 		this.physics.add.overlap(this.bulletGroup, this.enemyGroup,this.colisionBalaEnemigo, null, this);
 //	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}

@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/Prefabs/EnemyBase.js",
+                "type": "script",
+                "key": "EnemyBase"
+            },
+            {
                 "url": "assets/guapen.png",
                 "type": "image",
                 "key": "guapen"

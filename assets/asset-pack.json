@@ -32,6 +32,16 @@
                 "key": "Enemy_1"
             },
             {
+                "url": "assets/Prefabs/Enemy2.js",
+                "type": "script",
+                "key": "Enemy_2"
+            },
+            {
+                "url": "assets/images/Enemy2.png",
+                "type": "image",
+                "key": "Enemy2"
+            },
+            {
                 "url": "assets/images/joystickBg.png",
                 "type": "image",
                 "key": "joystickBg"
