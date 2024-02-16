@@ -47,6 +47,11 @@
                 "key": "Enemy2"
             },
             {
+                "url": "assets/gameBorder.png",
+                "type": "image",
+                "key": "gameBorder"
+            },
+            {
                 "url": "assets/images/joystickBg.png",
                 "type": "image",
                 "key": "joystickBg"

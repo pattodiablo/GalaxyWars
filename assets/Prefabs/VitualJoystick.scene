@@ -15,7 +15,7 @@
             "label": "container_1",
             "list": [
                 {
-                    "type": "Image",
+                    "type": "Sprite",
                     "id": "7cd1a3ab-e0bf-42a0-be1f-afc7adb25914",
                     "label": "joystickBg",
                     "scope": "PUBLIC",
@@ -24,7 +24,7 @@
                     }
                 },
                 {
-                    "type": "Image",
+                    "type": "Sprite",
                     "id": "9f670323-9d2f-44c4-872f-f2192c8bfc2b",
                     "label": "joystickBtn",
                     "scope": "PUBLIC",

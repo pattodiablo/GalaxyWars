@@ -130,11 +130,12 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 			this.destroyParticles();
 			player.setVisible(false);
 
-			this.scene.destroyAllEnemies();
+			//this.scene.destroyAllEnemies();
 
 			var reaparecerTimer = this.scene.time.addEvent({
 				delay: this.reaparecerTimer, // Tiempo en milisegundos antes de que reaparezca la nave
 				callback: function() {
+					this.scene.destroyAllEnemies();
 					// Hacer que la nave sea visible nuevamente
 					this.appearShip();
 
@@ -261,7 +262,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 		var currentTime = Date.now();
-    	this.deltaTime = (currentTime - this.lastFrameTime)/1000; // Delta time in seconds
+    	this.deltaTime = (currentTime - this.lastFrameTime)/100; // Delta time in seconds
    		this.lastFrameTime = currentTime;
 
 

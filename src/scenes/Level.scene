@@ -78,6 +78,17 @@
             "y": 0,
             "scaleX": 0.4,
             "scaleY": 0.4
+        },
+        {
+            "type": "Image",
+            "id": "92d721ca-4e13-45cc-bd0b-a2d10d06007a",
+            "label": "gameBorder",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "gameBorder"
+            },
+            "originX": 0,
+            "originY": 0
         }
     ],
     "plainObjects": [],

@@ -42,6 +42,10 @@ class Level extends Phaser.Scene {
 		joystickBg.scaleX = 0.4;
 		joystickBg.scaleY = 0.4;
 
+		// gameBorder
+		const gameBorder = this.add.image(0, 0, "gameBorder");
+		gameBorder.setOrigin(0, 0);
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -49,6 +53,7 @@ class Level extends Phaser.Scene {
 		this.bg2 = bg2;
 		this.bg3 = bg3;
 		this.playerShip = playerShip;
+		this.gameBorder = gameBorder;
 
 		this.events.emit("scene-awake");
 	}
@@ -61,13 +66,15 @@ class Level extends Phaser.Scene {
 	bg3;
 	/** @type {PlayerShip} */
 	playerShip;
+	/** @type {Phaser.GameObjects.Image} */
+	gameBorder;
 
 	/* START-USER-CODE */
 
 	// Write more your code here
 
 	create() {
-
+		this.physics.world.setBounds(0, 0, 640, 960);
 		this.editorCreate();
 		this.initCamera();
 		this.configurarColisiones();
@@ -85,15 +92,42 @@ class Level extends Phaser.Scene {
 
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
-		this.bg1.displayWidth = this.gameWidth;
-        this.bg1.displayHeight = this.gameHeight;
-		this.bg2.displayWidth = this.gameWidth;
-        this.bg2.displayHeight = this.gameHeight;
-		this.playerShip.x=this.gameWidth/2;
-		this.playerShip.y=this.gameHeight/2;
+		this.bg1.displayWidth = 640;
+        this.bg1.displayHeight = 960;
+		this.bg2.displayWidth = 640;
+        this.bg2.displayHeight = 960;
+		this.playerShip.x=640/2;
+		this.playerShip.y=960/2;
 		this.playerShip.angle=-90;
 
 
+		const borderParticles =  this.add.particles(0, 0, 'gameBorder', {
+			x: 320,
+			y: 480,
+			speed: { min: 0, max: 0 },
+			lifespan: { min: 30, max: 3000 },
+			blendMode: 'ADD',
+			tint: 0xFFFFFF, // Color de las chispas (blanco)
+			scale: { start: 1, end: 0.01 },
+			quantity: 10,
+			maxParticles: 5,
+			frequency: 10
+		});
+
+		this.bg2.postFX.addShine(0.5, 1, 5,0,false);
+		
+
+
+		
+		this.starsGroup = this.add.group();
+		for (let i = 0; i < 100; i++) {
+			const x = Phaser.Math.Between(-this.sys.game.config.width, this.sys.game.config.width*2);
+			const y = Phaser.Math.Between(-this.sys.game.config.height, this.sys.game.config.height*2);
+			const size = Phaser.Math.Between(1, 3);
+			const star = this.add.graphics({ x: x, y: y });
+			star.fillStyle(0xFFFFFF, 0.3);
+			star.fillCircle(0, 0, size);
+		}
 
 	}
 
@@ -101,7 +135,7 @@ class Level extends Phaser.Scene {
 
         // Destruir todos los enemigos en el grupo de enemigos
 		const enemigos = this.enemyGroup.getChildren();
-		
+
 		const numeroEnemigos = enemigos.length;
 
         // O usando el método getLength()
@@ -150,12 +184,12 @@ class Level extends Phaser.Scene {
 		});
 
 		this.enemyGroup = this.physics.add.group({
-			classType: Enemy,
-			runChildUpdate: true // Actualizar automáticamente las balas hijas
+			classType: Enemy
 		});
 
 		this.physics.add.overlap(this.bulletGroup, this.enemyGroup,this.colisionBalaEnemigo, null, this);
 		this.physics.add.overlap(this.playerShip, this.enemyGroup,this.colisionplayerEnemy, null, this);
+		this.physics.add.collider(this.enemyGroup, this.enemyGroup);
 //	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}
 
@@ -177,11 +211,11 @@ class Level extends Phaser.Scene {
 
 		const cam = this.cameras.main;
 
-		//cam.setBounds(0, 0, this.layer.width, this.layer.height);
+		//cam.setBounds(0, 0, 1920, 1080);
 		cam.setRoundPixels(true);
-		cam.disableCull = true; 
+		cam.disableCull = false; 
 
-		//cam.startFollow(this.playerShip, true, 10, 10);
+		cam.startFollow(this.playerShip, true, 0, 0);
 		//cam.clampX(this.layer.width);
 
 		cam.setLerp(0.1);
@@ -202,6 +236,8 @@ class Level extends Phaser.Scene {
 
 
 	}
+
+	
 	/* END-USER-CODE */
 }
 

@@ -9,11 +9,11 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		super(scene, x ?? 0, y ?? 0);
 
 		// joystickBg
-		const joystickBg = scene.add.image(0, 0, "joystickBg");
+		const joystickBg = scene.add.sprite(0, 0, "joystickBg");
 		this.add(joystickBg);
 
 		// joystickBtn
-		const joystickBtn = scene.add.image(0, 0, "joystickBtn");
+		const joystickBtn = scene.add.sprite(0, 0, "joystickBtn");
 		this.add(joystickBtn);
 
 		this.joystickBg = joystickBg;
@@ -25,9 +25,9 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		/* END-USER-CTR-CODE */
 	}
 
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Phaser.GameObjects.Sprite} */
 	joystickBg;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Phaser.GameObjects.Sprite} */
 	joystickBtn;
 	/** @type {Phaser.GameObjects.GameObject} */
 	Player;
@@ -47,7 +47,8 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.setAlpha(0.5);
 		this.visible=false;
 		this.canGo=0;
-
+		this.joystickBg.setScrollFactor(0,0);
+		this.joystickBtn.setScrollFactor(0,0);
 	}
 
 	mouseClickDown(pointer){
@@ -96,7 +97,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 				this.Player.body.velocity.set(this.velocityX, this.velocityY);
 			}
 		}
-	
+
 
 
 	}
