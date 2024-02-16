@@ -30,7 +30,7 @@
             "name": "speed",
             "label": "speed",
             "tooltip": "",
-            "defValue": 600,
+            "defValue": 700,
             "customDefinition": false,
             "type": {
                 "id": "number"

@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/images/appearParticle.png",
+                "type": "image",
+                "key": "appearParticle"
+            },
+            {
                 "url": "assets/images/BasicBullet.png",
                 "type": "image",
                 "key": "BasicBullet"

@@ -15,7 +15,7 @@ class Bullet extends Phaser.GameObjects.Image {
 	}
 
 	/** @type {number} */
-	speed = 600;
+	speed = 700;
 
 	/* START-USER-CODE */
 

@@ -74,26 +74,29 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 	}
 	update(pointer){
 
-		this.clampedDistance = Phaser.Math.Clamp(this.distancia, 0, this.maxDistance);
-		this.force = this.clampedDistance / this.maxDistance;
+		if(this.Player.active){
+			this.clampedDistance = Phaser.Math.Clamp(this.distancia, 0, this.maxDistance);
+			this.force = this.clampedDistance / this.maxDistance;
 
-		this.joystickBtn.setPosition(this.direction.x * this.clampedDistance, this.direction.y * this.clampedDistance);
+			this.joystickBtn.setPosition(this.direction.x * this.clampedDistance, this.direction.y * this.clampedDistance);
 
-		this.angleOfJoystick = Phaser.Math.RadToDeg(Math.atan2(this.direction.y, this.direction.x));
-		this.Player.angle = this.angleOfJoystick;
+			this.angleOfJoystick = Phaser.Math.RadToDeg(Math.atan2(this.direction.y, this.direction.x));
+			this.Player.angle = this.angleOfJoystick;
 
 
-		if(this.distancia<20){
-			this.velocityX = this.direction.x * this.maxSpeed * this.force;
-			this.velocityY = this.direction.y * this.maxSpeed * this.force;
-		}else{
+			if(this.distancia<70){
+				this.velocityX = this.direction.x * this.maxSpeed ;
+				this.velocityY = this.direction.y * this.maxSpeed ;
+			}else{
 
-			this.velocityX = this.direction.x * this.maxSpeed;
-        	this.velocityY = this.direction.y * this.maxSpeed;
+				this.velocityX = this.direction.x * this.maxSpeed;
+				this.velocityY = this.direction.y * this.maxSpeed;
+			}
+			if(this.canGo){
+				this.Player.body.velocity.set(this.velocityX, this.velocityY);
+			}
 		}
-		if(this.canGo){
-			this.Player.body.velocity.set(this.velocityX, this.velocityY);
-		}
+	
 
 
 	}

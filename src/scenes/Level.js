@@ -25,6 +25,11 @@ class Level extends Phaser.Scene {
 		bg2.scaleX = 0;
 		bg2.setOrigin(0, 0);
 
+		// bg3
+		const bg3 = this.add.image(0, 0, "bg2");
+		bg3.scaleX = 0;
+		bg3.setOrigin(0, 0);
+
 		// playerShip
 		const playerShip = new PlayerShip(this, 0, 0);
 		this.add.existing(playerShip);
@@ -37,19 +42,12 @@ class Level extends Phaser.Scene {
 		joystickBg.scaleX = 0.4;
 		joystickBg.scaleY = 0.4;
 
-		// enemy
-		const enemy = new Enemy(this, -765, 579);
-		this.add.existing(enemy);
-
-		// enemy2
-		const enemy2 = new Enemy2(this, 113, 748);
-		this.add.existing(enemy2);
-
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
 		this.bg1 = bg1;
 		this.bg2 = bg2;
+		this.bg3 = bg3;
 		this.playerShip = playerShip;
 
 		this.events.emit("scene-awake");
@@ -59,6 +57,8 @@ class Level extends Phaser.Scene {
 	bg1;
 	/** @type {Phaser.GameObjects.Image} */
 	bg2;
+	/** @type {Phaser.GameObjects.Image} */
+	bg3;
 	/** @type {PlayerShip} */
 	playerShip;
 
@@ -72,6 +72,9 @@ class Level extends Phaser.Scene {
 		this.initCamera();
 		this.configurarColisiones();
 		this.enemySpawner();
+
+
+		this.maximunEnemies = 30;
 
 		this.time.addEvent({
             delay: 1000, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
@@ -91,11 +94,32 @@ class Level extends Phaser.Scene {
 		this.playerShip.angle=-90;
 
 
+
 	}
+
+	destroyAllEnemies() {
+
+        // Destruir todos los enemigos en el grupo de enemigos
+		const enemigos = this.enemyGroup.getChildren();
+		
+		const numeroEnemigos = enemigos.length;
+
+        // O usando el método getLength()
+        // const numeroEnemigos = this.enemyGroup.getLength();
+
+        console.log("Número de enemigos:", numeroEnemigos);
+        // Iterar sobre cada enemigo y llamar al método reducirVida(100)
+        enemigos.forEach(enemigo => {
+
+            enemigo.reducirVida(100);
+        });
+    }
 
 	enemySpawner(){
 
-		const screenWidth = this.sys.game.config.width;
+
+		if(this.enemyGroup.countActive()<this.maximunEnemies){
+				const screenWidth = this.sys.game.config.width;
         const screenHeight = this.sys.game.config.height;
 
         // Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
@@ -111,6 +135,8 @@ class Level extends Phaser.Scene {
         // Crear un nuevo enemigo en las coordenadas aleatorias
 		const enemy = new Enemy(this, randomX, randomY);
 		this.add.existing(enemy);
+
+		}
 
 
 	}
@@ -129,6 +155,7 @@ class Level extends Phaser.Scene {
 		});
 
 		this.physics.add.overlap(this.bulletGroup, this.enemyGroup,this.colisionBalaEnemigo, null, this);
+		this.physics.add.overlap(this.playerShip, this.enemyGroup,this.colisionplayerEnemy, null, this);
 //	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}
 
@@ -138,6 +165,12 @@ class Level extends Phaser.Scene {
 		this.playerShip.returnBullet(bala);
 		enemigo.reducirVida(this.playerShip.damage);
 
+	}
+
+
+	colisionplayerEnemy(player,enemy){
+
+		player.destroyShip(player);
 	}
 
 	initCamera() {

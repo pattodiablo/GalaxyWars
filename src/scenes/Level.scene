@@ -35,6 +35,18 @@
             "originY": 0
         },
         {
+            "type": "Image",
+            "id": "b3e3ff0d-25c4-48ff-a009-e238847d1abd",
+            "label": "bg3",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg2"
+            },
+            "scaleX": 0,
+            "originX": 0,
+            "originY": 0
+        },
+        {
             "prefabId": "b6174116-d521-4865-b627-0699e4d1a25f",
             "id": "876b220c-c434-454c-9c40-0fa821f90165",
             "unlock": [
@@ -66,28 +78,6 @@
             "y": 0,
             "scaleX": 0.4,
             "scaleY": 0.4
-        },
-        {
-            "prefabId": "b951bf12-d171-4fdb-8020-4fd6dd997d2c",
-            "id": "67a7f436-7a2d-4f8b-a47a-6668d099896b",
-            "unlock": [
-                "x",
-                "y"
-            ],
-            "label": "enemy",
-            "x": -765,
-            "y": 579
-        },
-        {
-            "prefabId": "1139135e-3b94-4a8a-86d1-0809ca15795e",
-            "id": "1f0329c1-849c-4c79-8cef-bf2bdb51f2dc",
-            "unlock": [
-                "x",
-                "y"
-            ],
-            "label": "enemy2",
-            "x": 113,
-            "y": 748
         }
     ],
     "plainObjects": [],

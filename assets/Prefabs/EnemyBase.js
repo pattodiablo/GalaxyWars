@@ -14,7 +14,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 	
 		this.createEvent =	this.scene.events.once(Phaser.Scenes.Events.UPDATE, this.create, this);
 		this.scene.events.on("update", () => this.update())
-		this.setScale(0,0);
+		this.setScale(0.3,0.3);
 	
 		/* END-USER-CTR-CODE */
 	}
@@ -31,6 +31,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 		this.animacionDeInicio();
         this.animacionIdle();
         this.glowSettings(0xffffff,1,3, false, 1, 100)
+		this.body.enable=false;
 	
 	}
 
@@ -39,26 +40,56 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
     }
 
     animacionDeInicio(){
-        this.tween1 = this.scene.tweens.add({
-			targets: this,
-			scaleX: 1, // Escala X final
-			scaleY: 1, // Escala Y final
-			duration: 1000, // Duración en milisegundos
-			ease: 'Linear'
-		});
+	
 
-		// Cuando el primer tween haya completado, iniciar el segundo tween
-		this.tween1.on('complete', () => {
-			this.scene.tweens.add({
+
+			const appearParicles =  this.scene.add.particles(0, 0, 'appearParticle', {
+				x: this.x,
+				y: this.y,
+				speed: { min: -0, max: 0 },
+				angle: { min: 0, max: 360 },
+				lifespan: { min: 30, max: 1000 },
+				blendMode: 'ADD',
+				tint: 0xEF4720, // Color de las chispas (blanco)
+				scale: { start: 1, end: 0 },
+				quantity: 1,
+				maxParticles: 3,
+				frequency: 10,
+
+			},this);
+
+			// Detener el sistema de partículas después de un tiempo y luego destruirlo
+			this.scene.time.delayedCall(1250, function() {
+				if(this.active){
+					this.body.enable=true;
+				}
+			
+				appearParicles.destroy();
+				
+			}, [], this);
+
+			this.tween1 = this.scene.tweens.add({
 				targets: this,
-				scaleX: this.scaleX * 1.1, // Aumentar la escala en un 10%
-				scaleY: this.scaleY * 1.1, // Aumentar la escala en un 10%
-				duration: 250, // Duración de la animación en milisegundos
-				yoyo: true, // Hacer que la animación se revierta al final
-				ease: 'Linear', // Función de interpolación (puede ajustarse según el efecto deseado)
-				repeat: -1
+				scaleX: 1, // Escala X final
+				scaleY: 1, // Escala Y final
+				duration: 1000, // Duración en milisegundos
+				ease: 'Linear'
 			});
-		});
+
+			// Cuando el primer tween haya completado, iniciar el segundo tween
+			this.tween1.on('complete', () => {
+				this.scene.tweens.add({
+					targets: this,
+					scaleX: this.scaleX * 1.1, // Aumentar la escala en un 10%
+					scaleY: this.scaleY * 1.1, // Aumentar la escala en un 10%
+					duration: 250, // Duración de la animación en milisegundos
+					yoyo: true, // Hacer que la animación se revierta al final
+					ease: 'Linear', // Función de interpolación (puede ajustarse según el efecto deseado)
+					repeat: -1
+				});
+			});
+			
+	
 
     }
 
@@ -74,11 +105,9 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
     }
 
 	reducirVida(damage){
-
+	
 		this.scene.tweens.killTweensOf(this);
 		this.enemyLife-=damage;
-
-
 
 		const explosionParticles =  this.scene.add.particles(0, 0, 'particleShip', {
 
@@ -102,6 +131,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 
 
 		if(this.enemyLife<=0){
+			console.log("enemy destroyed");
 			this.destroy();
 		}
 	}
