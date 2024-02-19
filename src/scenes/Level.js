@@ -129,6 +129,18 @@ class Level extends Phaser.Scene {
 			star.fillCircle(0, 0, size);
 		}
 
+		const gameBorderFX = this.gameBorder.postFX.addColorMatrix();
+
+        const tween = this.tweens.addCounter({
+            from: 0,
+            to: 360,
+            duration: 3000,
+            loop: -1,
+            onUpdate: () => {
+                gameBorderFX.hue(tween.getValue());
+            }
+        });
+
 	}
 
 	destroyAllEnemies() {
@@ -153,8 +165,8 @@ class Level extends Phaser.Scene {
 
 
 		if(this.enemyGroup.countActive()<this.maximunEnemies){
-				const screenWidth = this.sys.game.config.width;
-        const screenHeight = this.sys.game.config.height;
+				const screenWidth = 640;
+        const screenHeight = 960;
 
         // Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
         const spawnAreaWidth = screenWidth * 0.8; // Por ejemplo, el 80% del ancho de la pantalla
@@ -225,7 +237,13 @@ class Level extends Phaser.Scene {
 
 	fadeInAndCheck(){
 
-
+	
+        const fxCamera = this.cameras.main.postFX.addPixelate(80);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
 
 		this.cameras.main.fadeIn(2000);
 		this.cameras.main.once('camerafadeincomplete', function () {	
