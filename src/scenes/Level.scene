@@ -89,6 +89,18 @@
             },
             "originX": 0,
             "originY": 0
+        },
+        {
+            "prefabId": "394f5c0e-b4d2-4414-8365-e052200d62c5",
+            "id": "8dc6bfee-9580-4e3e-b6ea-fefc150a22fd",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "levelParticle",
+            "scope": "PUBLIC",
+            "x": 448,
+            "y": 431
         }
     ],
     "plainObjects": [],

@@ -130,10 +130,22 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 		});
 
 
-		if(this.enemyLife<=0){
+		if (this.enemyLife <= 0) {
 			console.log("enemy destroyed");
+		
+			// Generar un número aleatorio entre 3 y 4 para determinar cuántas partículas crear
+			const numberOfParticles = Phaser.Math.Between(3, 4);
+		
+			// Crear las partículas aleatorias
+			for (let i = 0; i < numberOfParticles; i++) {
+				const levelParticle = new LevelParticle(this.scene, this.x, this.y);
+				this.scene.add.existing(levelParticle);
+			}
+		
+			// Destruir el enemigo
 			this.destroy();
 		}
+		
 	}
 	
 

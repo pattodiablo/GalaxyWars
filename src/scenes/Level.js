@@ -46,6 +46,10 @@ class Level extends Phaser.Scene {
 		const gameBorder = this.add.image(0, 0, "gameBorder");
 		gameBorder.setOrigin(0, 0);
 
+		// levelParticle
+		const levelParticle = new LevelParticle(this, 448, 431);
+		this.add.existing(levelParticle);
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -54,6 +58,7 @@ class Level extends Phaser.Scene {
 		this.bg3 = bg3;
 		this.playerShip = playerShip;
 		this.gameBorder = gameBorder;
+		this.levelParticle = levelParticle;
 
 		this.events.emit("scene-awake");
 	}
@@ -68,6 +73,8 @@ class Level extends Phaser.Scene {
 	playerShip;
 	/** @type {Phaser.GameObjects.Image} */
 	gameBorder;
+	/** @type {LevelParticle} */
+	levelParticle;
 
 	/* START-USER-CODE */
 
@@ -115,10 +122,10 @@ class Level extends Phaser.Scene {
 		});
 
 		this.bg2.postFX.addShine(0.5, 1, 5,0,false);
-		
 
 
-		
+
+
 		this.starsGroup = this.add.group();
 		for (let i = 0; i < 100; i++) {
 			const x = Phaser.Math.Between(-this.sys.game.config.width, this.sys.game.config.width*2);
@@ -191,7 +198,7 @@ class Level extends Phaser.Scene {
 
 		this.bulletGroup = this.physics.add.group({
 			classType: Bullet,
-			maxSize: 20, // Definir el número máximo de balas en el grupo
+			maxSize: 40, // Definir el número máximo de balas en el grupo
 			runChildUpdate: true // Actualizar automáticamente las balas hijas
 		});
 
@@ -199,12 +206,23 @@ class Level extends Phaser.Scene {
 			classType: Enemy
 		});
 
+		this.LevelParticleGroup = this.physics.add.group({
+			classType: LevelParticle
+		});
+
 		this.physics.add.overlap(this.bulletGroup, this.enemyGroup,this.colisionBalaEnemigo, null, this);
 		this.physics.add.overlap(this.playerShip, this.enemyGroup,this.colisionplayerEnemy, null, this);
+		this.physics.add.overlap(this.playerShip, this.LevelParticleGroup,this.colisionplayerLevelParticle, null, this);
 		this.physics.add.collider(this.enemyGroup, this.enemyGroup);
 //	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}
 
+	colisionplayerLevelParticle(player,particle){
+		particle.body.enable=false;
+		particle.active = false;
+		particle.visible=false;
+		player.addParticle();
+	}
 	colisionBalaEnemigo(bala, enemigo) {
 		// Emitir partículas en el lugar de la colisión
 
@@ -237,7 +255,7 @@ class Level extends Phaser.Scene {
 
 	fadeInAndCheck(){
 
-	
+
         const fxCamera = this.cameras.main.postFX.addPixelate(80);
         this.add.tween({
             targets: fxCamera,
@@ -255,7 +273,7 @@ class Level extends Phaser.Scene {
 
 	}
 
-	
+
 	/* END-USER-CODE */
 }
 

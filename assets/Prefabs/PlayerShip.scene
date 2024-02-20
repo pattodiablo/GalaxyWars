@@ -87,6 +87,36 @@
             "type": {
                 "id": "number"
             }
+        },
+        {
+            "name": "Weapon1Level",
+            "label": "Weapon1Level",
+            "tooltip": "",
+            "defValue": 3,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "ParticlesCollected",
+            "label": "ParticlesCollected",
+            "tooltip": "",
+            "defValue": 0,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "MagnetPower",
+            "label": "MagnetPower",
+            "tooltip": "",
+            "defValue": 50,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
         }
     ]
 }

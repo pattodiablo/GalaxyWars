@@ -38,6 +38,7 @@ class Bullet extends Phaser.GameObjects.Image {
 	update(){
 
 		if (this.x < 0 || this.x > 640|| this.y < 0 || this.y > 960) {
+			this.body.enable=false;
 			// Reciclar la bala
 			this.scene.playerShip.returnBullet(this);
 		}

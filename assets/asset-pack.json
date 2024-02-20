@@ -62,6 +62,16 @@
                 "key": "joystickBtn"
             },
             {
+                "url": "assets/images/LevelParticle.png",
+                "type": "image",
+                "key": "LevelParticle"
+            },
+            {
+                "url": "assets/Prefabs/LevelParticle.js",
+                "type": "script",
+                "key": "LevelParticle_1"
+            },
+            {
                 "url": "assets/images/particleShip.png",
                 "type": "image",
                 "key": "particleShip"

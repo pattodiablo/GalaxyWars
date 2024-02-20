@@ -28,6 +28,12 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	lives = 3;
 	/** @type {number} */
 	reaparecerTimer = 2000;
+	/** @type {number} */
+	Weapon1Level = 3;
+	/** @type {number} */
+	ParticlesCollected = 0;
+	/** @type {number} */
+	MagnetPower = 50;
 
 	/* START-USER-CODE */
 
@@ -177,15 +183,55 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 	createBullet(){
 
-		const bullet = this.scene.bulletGroup.get(this.x, this.y);
-		if (bullet) {
-			// Establecer la rotación de la bala
+
+
+
+			if(this.Weapon1Level==1){
+
+			const bullet = this.scene.bulletGroup.get(this.x, this.y);
 			bullet.rotation = this.rotation;
 			bullet.updateBulletRotationAndSpeed();
-
-			// Activar la bala
 			bullet.setActive(true);
 			bullet.setVisible(true);
+
+			}else if(this.Weapon1Level == 2 ){
+
+
+
+				const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
+				bullet1.rotation = this.rotation-0.05;;
+				bullet1.updateBulletRotationAndSpeed();
+				bullet1.setActive(true);
+				bullet1.setVisible(true);
+
+				const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
+				bullet2.rotation = this.rotation+0.05;
+				bullet2.updateBulletRotationAndSpeed();
+				bullet2.setActive(true);
+				bullet2.setVisible(true);
+
+			}
+			else if(this.Weapon1Level == 3 ){
+
+				const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
+				bullet1.rotation = this.rotation-0.05;;
+				bullet1.updateBulletRotationAndSpeed();
+				bullet1.setActive(true);
+				bullet1.setVisible(true);
+
+				const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
+				bullet2.rotation = this.rotation;
+				bullet2.updateBulletRotationAndSpeed();
+				bullet2.setActive(true);
+				bullet2.setVisible(true);
+
+				const bullet3 = this.scene.bulletGroup.get(this.x, this.y);
+				bullet3.rotation = this.rotation+0.05;
+				bullet3.updateBulletRotationAndSpeed();
+				bullet3.setActive(true);
+				bullet3.setVisible(true);
+
+
 		}
 
 
@@ -199,6 +245,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		bullet.setActive(false);
 		bullet.setVisible(false);
+		bullet.body.enable=true;
 		this.scene.bulletGroup.killAndHide(bullet);
 
 
@@ -213,8 +260,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 			tint: 0xFFFFFF, // Color de las chispas (blanco)
 			scale: { start: 0.5, end: 0 },
 			quantity: 1,
-			maxParticles: 5,
-			frequency: 10
+			maxParticles: 2,
+			frequency: 5
 		});
 
 		// Detener el sistema de partículas después de un tiempo y luego destruirlo
@@ -254,6 +301,11 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 
+	}
+
+	addParticle(){
+		this.ParticlesCollected++;
+		console.log(this.ParticlesCollected);
 	}
 
 	updatePlayer(){
