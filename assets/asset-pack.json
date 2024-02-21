@@ -62,6 +62,11 @@
                 "key": "joystickBtn"
             },
             {
+                "url": "assets/Prefabs/LevelBar.js",
+                "type": "script",
+                "key": "LevelBar"
+            },
+            {
                 "url": "assets/images/LevelParticle.png",
                 "type": "image",
                 "key": "LevelParticle"

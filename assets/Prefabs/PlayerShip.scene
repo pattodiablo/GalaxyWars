@@ -112,7 +112,37 @@
             "name": "MagnetPower",
             "label": "MagnetPower",
             "tooltip": "",
-            "defValue": 50,
+            "defValue": 30,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "shootingRange",
+            "label": "shootingRange",
+            "tooltip": "",
+            "defValue": 200,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "BaseLevelFill",
+            "label": "BaseLevelFill",
+            "tooltip": "",
+            "defValue": 10,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "PlayerLevel",
+            "label": "PlayerLevel",
+            "tooltip": "",
+            "defValue": 1,
             "customDefinition": false,
             "type": {
                 "id": "number"

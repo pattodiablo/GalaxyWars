@@ -85,14 +85,9 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 			this.Player.angle = this.angleOfJoystick;
 
 
-			if(this.distancia<70){
 				this.velocityX = this.direction.x * this.maxSpeed ;
 				this.velocityY = this.direction.y * this.maxSpeed ;
-			}else{
-
-				this.velocityX = this.direction.x * this.maxSpeed;
-				this.velocityY = this.direction.y * this.maxSpeed;
-			}
+			
 			if(this.canGo){
 				this.Player.body.velocity.set(this.velocityX, this.velocityY);
 			}

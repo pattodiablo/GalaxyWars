@@ -46,10 +46,6 @@ class Level extends Phaser.Scene {
 		const gameBorder = this.add.image(0, 0, "gameBorder");
 		gameBorder.setOrigin(0, 0);
 
-		// levelParticle
-		const levelParticle = new LevelParticle(this, 448, 431);
-		this.add.existing(levelParticle);
-
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -58,7 +54,6 @@ class Level extends Phaser.Scene {
 		this.bg3 = bg3;
 		this.playerShip = playerShip;
 		this.gameBorder = gameBorder;
-		this.levelParticle = levelParticle;
 
 		this.events.emit("scene-awake");
 	}
@@ -73,8 +68,6 @@ class Level extends Phaser.Scene {
 	playerShip;
 	/** @type {Phaser.GameObjects.Image} */
 	gameBorder;
-	/** @type {LevelParticle} */
-	levelParticle;
 
 	/* START-USER-CODE */
 
@@ -86,6 +79,7 @@ class Level extends Phaser.Scene {
 		this.initCamera();
 		this.configurarColisiones();
 		this.enemySpawner();
+		this.createLevelBar();
 
 
 		this.maximunEnemies = 30;
@@ -107,7 +101,9 @@ class Level extends Phaser.Scene {
 		this.playerShip.y=960/2;
 		this.playerShip.angle=-90;
 
-
+	// LevelBar
+	
+	
 		const borderParticles =  this.add.particles(0, 0, 'gameBorder', {
 			x: 320,
 			y: 480,
@@ -149,6 +145,58 @@ class Level extends Phaser.Scene {
         });
 
 	}
+
+createLevelBar(){
+
+	this.barraNivel = this.add.graphics();
+	this.borde = this.add.graphics();
+
+	this.barraNivel.setScrollFactor(0,0);
+	this.borde.setScrollFactor(0,0);
+
+	// Establecer el color de la barra de nivel
+	const colorBarra = 0x6CC41A; // verde
+
+	const screenWidth = this.cameras.main.width;
+
+
+	// Establecer las dimensiones y la posición de la barra de nivel
+	const anchoBarra = screenWidth*0.5;
+	const altoBarra = 15;
+	const xBarra = 0;
+	const yBarra = 0; // posición y de la barra
+
+	// Dibujar el rectángulo de la barra de nivel
+
+	this.barraNivel.fillStyle(colorBarra);
+	this.barraNivel.fillRect(xBarra, yBarra, anchoBarra, altoBarra);
+
+	const anchoBorde = screenWidth*0.5;
+	const altoBorde = 15;
+	const xBorde = 0;
+	const yBorde = 0; // posición y de la barra
+
+	// Dibujar el rectángulo de la barra de nivel
+	this.borde.lineStyle(2, 0x0BC837C); // grosor de 2 píxeles
+	this.borde.fillStyle(0x270444);
+	this.borde.strokeRect(xBorde, yBorde, anchoBorde, altoBorde);
+	
+	this.LevelBarMaxSize=anchoBarra;
+	console.log(this.LevelBarMaxSize);
+	this.barraNivel.scaleX=0;
+}
+
+
+LevelSystem(){
+
+	if(this.playerShip){
+
+		this.barraNivel.scaleX=this.playerShip.currentFillPercentage;
+	}
+	
+	
+}
+
 
 	destroyAllEnemies() {
 
@@ -218,6 +266,7 @@ class Level extends Phaser.Scene {
 	}
 
 	colisionplayerLevelParticle(player,particle){
+		this.LevelSystem();
 		particle.body.enable=false;
 		particle.active = false;
 		particle.visible=false;
@@ -233,7 +282,7 @@ class Level extends Phaser.Scene {
 
 
 	colisionplayerEnemy(player,enemy){
-
+		enemy.reducirVida(100);
 		player.destroyShip(player);
 	}
 
@@ -241,14 +290,14 @@ class Level extends Phaser.Scene {
 
 		const cam = this.cameras.main;
 
-		//cam.setBounds(0, 0, 1920, 1080);
+		
 		cam.setRoundPixels(true);
 		cam.disableCull = false; 
 
 		cam.startFollow(this.playerShip, true, 0, 0);
-		//cam.clampX(this.layer.width);
 
-		cam.setLerp(0.1);
+
+		cam.setLerp(1);
 		this.fadeInAndCheck();
 
 	}

@@ -17,10 +17,15 @@ window.addEventListener('load', function () {
 		fps: {
 			target: 90,
 			min: 30,
-			forceSetTimeOut: false
+			forceSetTimeOut: true
 		},
 		render: {
-			pixelArt: true
+			pixelArt: false,
+			antialias: true,
+			roundPixels:true,
+			resolution: window.devicePixelRatio, // Usar la resolución del dispositivo
+			clearBeforeRender:false,
+			autoResize:true
 		},
 		input: {
 			activePointers: 1

@@ -22,6 +22,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 	create(){
 		this.scene.LevelParticleGroup.add(this);
 		this.scene.physics.world.enable(this);
+		this.setTint(0xffffff);
 		this.scene.time.delayedCall(5000, () => {
 			this.destroy();
 		});
@@ -60,7 +61,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 			return;
 		}
 
-		
+
 		if(this.active){
 
 			const distanceToPlayer = Phaser.Math.Distance.Between(this.x, this.y, this.scene.playerShip.x, this.scene.playerShip.y);

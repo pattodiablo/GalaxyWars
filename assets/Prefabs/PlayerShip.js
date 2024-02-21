@@ -33,7 +33,13 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	ParticlesCollected = 0;
 	/** @type {number} */
-	MagnetPower = 50;
+	MagnetPower = 30;
+	/** @type {number} */
+	shootingRange = 200;
+	/** @type {number} */
+	BaseLevelFill = 10;
+	/** @type {number} */
+	PlayerLevel = 1;
 
 	/* START-USER-CODE */
 
@@ -42,7 +48,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		this.cursors = this.scene.input.keyboard.createCursorKeys();
 
  		this.scene.physics.world.enable(this);
-
+		this.canShoot=false;
 		 this.body.setDrag(1200);
 		 this.body.setAngularDrag(600);
 		 this.body.setMaxVelocity(this.speed);
@@ -81,12 +87,14 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		 // Crear un grupo para almacenar las balas
 
 
-		this.timerEvento = this.scene.time.addEvent({
-			delay: this.BulletRate,
-			callback: this.createBullet,
-			callbackScope: this,
-			loop: true
-		});
+			this.timerEvento = this.scene.time.addEvent({
+					delay: this.BulletRate,
+					callback: this.createBullet,
+					callbackScope: this,
+					loop: true
+				});
+
+
 
 
 
@@ -96,7 +104,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 		this.startEmmiter();
-		 this.startBulletSystem();
+		this.startBulletSystem();
 		 this.emitter.startFollow(this,true,0,0,0,0);
 		const appearParicles =  this.scene.add.particles(0, 0, 'appearParticle', {
 			x: this.x,
@@ -129,7 +137,10 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		this.body.enable=false;
 		console.log(player);
 		this.emitter.destroy();
-		this.timerEvento.remove();
+		if(this.timerEvento){
+				this.timerEvento.remove();
+		}
+
 		this.lives--;
 
 		if(this.lives>0){
@@ -185,54 +196,56 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 
-
 			if(this.Weapon1Level==1){
 
-			const bullet = this.scene.bulletGroup.get(this.x, this.y);
-			bullet.rotation = this.rotation;
-			bullet.updateBulletRotationAndSpeed();
-			bullet.setActive(true);
-			bullet.setVisible(true);
+				const bullet = this.scene.bulletGroup.get(this.x, this.y);
+				bullet.rotation = this.rotation;
+				bullet.updateBulletRotationAndSpeed();
+				bullet.setActive(true);
+				bullet.setVisible(true);
 
-			}else if(this.Weapon1Level == 2 ){
+				}else if(this.Weapon1Level == 2 ){
 
 
 
-				const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
-				bullet1.rotation = this.rotation-0.05;;
-				bullet1.updateBulletRotationAndSpeed();
-				bullet1.setActive(true);
-				bullet1.setVisible(true);
+					const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
+					bullet1.rotation = this.rotation-0.05;;
+					bullet1.updateBulletRotationAndSpeed();
+					bullet1.setActive(true);
+					bullet1.setVisible(true);
 
-				const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
-				bullet2.rotation = this.rotation+0.05;
-				bullet2.updateBulletRotationAndSpeed();
-				bullet2.setActive(true);
-				bullet2.setVisible(true);
+					const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
+					bullet2.rotation = this.rotation+0.05;
+					bullet2.updateBulletRotationAndSpeed();
+					bullet2.setActive(true);
+					bullet2.setVisible(true);
+
+				}
+				else if(this.Weapon1Level == 3 ){
+
+					const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
+					bullet1.rotation = this.rotation-0.05;;
+					bullet1.updateBulletRotationAndSpeed();
+					bullet1.setActive(true);
+					bullet1.setVisible(true);
+
+					const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
+					bullet2.rotation = this.rotation;
+					bullet2.updateBulletRotationAndSpeed();
+					bullet2.setActive(true);
+					bullet2.setVisible(true);
+
+					const bullet3 = this.scene.bulletGroup.get(this.x, this.y);
+					bullet3.rotation = this.rotation+0.05;
+					bullet3.updateBulletRotationAndSpeed();
+					bullet3.setActive(true);
+					bullet3.setVisible(true);
+
 
 			}
-			else if(this.Weapon1Level == 3 ){
-
-				const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
-				bullet1.rotation = this.rotation-0.05;;
-				bullet1.updateBulletRotationAndSpeed();
-				bullet1.setActive(true);
-				bullet1.setVisible(true);
-
-				const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
-				bullet2.rotation = this.rotation;
-				bullet2.updateBulletRotationAndSpeed();
-				bullet2.setActive(true);
-				bullet2.setVisible(true);
-
-				const bullet3 = this.scene.bulletGroup.get(this.x, this.y);
-				bullet3.rotation = this.rotation+0.05;
-				bullet3.updateBulletRotationAndSpeed();
-				bullet3.setActive(true);
-				bullet3.setVisible(true);
 
 
-		}
+
 
 
 
@@ -305,10 +318,24 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 	addParticle(){
 		this.ParticlesCollected++;
-		console.log(this.ParticlesCollected);
+		var currentFillLevel = this.BaseLevelFill * this.PlayerLevel;
+
+		if (this.ParticlesCollected >= currentFillLevel) {
+			console.log("¡Subiste de nivel!");
+			this.ParticlesCollected = 0;
+			this.PlayerLevel++;
+		}
+
+		this.currentFillPercentage = (this.ParticlesCollected / currentFillLevel) ;
+		console.log(this.currentFillPercentage);
 	}
 
+
 	updatePlayer(){
+
+		if (!this.active) {
+			return;
+		}
 
 		if(this.active){
 
@@ -319,27 +346,27 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 
-		const { left, right, up } = this.cursors;
 
-		if (left.isDown)
-        {
 
-            this.body.setAngularVelocity(-this.rotationSpeed*this.deltaTime*100);
-        }
-        else if (right.isDown)
-        {
-            this.body.setAngularVelocity(this.rotationSpeed*this.deltaTime*100);
-        }
-        else
-        {
-            this.body.setAngularVelocity(0);
-        }
+		const enemies = this.scene.enemyGroup.getChildren();
 
-        if (up.isDown)
-        {
+    // Recorrer todos los enemigos
+    for (const enemy of enemies) {
+        // Calcular la distancia entre el PlayerShip y el enemigo actual
+        const distance = Phaser.Math.Distance.Between(this.x, this.y, enemy.x, enemy.y);
 
-			this.scene.physics.velocityFromRotation(this.rotation, this.speed*this.deltaTime*100, this.body.velocity);
-        }
+        // Si el enemigo está a una distancia menor que la distancia de disparo, comienza a disparar
+
+        if (distance < this.shootingRange) {
+            // Lógica para comenzar a disparar
+           this.canShoot=true;
+            // No necesitas continuar verificando la distancia a otros enemigos, así que sal del bucle
+
+        }else{
+			this.canShoot=false;
+
+		}
+    }
 
 
 	}
