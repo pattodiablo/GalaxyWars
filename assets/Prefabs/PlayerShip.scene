@@ -112,7 +112,7 @@
             "name": "MagnetPower",
             "label": "MagnetPower",
             "tooltip": "",
-            "defValue": 30,
+            "defValue": 50,
             "customDefinition": false,
             "type": {
                 "id": "number"

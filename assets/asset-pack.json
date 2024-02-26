@@ -47,6 +47,17 @@
                 "key": "Enemy2"
             },
             {
+                "url": "assets/Prefabs/Enemy3.js",
+                "type": "script",
+                "key": "Enemy3"
+            },
+            {
+                "textureURL": "assets/Fonts/font.png",
+                "fontDataURL": "assets/Fonts/font.xml",
+                "type": "bitmapFont",
+                "key": "font"
+            },
+            {
                 "url": "assets/gameBorder.png",
                 "type": "image",
                 "key": "gameBorder"
@@ -60,6 +71,12 @@
                 "url": "assets/images/joystickBtn.png",
                 "type": "image",
                 "key": "joystickBtn"
+            },
+            {
+                "textureURL": "assets/Fonts/lemon.png",
+                "fontDataURL": "assets/Fonts/lemon.xml",
+                "type": "bitmapFont",
+                "key": "lemon"
             },
             {
                 "url": "assets/Prefabs/LevelBar.js",

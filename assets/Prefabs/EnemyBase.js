@@ -26,19 +26,22 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 
 	create(){
 
+		this.ownCreate();
 		this.scene.physics.world.enable(this);
 		this.scene.enemyGroup.add(this);
 		this.animacionDeInicio();
         this.animacionIdle();
-        this.glowSettings(0xffffff,1,3, false, 1, 100)
+        this.glowSettings(0xffffff,1,0.3, false, 1, 100)
 		this.body.enable=false;
-	
+		
 	}
 
     glowSettings(color,n,p,b,s,tiempo){
         this.fx = this.preFX.addGlow(color,n,p,b,s,tiempo);
     }
+	ownCreate(){
 
+	}
     animacionDeInicio(){
 	
 
@@ -131,7 +134,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 
 
 		if (this.enemyLife <= 0) {
-			console.log("enemy destroyed");
+			
 		
 			// Generar un número aleatorio entre 3 y 4 para determinar cuántas partículas crear
 			const numberOfParticles = Phaser.Math.Between(3, 4);

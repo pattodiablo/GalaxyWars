@@ -89,6 +89,24 @@
             },
             "originX": 0,
             "originY": 0
+        },
+        {
+            "type": "BitmapText",
+            "id": "b315d940-a347-4117-88c0-c14c24bc9956",
+            "label": "LevelName",
+            "scope": "PUBLIC",
+            "text": "Level",
+            "font": "lemon",
+            "fontSize": 10
+        },
+        {
+            "type": "BitmapText",
+            "id": "5f8f282b-c9a9-4963-9210-f38e0558398b",
+            "label": "UserLevel",
+            "scope": "PUBLIC",
+            "text": "1",
+            "font": "lemon",
+            "fontSize": 10
         }
     ],
     "plainObjects": [],

@@ -46,6 +46,16 @@ class Level extends Phaser.Scene {
 		const gameBorder = this.add.image(0, 0, "gameBorder");
 		gameBorder.setOrigin(0, 0);
 
+		// LevelName
+		const levelName = this.add.bitmapText(0, 0, "lemon", "Level");
+		levelName.text = "Level";
+		levelName.fontSize = 10;
+
+		// UserLevel
+		const userLevel = this.add.bitmapText(0, 0, "lemon", "1");
+		userLevel.text = "1";
+		userLevel.fontSize = 10;
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -54,6 +64,8 @@ class Level extends Phaser.Scene {
 		this.bg3 = bg3;
 		this.playerShip = playerShip;
 		this.gameBorder = gameBorder;
+		this.levelName = levelName;
+		this.userLevel = userLevel;
 
 		this.events.emit("scene-awake");
 	}
@@ -68,6 +80,10 @@ class Level extends Phaser.Scene {
 	playerShip;
 	/** @type {Phaser.GameObjects.Image} */
 	gameBorder;
+	/** @type {Phaser.GameObjects.BitmapText} */
+	levelName;
+	/** @type {Phaser.GameObjects.BitmapText} */
+	userLevel;
 
 	/* START-USER-CODE */
 
@@ -102,8 +118,8 @@ class Level extends Phaser.Scene {
 		this.playerShip.angle=-90;
 
 	// LevelBar
-	
-	
+
+
 		const borderParticles =  this.add.particles(0, 0, 'gameBorder', {
 			x: 320,
 			y: 480,
@@ -144,6 +160,10 @@ class Level extends Phaser.Scene {
             }
         });
 
+
+
+	
+
 	}
 
 createLevelBar(){
@@ -163,8 +183,8 @@ createLevelBar(){
 	// Establecer las dimensiones y la posición de la barra de nivel
 	const anchoBarra = screenWidth*0.5;
 	const altoBarra = 15;
-	const xBarra = 0;
-	const yBarra = 0; // posición y de la barra
+	const xBarra = 10;
+	const yBarra = 6; // posición y de la barra
 
 	// Dibujar el rectángulo de la barra de nivel
 
@@ -173,17 +193,26 @@ createLevelBar(){
 
 	const anchoBorde = screenWidth*0.5;
 	const altoBorde = 15;
-	const xBorde = 0;
-	const yBorde = 0; // posición y de la barra
+	const xBorde = 10;
+	const yBorde = 6; // posición y de la barra
 
 	// Dibujar el rectángulo de la barra de nivel
 	this.borde.lineStyle(2, 0x0BC837C); // grosor de 2 píxeles
 	this.borde.fillStyle(0x270444);
 	this.borde.strokeRect(xBorde, yBorde, anchoBorde, altoBorde);
-	
+
 	this.LevelBarMaxSize=anchoBarra;
-	console.log(this.LevelBarMaxSize);
 	this.barraNivel.scaleX=0;
+
+	this.levelName.x=xBarra+5;
+	this.levelName.y=yBarra+2;
+	this.levelName.setScrollFactor(0,0);
+	this.levelName.setDepth(1);
+
+	this.userLevel.x=xBarra+40;
+	this.userLevel.y=yBarra+2;
+	this.userLevel.setScrollFactor(0,0);
+	this.userLevel.setDepth(1);
 }
 
 
@@ -193,8 +222,8 @@ LevelSystem(){
 
 		this.barraNivel.scaleX=this.playerShip.currentFillPercentage;
 	}
-	
-	
+
+
 }
 
 
@@ -220,7 +249,7 @@ LevelSystem(){
 
 
 		if(this.enemyGroup.countActive()<this.maximunEnemies){
-				const screenWidth = 640;
+		const screenWidth = 640;
         const screenHeight = 960;
 
         // Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
@@ -233,9 +262,20 @@ LevelSystem(){
         const randomX = Phaser.Math.Between(spawnAreaX, spawnAreaX + spawnAreaWidth);
         const randomY = Phaser.Math.Between(spawnAreaY, spawnAreaY + spawnAreaHeight);
 
+
+		const enemyType = Phaser.Math.RND.between(1, 2); // Puedes ajustar el rango según la cantidad de tipos de enemigos
+        if (enemyType === 1) {
+            // Crear un enemigo tipo Enemy en la posición aleatoria del vértice
+			const enemy = new Enemy(this, randomX, randomY);
+			this.add.existing(enemy);
+        } else {
+            // Crear un enemigo tipo Enemy2 en la posición aleatoria del vértice
+			const enemy = new Enemy2(this, randomX, randomY);
+			this.add.existing(enemy);
+        }
+		
         // Crear un nuevo enemigo en las coordenadas aleatorias
-		const enemy = new Enemy(this, randomX, randomY);
-		this.add.existing(enemy);
+	
 
 		}
 
@@ -290,7 +330,7 @@ LevelSystem(){
 
 		const cam = this.cameras.main;
 
-		
+
 		cam.setRoundPixels(true);
 		cam.disableCull = false; 
 

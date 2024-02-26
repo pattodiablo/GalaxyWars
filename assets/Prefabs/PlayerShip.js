@@ -33,7 +33,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	ParticlesCollected = 0;
 	/** @type {number} */
-	MagnetPower = 30;
+	MagnetPower = 50;
 	/** @type {number} */
 	shootingRange = 200;
 	/** @type {number} */
@@ -319,15 +319,17 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	addParticle(){
 		this.ParticlesCollected++;
 		var currentFillLevel = this.BaseLevelFill * this.PlayerLevel;
-
+	
 		if (this.ParticlesCollected >= currentFillLevel) {
-			console.log("¡Subiste de nivel!");
+		
 			this.ParticlesCollected = 0;
 			this.PlayerLevel++;
+		
+			this.scene.userLevel.text = this.PlayerLevel.toString();
 		}
 
 		this.currentFillPercentage = (this.ParticlesCollected / currentFillLevel) ;
-		console.log(this.currentFillPercentage);
+	
 	}
 
 
