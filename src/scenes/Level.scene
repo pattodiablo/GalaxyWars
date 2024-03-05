@@ -97,7 +97,7 @@
             "scope": "PUBLIC",
             "text": "Level",
             "font": "lemon",
-            "fontSize": 10
+            "fontSize": 15
         },
         {
             "type": "BitmapText",
@@ -106,7 +106,18 @@
             "scope": "PUBLIC",
             "text": "1",
             "font": "lemon",
-            "fontSize": 10
+            "fontSize": 15
+        },
+        {
+            "type": "BitmapText",
+            "id": "46fc2803-dab2-4b6e-b988-45653ff6081f",
+            "label": "TimerText",
+            "scope": "PUBLIC",
+            "x": -1308.4726905928082,
+            "y": 238.00353260821706,
+            "text": "0000",
+            "font": "lemon",
+            "fontSize": 20
         }
     ],
     "plainObjects": [],

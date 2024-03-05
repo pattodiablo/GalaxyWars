@@ -49,12 +49,17 @@ class Level extends Phaser.Scene {
 		// LevelName
 		const levelName = this.add.bitmapText(0, 0, "lemon", "Level");
 		levelName.text = "Level";
-		levelName.fontSize = 10;
+		levelName.fontSize = 15;
 
 		// UserLevel
 		const userLevel = this.add.bitmapText(0, 0, "lemon", "1");
 		userLevel.text = "1";
-		userLevel.fontSize = 10;
+		userLevel.fontSize = 15;
+
+		// TimerText
+		const timerText = this.add.bitmapText(-1308.4726905928082, 238.00353260821706, "lemon", "0000");
+		timerText.text = "0000";
+		timerText.fontSize = 20;
 
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
@@ -66,6 +71,7 @@ class Level extends Phaser.Scene {
 		this.gameBorder = gameBorder;
 		this.levelName = levelName;
 		this.userLevel = userLevel;
+		this.timerText = timerText;
 
 		this.events.emit("scene-awake");
 	}
@@ -84,18 +90,23 @@ class Level extends Phaser.Scene {
 	levelName;
 	/** @type {Phaser.GameObjects.BitmapText} */
 	userLevel;
+	/** @type {Phaser.GameObjects.BitmapText} */
+	timerText;
 
 	/* START-USER-CODE */
 
 	// Write more your code here
 
 	create() {
+
+		this.timerText = this.add.text(this.formatTime(0));
 		this.physics.world.setBounds(0, 0, 640, 960);
 		this.editorCreate();
 		this.initCamera();
 		this.configurarColisiones();
 		this.enemySpawner();
 		this.createLevelBar();
+		this.addTimer();
 
 
 		this.maximunEnemies = 30;
@@ -162,10 +173,58 @@ class Level extends Phaser.Scene {
 
 
 
-	
+
 
 	}
 
+addTimer(){
+	 // Crear el evento de tiempo con la duración total del temporizador
+	 this.timer = this.time.addEvent({
+        delay: 1000,
+        callback: this.updateTimer,
+        callbackScope: this,
+        loop: true
+    });
+
+    // Establecer la duración total del temporizador en milisegundos
+    this.timer.totalDuration = 70000; // 60 segundos en este ejemplo
+	this.timerholder = 0;
+	}
+
+updateTimer(){
+
+ // Restar un segundo al temporizador
+ this.timerholder += 1000;
+
+ // Calcular el tiempo restante
+ var remainingTime = this.timer.totalDuration - this.timerholder;
+
+ // Verificar si el tiempo restante es menor o igual a 0
+ if (remainingTime <= 0) {
+	 // Detener el temporizador
+	 this.timer.remove(false);
+
+	 // Establecer el texto del temporizador en 00:00
+	 this.timerText.setText("00:00");
+ } else {
+	 // Actualizar el texto del temporizador
+	 this.timerText.setText(this.formatTime(remainingTime));
+ }
+
+}
+
+formatTime(milliseconds) {
+
+		  // Convertir el tiempo en milisegundos a minutos y segundos
+		  var minutes = Math.floor(milliseconds / 60000);
+		  var seconds = Math.floor((milliseconds % 60000) / 1000);
+
+		  // Asegurarse de que el tiempo se muestra en el formato 00:00
+		  var strMinutes = (minutes < 10) ? '0' + minutes : minutes;
+		  var strSeconds = (seconds < 10) ? '0' + seconds : seconds;
+		  console.log(strSeconds)
+		  return strMinutes + ':' + strSeconds;
+}
 createLevelBar(){
 
 	this.barraNivel = this.add.graphics();
@@ -173,7 +232,7 @@ createLevelBar(){
 
 	this.barraNivel.setScrollFactor(0,0);
 	this.borde.setScrollFactor(0,0);
-
+	this.borde.setDepth(1);
 	// Establecer el color de la barra de nivel
 	const colorBarra = 0x6CC41A; // verde
 
@@ -182,19 +241,32 @@ createLevelBar(){
 
 	// Establecer las dimensiones y la posición de la barra de nivel
 	const anchoBarra = screenWidth*0.5;
-	const altoBarra = 15;
-	const xBarra = 10;
-	const yBarra = 6; // posición y de la barra
+	const altoBarra = 30;
+	const xBarra = 0;
+	const yBarra = 0; // posición y de la barra
 
 	// Dibujar el rectángulo de la barra de nivel
 
 	this.barraNivel.fillStyle(colorBarra);
 	this.barraNivel.fillRect(xBarra, yBarra, anchoBarra, altoBarra);
 
-	const anchoBorde = screenWidth*0.5;
-	const altoBorde = 15;
-	const xBorde = 10;
-	const yBorde = 6; // posición y de la barra
+	this.barraNivel.generateTexture('BarraDeNivel', anchoBarra, altoBarra);
+
+
+	this.BarraDeNivel = this.add.sprite(0, 0, 'BarraDeNivel');
+	this.BarraDeNivel.setOrigin(0,0);
+	this.BarraDeNivel.setDepth(0);
+	this.BarraDeNivel.setScrollFactor(0,0);
+	this.barraNivel.setAlpha(0.5);
+	//this.barraNivel.destroy();
+
+	const anchoBorde = anchoBarra;
+	const altoBorde = altoBarra;
+	const xBorde = xBarra;
+	const yBorde = yBarra; // posición y de la barra
+
+	this.BarraDeNivel.x=xBarra;
+	this.BarraDeNivel.y=yBarra;
 
 	// Dibujar el rectángulo de la barra de nivel
 	this.borde.lineStyle(2, 0x0BC837C); // grosor de 2 píxeles
@@ -202,17 +274,25 @@ createLevelBar(){
 	this.borde.strokeRect(xBorde, yBorde, anchoBorde, altoBorde);
 
 	this.LevelBarMaxSize=anchoBarra;
-	this.barraNivel.scaleX=0;
+	this.BarraDeNivel.scaleX=0;
+
 
 	this.levelName.x=xBarra+5;
-	this.levelName.y=yBarra+2;
+	this.levelName.y=yBarra+altoBarra/2;
 	this.levelName.setScrollFactor(0,0);
 	this.levelName.setDepth(1);
+	this.levelName.setOrigin(0,0.5);
 
-	this.userLevel.x=xBarra+40;
-	this.userLevel.y=yBarra+2;
+	this.userLevel.x=xBarra+this.levelName.width+10;
+	this.userLevel.y=yBarra+altoBarra/2;
 	this.userLevel.setScrollFactor(0,0);
 	this.userLevel.setDepth(1);
+	this.userLevel.setOrigin(0,0.5);
+
+	this.timerText.setScrollFactor(0,0);
+	this.timerText.x=xBarra;
+	this.timerText.y=yBarra+altoBarra;
+
 }
 
 
@@ -220,7 +300,9 @@ LevelSystem(){
 
 	if(this.playerShip){
 
-		this.barraNivel.scaleX=this.playerShip.currentFillPercentage;
+		this.BarraDeNivel.scaleX=this.playerShip.currentFillPercentage;
+		//this.BarraDeNivel.x=10;
+		console.log(this.BarraDeNivel.x);
 	}
 
 
@@ -273,9 +355,9 @@ LevelSystem(){
 			const enemy = new Enemy2(this, randomX, randomY);
 			this.add.existing(enemy);
         }
-		
+
         // Crear un nuevo enemigo en las coordenadas aleatorias
-	
+
 
 		}
 

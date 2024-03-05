@@ -45,10 +45,10 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 	create(){
 
-		this.cursors = this.scene.input.keyboard.createCursorKeys();
+		 this.cursors = this.scene.input.keyboard.createCursorKeys();
 
- 		this.scene.physics.world.enable(this);
-		this.canShoot=false;
+ 		 this.scene.physics.world.enable(this);
+		 this.canShoot=false;
 		 this.body.setDrag(1200);
 		 this.body.setAngularDrag(600);
 		 this.body.setMaxVelocity(this.speed);
@@ -60,8 +60,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		 this.body.enable=false;
 		 this.setVisible(false);
 
-		 //this.emitter.setDepth(-1);
-		 //this.preFX.addPixelate(0.5);
+		//this.emitter.setDepth(-1);
+		//this.preFX.addPixelate(0.5);
 		// this.setTint(0xF38F1E); // Tint rojo
 		 this.fx = this.preFX.addGlow(0x6FFF21,1, 1, false, 0.1, 100);
 
@@ -79,6 +79,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		this.lastFrameTime = 0;
 		this.deltaTime = 0;
+		this.setDepth(1);
 
 	}
 
@@ -86,16 +87,12 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		 // Crear un grupo para almacenar las balas
 
-
 			this.timerEvento = this.scene.time.addEvent({
 					delay: this.BulletRate,
 					callback: this.createBullet,
 					callbackScope: this,
 					loop: true
 				});
-
-
-
 
 
 	}
@@ -284,7 +281,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	}
 	}
 
-	startEmmiter(){
+	startEmmiter(){ //particulas que siguen a la nave
 
 
 			this.emitter = this.scene.add.particles(0, 0, 'particleShip', {
@@ -312,11 +309,13 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 				blendMode: 'ADD'
 			});
 
+			this.emitter.setDepth(0);
 
 
 	}
 
-	addParticle(){
+	addParticle(){ //cuando colecciona particulas para añadir niveles
+
 		this.ParticlesCollected++;
 		var currentFillLevel = this.BaseLevelFill * this.PlayerLevel;
 	
@@ -333,7 +332,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	}
 
 
-	updatePlayer(){
+	updatePlayer(){ 
 
 		if (!this.active) {
 			return;
@@ -341,14 +340,9 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		if(this.active){
 
-
 		var currentTime = Date.now();
     	this.deltaTime = (currentTime - this.lastFrameTime)/100; // Delta time in seconds
    		this.lastFrameTime = currentTime;
-
-
-
-
 
 		const enemies = this.scene.enemyGroup.getChildren();
 
