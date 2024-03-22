@@ -104,9 +104,19 @@
                 "key": "PlayerShip"
             },
             {
+                "url": "assets/images/ProgressionLevelBg.png",
+                "type": "image",
+                "key": "ProgressionLevelBg"
+            },
+            {
                 "url": "assets/images/ShipV1.png",
                 "type": "image",
                 "key": "ShipV1"
+            },
+            {
+                "url": "assets/images/stripeBg.png",
+                "type": "image",
+                "key": "stripeBg"
             },
             {
                 "url": "assets/Prefabs/VitualJoystick.js",

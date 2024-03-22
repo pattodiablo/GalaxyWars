@@ -104,14 +104,14 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 		this.initCamera();
 		this.configurarColisiones();
-		this.enemySpawner();
+
 		this.createLevelBar();
 		this.addTimer();
 
 
 		this.maximunEnemies = 30;
 
-		this.time.addEvent({
+		this.SpwawerTimer = this.time.addEvent({
             delay: 1000, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
             callback: this.enemySpawner,
             callbackScope: this,
@@ -187,7 +187,7 @@ addTimer(){
     });
 
     // Establecer la duración total del temporizador en milisegundos
-    this.timer.totalDuration = 70000; // 60 segundos en este ejemplo
+    this.timer.totalDuration = 3000; // 60 segundos en este ejemplo
 	this.timerholder = 0;
 	}
 
@@ -206,10 +206,46 @@ updateTimer(){
 
 	 // Establecer el texto del temporizador en 00:00
 	 this.timerText.setText("00:00");
+	 this.ProgresionPhase();
  } else {
 	 // Actualizar el texto del temporizador
 	 this.timerText.setText(this.formatTime(remainingTime));
  }
+
+}
+
+ProgresionPhase(){
+
+	this.SpwawerTimer.remove();
+	console.log(this.enemyGroup.countActive());
+
+	// Itera sobre cada elemento del grupo
+	this.enemyGroup.getChildren().forEach(function(enemy) {
+		// Detén y destruye todos los tweens del enemigo
+		this.tweens.killTweensOf(enemy); // Detiene todos los tweens asociados al enemigo
+		enemy.visible = false; // Destruye el enemigo
+		enemy.body.enable=false;
+	}, this);
+
+	this.playerShip.visible = false;
+	this.playerShip.canShoot=false;
+	this.playerShip.body.enable = false;
+	this.playerShip.emitter.destroy();
+	this.cameras.main.flash();
+
+	this.cameras.main.once('camerafadeoutcomplete', function (camera) {
+
+		this.scene.start('ProgessionPhase'); // Reemplaza 'NuevaEscena' con el nombre de la escena a la que deseas cambiar
+
+		// Detén y olvida la escena actual
+		this.scene.stop(this); // Reemplaza 'NombreEscenaActual' con el nombre de la escena actual
+
+
+
+	}, this);
+
+	this.cameras.main.fadeOut(1000, 0); //tiempo de fade out
+	//this.enemyGroup.clear(true, true);
 
 }
 

@@ -48,7 +48,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		 this.cursors = this.scene.input.keyboard.createCursorKeys();
 
  		 this.scene.physics.world.enable(this);
-		 this.canShoot=false;
+		 this.canShoot=true;
 		 this.body.setDrag(1200);
 		 this.body.setAngularDrag(600);
 		 this.body.setMaxVelocity(this.speed);
@@ -192,8 +192,9 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	createBullet(){
 
 
+		if(this.canShoot){
 
-			if(this.Weapon1Level==1){
+			if(this.Weapon1Level==1 ){
 
 				const bullet = this.scene.bulletGroup.get(this.x, this.y);
 				bullet.rotation = this.rotation;
@@ -240,6 +241,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 			}
+		}
+			
 
 
 
@@ -355,11 +358,11 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
         if (distance < this.shootingRange) {
             // Lógica para comenzar a disparar
-           this.canShoot=true;
+         //  this.canShoot=true;
             // No necesitas continuar verificando la distancia a otros enemigos, así que sal del bucle
 
         }else{
-			this.canShoot=false;
+		//	this.canShoot=false;
 
 		}
     }
