@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 176.6 149.56">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-7 {
+        clip-rule: evenodd;
+        fill: none;
+      }
+
+      .cls-7, .cls-8, .cls-9, .cls-10, .cls-11 {
+        stroke-width: 0px;
+      }
+
+      .cls-8 {
+        fill: #00ff1e;
+      }
+
+      .cls-8, .cls-9, .cls-10, .cls-11 {
+        fill-rule: evenodd;
+      }
+
+      .cls-9 {
+        fill: #235c2a;
+      }
+
+      .cls-10 {
+        fill: #1ed533;
+      }
+
+      .cls-11 {
+        fill: #9db525;
+      }
+    </style>
+    <clipPath id="clippath">
+      <polygon class="cls-7" points="89.94 27.02 138.85 81.02 120.17 138.51 59.71 138.51 41.03 81.02 89.94 27.02"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <polygon class="cls-7" points="90.24 36.28 111.8 60.09 103.57 85.44 76.91 85.44 68.67 60.09 90.24 36.28"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <polygon class="cls-7" points="80.3 125.92 87.09 133.42 84.5 141.41 76.1 141.41 73.51 133.42 80.3 125.92"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <polygon class="cls-7" points="101.65 125.92 108.44 133.42 105.85 141.41 97.45 141.41 94.86 133.42 101.65 125.92"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <polygon class="cls-7" points="90.24 105.34 78.25 110.64 82.83 96.55 97.64 96.55 102.22 110.64 90.24 105.34"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <polygon class="cls-7" points="90.24 120.31 78.25 125.61 82.83 111.52 97.64 111.52 102.22 125.61 90.24 120.31"/>
+    </clipPath>
+  </defs>
+  <polygon class="cls-9" points="89.94 20.57 142.29 60.9 122.29 126.15 57.59 126.15 37.6 60.9 89.94 20.57"/>
+  <polygon class="cls-8" points="89.94 27.02 138.85 81.02 120.17 138.51 59.71 138.51 41.03 81.02 89.94 27.02"/>
+  <g class="cls-1">
+    <polygon class="cls-10" points="90.18 17.34 90.18 151.53 137.98 151.53 137.98 67.26 90.18 17.34"/>
+  </g>
+  <polygon class="cls-9" points="136 77.8 138.85 80.95 120.17 138.45 59.71 138.45 41.03 80.95 43.88 77.8 59.71 134.88 120.17 134.88 136 77.8"/>
+  <polygon class="cls-10" points="90.24 36.28 111.8 60.09 103.57 85.44 76.91 85.44 68.67 60.09 90.24 36.28"/>
+  <g class="cls-2">
+    <polygon class="cls-9" points="90.32 14.83 90.32 97.65 116.47 90.63 128.02 48.79 90.32 14.83"/>
+  </g>
+  <polygon class="cls-10" points="80.3 125.92 87.09 133.42 84.5 141.41 76.1 141.41 73.51 133.42 80.3 125.92"/>
+  <g class="cls-5">
+    <polygon class="cls-9" points="80.3 128.46 87.09 135.95 84.5 143.94 76.1 143.94 73.51 135.95 80.3 128.46"/>
+  </g>
+  <polygon class="cls-8" points="101.65 125.92 108.44 133.42 105.85 141.41 97.45 141.41 94.86 133.42 101.65 125.92"/>
+  <g class="cls-4">
+    <polygon class="cls-9" points="101.65 128.46 108.44 135.95 105.85 143.94 97.45 143.94 94.86 135.95 101.65 128.46"/>
+  </g>
+  <polygon class="cls-10" points="90.24 105.34 78.25 110.64 82.83 96.55 97.64 96.55 102.22 110.64 90.24 105.34"/>
+  <g class="cls-3">
+    <polygon class="cls-9" points="90.3 94.55 90.3 110.1 105.09 112.08 107.44 95.16 90.3 94.55"/>
+  </g>
+  <polygon class="cls-10" points="90.24 120.31 78.25 125.61 82.83 111.52 97.64 111.52 102.22 125.61 90.24 120.31"/>
+  <g class="cls-6">
+    <polygon class="cls-9" points="90.3 109.52 90.3 125.07 105.09 127.05 107.44 110.13 90.3 109.52"/>
+  </g>
+  <polygon class="cls-11" points="42.57 64.59 44.55 73.89 85.84 28.24 42.57 64.59"/>
+  <polygon class="cls-11" points="136.97 64.59 134.99 73.89 93.69 28.24 136.97 64.59"/>
+</svg>

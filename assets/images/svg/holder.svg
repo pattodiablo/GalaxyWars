@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 201.29 91.26">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-3 {
+        fill: #1d82fa;
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        stroke: #1d82fa;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.03px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" width="201.29" height="91.26"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" x="2.5" y="1.52" width="196.13" height="88.03"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-2" x="2.5" y="1.52" width="197" height="89"/>
+    </clipPath>
+  </defs>
+  <g class="cls-1">
+    <g class="cls-5">
+      <g class="cls-6">
+        <image width="197" height="89" transform="translate(2.5 1.52)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAABaCAYAAADjPyllAAAACXBIWXMAAAsSAAALEgHS3X78AAABc0lEQVR4nO3dsXHDMAyGUSjnyqN4o4yViZPC0h19+XqqeG8CNTjgB0l7BvjnmJl5vr5/dn8I3MljZmaO49j8HXAr78KY42vvZ8C9PGZmfvUL+KBjQLgKQ8+AhfANQceAcBbGKAxYXKOU8A0LoxQEhQHBVgrC++Rbx4APwjcEBQHBXSkIwjcE61oIroRAMEpBEL4hnE9bdQxYXR1j71fAzRilIAjfEKxrITjgg2CUgiB8Q1AQEDxUguBpKwThG4J1LQSFAUH4huBKCASjFARbKQg6BgR3pSD4O2MIOgYE4RuC8A1BYUA4Rykn37ASviEYpSDYSkHQMSB48w3BQyUICgKCdS0EWykItlIQ/BgCBKMUBOEbwtUxNn8G3Mt18q1jwMJWCoLwDcG6FoJRCoLbtRB0DAgyBgRbKQietkLQMSAI3xAUBgTnGBCsayEYpSDYSkHQMSAI3xDOk29g5VdCIAjfEIRvCAoDgr8zhiB8QxC+IfwBbfIMQLwTEVcAAAAASUVORK5CYII="/>
+      </g>
+    </g>
+    <rect class="cls-4" x="2.5" y="1.52" width="196.13" height="88.03"/>
+    <polygon class="cls-3" points="0 23.82 0 .11 18.73 .11 18.73 3.54 5.37 3.54 5.37 23.82 0 23.82"/>
+    <polygon class="cls-3" points="18.73 91.26 0 91.26 0 79.27 5.37 79.27 5.37 87.83 18.73 87.83 18.73 91.26"/>
+    <polygon class="cls-3" points="201.29 68.33 201.29 91.26 182.56 91.26 182.56 87.83 195.92 87.83 195.92 68.33 201.29 68.33"/>
+    <polygon class="cls-3" points="182.56 .11 201.29 .11 201.29 12.09 195.92 12.09 195.92 3.54 182.56 3.54 182.56 .11"/>
+  </g>
+</svg>

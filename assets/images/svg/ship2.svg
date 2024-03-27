@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 176.6 149.56">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2, .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
+        stroke-width: 0px;
+      }
+
+      .cls-3 {
+        stroke-width: .37px;
+      }
+
+      .cls-3, .cls-5 {
+        stroke: #5eb168;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-11 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-12 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-4 {
+        clip-rule: evenodd;
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-9 {
+        fill-rule: evenodd;
+      }
+
+      .cls-6, .cls-10 {
+        fill: #00ff1e;
+      }
+
+      .cls-7 {
+        fill: #235c2a;
+      }
+
+      .cls-8 {
+        fill: #1ed533;
+      }
+
+      .cls-9 {
+        fill: #009e13;
+      }
+
+      .cls-5 {
+        stroke-width: .77px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x="58.13" y="35.49" width="60.33" height="60.33" transform="translate(-20.57 81.67) rotate(-45)"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <polygon class="cls-4" points="88.6 36.96 106.07 58.37 88.6 84.84 71.13 58.37 88.6 36.96"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <polygon class="cls-4" points="147.84 52.86 176.21 61.65 88.3 149.56 .39 61.65 28.75 52.86 88.3 92.83 147.84 52.86"/>
+    </clipPath>
+  </defs>
+  <rect class="cls-10" x="58.13" y="35.49" width="60.33" height="60.33" transform="translate(-20.57 81.67) rotate(-45)"/>
+  <g class="cls-1">
+    <polygon class="cls-8" points="87.74 23.89 87.74 102.78 146.73 59.45 87.74 23.89"/>
+    <polygon class="cls-9" points="88.3 29.29 130.96 80.05 88.3 122.71 45.64 80.05 88.3 29.29"/>
+    <polygon class="cls-7" points="88.6 36.96 106.07 58.37 88.6 84.84 71.13 58.37 88.6 36.96"/>
+    <g class="cls-11">
+      <polygon class="cls-8" points="88.56 33.62 88.56 87.26 113.52 62.3 88.56 33.62"/>
+    </g>
+  </g>
+  <rect class="cls-3" x="58.13" y="35.49" width="60.33" height="60.33" transform="translate(-20.57 81.67) rotate(-45)"/>
+  <polygon class="cls-7" points="147.84 52.86 176.21 61.65 88.3 149.56 .39 61.65 28.75 52.86 88.3 92.83 147.84 52.86"/>
+  <g class="cls-12">
+    <polygon class="cls-6" points="147.84 24.16 176.21 52.53 88.3 140.44 .39 52.53 28.75 24.16 88.3 83.71 147.84 24.16"/>
+    <polygon class="cls-5" points="147.84 24.16 176.21 52.53 88.3 140.44 .39 52.53 28.75 24.16 88.3 83.71 147.84 24.16"/>
+    <polygon class="cls-7" points="147.84 .39 176.21 39.68 90.11 103.15 .39 39.68 28.75 .39 88.3 59.93 147.84 .39"/>
+    <polygon class="cls-5" points="147.84 .39 176.21 39.68 90.11 103.15 .39 39.68 28.75 .39 88.3 59.93 147.84 .39"/>
+    <polygon class="cls-8" points="90.06 103.76 88.48 139.55 169.83 58.3 156.22 53.89 90.06 103.76"/>
+  </g>
+</svg>

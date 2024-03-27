@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 307.25 217.4">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #5a9689;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.03px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-4 {
+        fill: #5a9689;
+        fill-rule: evenodd;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" width="307.25" height="217.4"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" x="3.82" y="3.37" width="300" height="210"/>
+    </clipPath>
+  </defs>
+  <g class="cls-3">
+    <g class="cls-5">
+      <image width="300" height="210" transform="translate(3.82 3.37)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAADTCAYAAADUDEUzAAAACXBIWXMAAAsSAAALEgHS3X78AAADmklEQVR4nO3dsa1TQRBA0Rk0pVAMEtXRBB0g0QI9UAgJEoG/cxNZVzqnAker3ftm1zMAIfv565dv7/4RAC/4/vvHz1+f3v0rAP7Hzc6++0cAvOrGmgWE3Fi1gBBNC0i51bSAhp2x0wJibmbttIAMOy0gxddDIOUsWUCJ4yGQcivEAw07o2kBMZoWkKJpASmGS4GKR9NaTQsI0bSAFE0LSNG0gBRzWkCF97SAnnM4BEo0LSBF0wJSNC0gxXApkKJpARXuHgI9mhaQomkBKUYegIrnG/FCPNChaQEp7h4CKZoWkOJ4CKQI8UCFRwCBntvVtIAOOy0gRdMCUuy0gJQbTQto8PUQ6NG0gJSzYgEljodAihAPVHgEEOhxPARSLFpAigvTQIqdFpAixAMVrvEAPea0gBTXeIAUTQuo0LSAHk0LSLHTAlIsWkCKEA+kuHsIVPh6CPRYtIAUTQtIuRlNC+g4+yygRNMCUjQtoOL5F2KaFtDheAiknH0WUHLreAg0PJuWEA90aFpAiqYFpBh5AFI0LaDCe1pAjwvTQIqmBaRoWkCKpgWkmNMCUtw9BCqMPAA9QjyQomkBKea0gApNC+i51bSAEE0LSNG0gBRNC0gxpwVU+HoI9Fi0gJTbFeKBDl8PgZSzZgElmhaQcqNpAQ074+VSIEbTAlI0LSBF0wIqHk1rnA+BkLPRAko0LSBF0wJSNC2gwntaQI/hUiBF0wJS3D0EUjQtIEXTAlI0LaDC3UOgR9MCUs42Cyi5mbVuAQWu8QA9vh4CKXZaQMqtpgWE2GkBKZoWUOHrIdBjTgtIsdMCUjQtIMXdQyBF0wIqfD0EejQtIMVOC0ixaAEpLkwDFR9/bKFpASGOh0CKRQtI8b+HQMrtCvFAgol4oMeiBaRoWkDKjaYFhDgeAikeAQRSNC2g4uPuoQvTQIimBaScwyFQomkBFY+m5RFAoETTAlI0LSBF0wJSzGkBFd7TAnrOPgso0bSAFMdDIEWIB1LMaQEpt5oW0GDkAeixaAEp/o0HSDGnBVRoWkCPRQtIudW0gBA7LSBFiAdS7LSAFHNaQIWRB6DHhWkgxU4LSPEIIJBipwWk3KymBSTszCPEA2RoWkCKpgWkaFpAhYl4oMeiBaR4mgZI8XIpkOJ4CKRYtIAUTQuoeFzj8XIpUOLuIZCiaQEpmhaQomkBFe4eAj0WLSDFX4gBKZoWUPExXDrz580/BOAVf2dm/gEQlgqyGTHkKAAAAABJRU5ErkJggg=="/>
+    </g>
+    <rect class="cls-1" x="3.82" y="3.37" width="299.38" height="209.96"/>
+    <polygon class="cls-4" points="0 56.55 0 0 28.59 0 28.59 8.19 8.19 8.19 8.19 56.55 0 56.55"/>
+    <polygon class="cls-4" points="28.59 217.4 0 217.4 0 188.81 8.19 188.81 8.19 209.21 28.59 209.21 28.59 217.4"/>
+    <polygon class="cls-4" points="307.25 162.72 307.25 217.4 278.66 217.4 278.66 209.21 299.06 209.21 299.06 162.72 307.25 162.72"/>
+    <polygon class="cls-4" points="278.66 0 307.25 0 307.25 28.59 299.06 28.59 299.06 8.19 278.66 8.19 278.66 0"/>
+  </g>
+</svg>

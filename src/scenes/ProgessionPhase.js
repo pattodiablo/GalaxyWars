@@ -16,9 +16,9 @@ class ProgessionPhase extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// stripeBg
-		const stripeBg = this.add.image(0, 0, "stripeBg");
-		stripeBg.setOrigin(0, 0);
+		// stripe
+		const stripe = this.add.image(0, 1, "stripe");
+		stripe.setOrigin(0, 0);
 
 		// progressionLevelBg
 		const progressionLevelBg = this.add.image(0, 0, "ProgressionLevelBg");
@@ -29,13 +29,21 @@ class ProgessionPhase extends Phaser.Scene {
 		bitmaptext_1.text = "LV";
 		bitmaptext_1.fontSize = 72;
 
-		this.stripeBg = stripeBg;
+		// engranaje
+		const engranaje = this.add.image(933, 70, "engranaje");
+		engranaje.scaleX = 0.3;
+		engranaje.scaleY = 0.3;
+
+		this.stripe = stripe;
+		this.engranaje = engranaje;
 
 		this.events.emit("scene-awake");
 	}
 
 	/** @type {Phaser.GameObjects.Image} */
-	stripeBg;
+	stripe;
+	/** @type {Phaser.GameObjects.Image} */
+	engranaje;
 
 	/* START-USER-CODE */
 
@@ -48,7 +56,10 @@ class ProgessionPhase extends Phaser.Scene {
 		var screenWidth = this.cameras.main.width;
 
 		// Establecer la escala horizontal de la imagen para que ocupe todo el ancho de la pantalla
-		this.stripeBg.setScale(screenWidth / this.stripeBg.width, 0.3);
+		this.stripe.displayWidth = this.cameras.main.width;
+		this.engranaje.x = this.cameras.main.width - 50;
+		this.engranaje.y = 50;
+
 	}
 
 	/* END-USER-CODE */

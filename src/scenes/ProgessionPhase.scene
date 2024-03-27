@@ -2,6 +2,8 @@
     "id": "cd20c8ba-fbf5-408f-a97e-2174152871be",
     "sceneType": "SCENE",
     "settings": {
+        "snapWidth": 146,
+        "snapHeight": 150,
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "ProgessionPhase",
@@ -11,12 +13,13 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "45e740be-af9f-41ec-8bea-5d1bc549738f",
-            "label": "stripeBg",
+            "id": "92a64748-df1c-4a92-a92c-02c24ba23dc2",
+            "label": "stripe",
             "scope": "PUBLIC",
             "texture": {
-                "key": "stripeBg"
+                "key": "stripe"
             },
+            "y": 1,
             "originX": 0,
             "originY": 0
         },
@@ -37,6 +40,19 @@
             "text": "LV",
             "font": "lemon",
             "fontSize": 72
+        },
+        {
+            "type": "Image",
+            "id": "51d900c3-41df-476b-9b97-0f44ca0d4370",
+            "label": "engranaje",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "engranaje"
+            },
+            "x": 933,
+            "y": 70,
+            "scaleX": 0.3,
+            "scaleY": 0.3
         }
     ],
     "plainObjects": [],

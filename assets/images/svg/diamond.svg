@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.71 47.71">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        stroke: #eaeaea;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.03px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x="6.99" y="6.99" width="33.74" height="33.74" transform="translate(-9.88 23.86) rotate(-45)"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" x="0" y="0" width="47.71" height="47.71"/>
+    </clipPath>
+  </defs>
+  <g class="cls-1">
+    <g class="cls-4">
+      <image width="200" height="200" transform="translate(-.18 -.15) scale(.24)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAADICAYAAAC3ZE4QAAAACXBIWXMAAC4jAAAuIwF4pT92AAACXklEQVR4nO3dQVHEUBRFwTfUs8MWI5hAA0LwgAqkICVshuQ4mFl0K2Bz6iY/v5jb9+/XMcDMzNzef14FAXd7HHqAfy+P/gPgmQgCwiMThIWAEASEICB2vELAyUJACALCsSuEhYAQBIRHJggLASEICEFACAJivVPDxUJACAJix3VXOFkICEFACALCXSYICwEhCAhfqiEsBIQgIJwyQVgICEFACALCOwSEhYAQBMSORyY4WQgIQUAIAsJtVwgLASEICF+qISwEhCAgPDJBWAgIQUAIAmL9N3y4WAgIQUA4doWwEBCCgBAEhHcICAsBIQgIj0wQFgJCEBCCgHDbFcJCQAgCwrErhIWAEATEHo6Z4GQhIAQBIQgIvyAEYSEgBAHhSzWEhYAQBIQgIHa8Q8DJQkAIAsKxK4SFgBAEhCAg3HaFsBAQgoAQBITvEBAWAkIQEG67QlgICEFACALC1Q0ICwEhCAhfqiEsBIQgIDwyQVgICEFACAJi/SovXCwEhCAgHLtCWAgIQUAIAsI7BISFgBAEhEcmCAsBIQgIQUAIAkIQEIKAcOwKYSEgBAHhkQnCQkAIAkIQEH5BCMJCQAgCwrErhIWAEASEICB2vEPAyUJACALCsSuEhYAQBITLfRAWAkIQEIKAcOwKYSEgBAHhch+EhYAQBIQgIFzdgLAQEIKAEASEICAEASEICEFACAJCEBCCgBAEhCAgBAEhCAhBQAgCQhAQgoAQBIQgIAQBIQgIQUAIAkIQEIKAEASEICAEASEICEFACAJCEBCCgBAEhCAgBAGxH2+fj/4b4Gn8ASwbeO8Tzv5qAAAAAElFTkSuQmCC"/>
+    </g>
+  </g>
+  <rect class="cls-3" x="6.99" y="6.99" width="33.74" height="33.74" transform="translate(-9.88 23.86) rotate(-45)"/>
+</svg>

@@ -27,6 +27,26 @@
                 "key": "Bullet"
             },
             {
+                "url": "assets/images/svg/diamond.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "diamond"
+            },
+            {
+                "url": "assets/images/svg/divider.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "divider"
+            },
+            {
                 "url": "assets/images/Enemy.png",
                 "type": "image",
                 "key": "Enemy"
@@ -52,6 +72,16 @@
                 "key": "Enemy3"
             },
             {
+                "url": "assets/images/svg/engranaje.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "engranaje"
+            },
+            {
                 "textureURL": "assets/Fonts/font.png",
                 "fontDataURL": "assets/Fonts/font.xml",
                 "type": "bitmapFont",
@@ -61,6 +91,26 @@
                 "url": "assets/gameBorder.png",
                 "type": "image",
                 "key": "gameBorder"
+            },
+            {
+                "url": "assets/images/svg/holder.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "holder"
+            },
+            {
+                "url": "assets/images/svg/Holder2.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "Holder2"
             },
             {
                 "url": "assets/images/joystickBg.png",
@@ -94,6 +144,26 @@
                 "key": "LevelParticle_1"
             },
             {
+                "url": "assets/images/svg/minesicon.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "minesicon"
+            },
+            {
+                "url": "assets/images/svg/missilesIcon.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "missilesIcon"
+            },
+            {
                 "url": "assets/images/particleShip.png",
                 "type": "image",
                 "key": "particleShip"
@@ -109,14 +179,94 @@
                 "key": "ProgressionLevelBg"
             },
             {
+                "url": "assets/images/svg/shield.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "shield"
+            },
+            {
+                "url": "assets/images/svg/ship1.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "ship1"
+            },
+            {
+                "url": "assets/images/svg/ship2.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "ship2"
+            },
+            {
+                "url": "assets/images/svg/ship3.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "ship3"
+            },
+            {
+                "url": "assets/images/svg/ShipBg.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "ShipBg"
+            },
+            {
+                "url": "assets/images/ShipV1.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "ShipV"
+            },
+            {
                 "url": "assets/images/ShipV1.png",
                 "type": "image",
                 "key": "ShipV1"
             },
             {
+                "url": "assets/images/svg/stripe.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "stripe"
+            },
+            {
                 "url": "assets/images/stripeBg.png",
                 "type": "image",
                 "key": "stripeBg"
+            },
+            {
+                "url": "assets/images/svg/Triangle.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "Triangle"
             },
             {
                 "url": "assets/Prefabs/VitualJoystick.js",
