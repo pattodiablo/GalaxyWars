@@ -12,6 +12,30 @@
     },
     "displayList": [
         {
+            "type": "Sprite",
+            "id": "dfbbd6bc-8427-4e46-9d2f-070e34472914",
+            "label": "bg1",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg1"
+            },
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "TileSprite",
+            "id": "b5c81658-7061-4453-9698-81c110592ed4",
+            "label": "bg2",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "bg2"
+            },
+            "originX": 0,
+            "originY": 0,
+            "width": 1081,
+            "height": 1921
+        },
+        {
             "type": "Image",
             "id": "92a64748-df1c-4a92-a92c-02c24ba23dc2",
             "label": "stripe",
@@ -27,6 +51,7 @@
             "type": "Image",
             "id": "6ef386a7-7467-44ae-ba3a-247431925a55",
             "label": "progressionLevelBg",
+            "scope": "PUBLIC",
             "texture": {
                 "key": "ProgressionLevelBg"
             },
@@ -36,7 +61,8 @@
         {
             "type": "BitmapText",
             "id": "77e244d4-b4ec-46cd-873e-be86b21f220e",
-            "label": "bitmaptext_1",
+            "label": "LvText",
+            "scope": "PUBLIC",
             "text": "LV",
             "font": "lemon",
             "fontSize": 72
@@ -49,10 +75,228 @@
             "texture": {
                 "key": "engranaje"
             },
-            "x": 933,
-            "y": 70,
-            "scaleX": 0.3,
-            "scaleY": 0.3
+            "x": 935,
+            "y": 48
+        },
+        {
+            "type": "BitmapText",
+            "id": "f6e6a1ce-2752-4e0d-a953-676c28cf5768",
+            "label": "LvNumber",
+            "scope": "PUBLIC",
+            "x": 87,
+            "y": 3,
+            "text": "01",
+            "font": "lemon",
+            "fontSize": 72
+        },
+        {
+            "type": "Image",
+            "id": "7f7a9db0-13a9-4af3-9a35-e37294b02dee",
+            "label": "holder",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "holder"
+            },
+            "x": 329,
+            "y": 231
+        },
+        {
+            "type": "BitmapText",
+            "id": "84fdf7c7-9215-4a70-ba43-80c083ef09be",
+            "label": "CoinAmount",
+            "scope": "PUBLIC",
+            "x": 256,
+            "y": 187,
+            "text": "300\n",
+            "font": "lemon",
+            "fontSize": 72
+        },
+        {
+            "type": "Image",
+            "id": "45942f6f-258f-4a99-a82f-698282ba729b",
+            "label": "diamond",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "diamond"
+            },
+            "x": 655,
+            "y": 254
+        },
+        {
+            "type": "Image",
+            "id": "2bffc329-0d6b-495e-a248-6f45187a47b9",
+            "label": "holder2",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "Holder2"
+            },
+            "x": 668,
+            "y": 389
+        },
+        {
+            "type": "Image",
+            "id": "075b1126-4c3d-472c-9f3c-f3d62ca4e775",
+            "label": "holder3",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "Holder2"
+            },
+            "x": -197.1842100783811,
+            "y": 170.9077810788872
+        },
+        {
+            "type": "Image",
+            "id": "440409b7-5476-449a-a0c3-3f2896e9719e",
+            "label": "holder4",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "Holder2"
+            },
+            "x": -260.58676616149575,
+            "y": 186.21184634032866
+        },
+        {
+            "type": "Image",
+            "id": "ce11c9b6-e3ce-4d4a-9fc0-3988b0f4ad6e",
+            "label": "divider",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "divider"
+            },
+            "x": 292,
+            "y": 487
+        },
+        {
+            "type": "Image",
+            "id": "cb766b65-5d6e-42d4-b979-d896753104e5",
+            "label": "upgrade",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "upgrade"
+            },
+            "x": -186,
+            "y": 356
+        },
+        {
+            "type": "Image",
+            "id": "83b54d01-2796-4154-803a-80f8b6bd89ca",
+            "label": "upgrade2",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "upgrade"
+            },
+            "x": -170.94866963019572,
+            "y": 347.9976791041384
+        },
+        {
+            "type": "Image",
+            "id": "5c32dbc6-6d3c-4b1c-a813-974fa2b37e1a",
+            "label": "upgrade3",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "upgrade"
+            },
+            "x": -94.42834332298843,
+            "y": 341.4387939920921
+        },
+        {
+            "type": "Image",
+            "id": "e9f36f3f-1481-4c90-b7cc-353b1771ed4e",
+            "label": "launchBtn",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "holder"
+            },
+            "x": -181.88014481693963,
+            "y": 452.9398408968799
+        },
+        {
+            "type": "BitmapText",
+            "id": "2e78e6cc-0d9a-4ee8-8a1c-86501dccbd24",
+            "label": "LauchText",
+            "scope": "PUBLIC",
+            "x": 93.59302988900669,
+            "y": 555.6957076522725,
+            "text": "LAUNCH",
+            "font": "lemon",
+            "fontSize": 72
+        },
+        {
+            "type": "Image",
+            "id": "e17189c1-6481-4ec5-be66-bad961ec1fd1",
+            "label": "triangle",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "Triangle"
+            },
+            "x": 822,
+            "y": 460
+        },
+        {
+            "type": "Image",
+            "id": "4420d3f9-af1d-4b95-a46c-8756f881c426",
+            "label": "ship1",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "ship1"
+            },
+            "x": 1089,
+            "y": 348
+        },
+        {
+            "type": "Image",
+            "id": "bfd68cab-93d3-4b5b-a257-3b00417214d0",
+            "label": "ship2",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "ship2"
+            },
+            "x": 1293,
+            "y": 319
+        },
+        {
+            "type": "Image",
+            "id": "4009a177-7a86-4ad4-bbbb-bf8607872aec",
+            "label": "ship3",
+            "scope": "PUBLIC",
+            "texture": {
+                "key": "ship3"
+            },
+            "x": 1259,
+            "y": 429
+        },
+        {
+            "type": "BitmapText",
+            "id": "c61dc272-83a8-4c69-811f-7dbe816f74bd",
+            "label": "ArmorText",
+            "scope": "PUBLIC",
+            "x": -681.2977625893114,
+            "y": 689.9724834243041,
+            "text": "ARMOR\n",
+            "font": "lemon",
+            "fontSize": 72
+        },
+        {
+            "type": "BitmapText",
+            "id": "160ef9ec-54fc-4201-80b4-70a34f508826",
+            "label": "MissileText",
+            "scope": "PUBLIC",
+            "x": -669,
+            "y": 819,
+            "text": "MISSILE\n\n",
+            "font": "lemon",
+            "fontSize": 72
+        },
+        {
+            "type": "BitmapText",
+            "id": "98265d7e-ab83-4615-b236-8daf5ed898d4",
+            "label": "MinesText",
+            "scope": "PUBLIC",
+            "x": -657,
+            "y": 961,
+            "text": "MINES\n\n",
+            "font": "lemon",
+            "fontSize": 72
         }
     ],
     "plainObjects": [],

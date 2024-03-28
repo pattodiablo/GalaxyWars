@@ -1,91 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 176.6 149.56">
-  <defs>
-    <style>
-      .cls-1 {
-        clip-path: url(#clippath);
-      }
-
-      .cls-2, .cls-3, .cls-4, .cls-5 {
-        fill: none;
-      }
-
-      .cls-2, .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
-        stroke-width: 0px;
-      }
-
-      .cls-3 {
-        stroke-width: .37px;
-      }
-
-      .cls-3, .cls-5 {
-        stroke: #5eb168;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .cls-11 {
-        clip-path: url(#clippath-1);
-      }
-
-      .cls-12 {
-        clip-path: url(#clippath-2);
-      }
-
-      .cls-4 {
-        clip-rule: evenodd;
-      }
-
-      .cls-6, .cls-7, .cls-8, .cls-9 {
-        fill-rule: evenodd;
-      }
-
-      .cls-6, .cls-10 {
-        fill: #00ff1e;
-      }
-
-      .cls-7 {
-        fill: #235c2a;
-      }
-
-      .cls-8 {
-        fill: #1ed533;
-      }
-
-      .cls-9 {
-        fill: #009e13;
-      }
-
-      .cls-5 {
-        stroke-width: .77px;
-      }
-    </style>
-    <clipPath id="clippath">
-      <rect class="cls-2" x="58.13" y="35.49" width="60.33" height="60.33" transform="translate(-20.57 81.67) rotate(-45)"/>
-    </clipPath>
-    <clipPath id="clippath-1">
-      <polygon class="cls-4" points="88.6 36.96 106.07 58.37 88.6 84.84 71.13 58.37 88.6 36.96"/>
-    </clipPath>
-    <clipPath id="clippath-2">
-      <polygon class="cls-4" points="147.84 52.86 176.21 61.65 88.3 149.56 .39 61.65 28.75 52.86 88.3 92.83 147.84 52.86"/>
-    </clipPath>
-  </defs>
-  <rect class="cls-10" x="58.13" y="35.49" width="60.33" height="60.33" transform="translate(-20.57 81.67) rotate(-45)"/>
-  <g class="cls-1">
-    <polygon class="cls-8" points="87.74 23.89 87.74 102.78 146.73 59.45 87.74 23.89"/>
-    <polygon class="cls-9" points="88.3 29.29 130.96 80.05 88.3 122.71 45.64 80.05 88.3 29.29"/>
-    <polygon class="cls-7" points="88.6 36.96 106.07 58.37 88.6 84.84 71.13 58.37 88.6 36.96"/>
-    <g class="cls-11">
-      <polygon class="cls-8" points="88.56 33.62 88.56 87.26 113.52 62.3 88.56 33.62"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 182 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,0,-654.484)">
+        <g id="ShipOne" transform="matrix(0.900292,0,0,0.890246,329.495,88.0219)">
+            <rect x="-365.987" y="636.299" width="201.854" height="168.417" style="fill:none;"/>
+            <g transform="matrix(0.375314,0,0,1.17471,-644.212,268.814)">
+                <g transform="matrix(0.61003,-0.193017,0.61003,0.193017,772.951,43.881)">
+                    <rect x="-757.222" y="935.419" width="210.382" height="210.382" style="fill:rgb(0,255,30);"/>
+                    <clipPath id="_clip1">
+                        <rect x="-757.222" y="935.419" width="210.382" height="210.382"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip1)">
+                        <g transform="matrix(1.45712,1.45712,-1.45712,1.45712,-2458.76,-2686.1)">
+                            <path d="M1897.81,588.156L1897.81,721.642L1997.63,648.317L1897.81,588.156Z" style="fill:rgb(30,213,51);"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-35.493,35.493)">
+                            <path d="M-526.862,915.441L-546.84,1145.8L-757.222,1145.8L-757.222,935.419L-526.862,915.441Z" style="fill:rgb(0,158,19);"/>
+                        </g>
+                        <g transform="matrix(0.409602,0,0,0.409602,-366.245,597.152)">
+                            <path d="M-523.111,911.69L-546.84,1145.8L-811.351,1199.93L-757.222,935.419L-523.111,911.69Z" style="fill:rgb(35,92,42);"/>
+                            <clipPath id="_clip2">
+                                <path d="M-523.111,911.69L-546.84,1145.8L-811.351,1199.93L-757.222,935.419L-523.111,911.69Z"/>
+                            </clipPath>
+                            <g clip-path="url(#_clip2)">
+                                <g transform="matrix(3.55742,3.55742,-3.55742,3.55742,-5109.41,-8010.14)">
+                                    <path d="M1898.51,603.718L1898.51,694.499L1940.76,652.247L1898.51,603.718Z" style="fill:rgb(30,213,51);"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <rect x="-757.222" y="935.419" width="210.382" height="210.382" style="fill:none;stroke:rgb(94,177,104);stroke-width:1.45px;"/>
+                </g>
+                <g transform="matrix(1.25708,0.397748,-1.25708,0.397748,3137.78,212.216)">
+                    <path d="M-591.298,958.846L-546.84,935.419L-546.84,1145.8L-757.222,1145.8L-733.795,1101.34L-614.724,1077.92L-591.298,958.846Z" style="fill:rgb(35,92,42);"/>
+                    <clipPath id="_clip3">
+                        <path d="M-591.298,958.846L-546.84,935.419L-546.84,1145.8L-757.222,1145.8L-733.795,1101.34L-614.724,1077.92L-591.298,958.846Z"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip3)">
+                        <g transform="matrix(1,0,0,1,-10.909,-10.909)">
+                            <path d="M-614.724,935.419L-546.84,935.419L-546.84,1145.8L-757.222,1145.8L-757.222,1077.92L-614.724,1077.92L-614.724,935.419Z" style="fill:rgb(0,255,30);stroke:rgb(94,177,104);stroke-width:1.45px;"/>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-39.3596,-39.3596)">
+                            <path d="M-614.724,935.419L-533.767,948.491L-560.846,1127.46L-744.149,1158.87L-757.222,1077.92L-614.724,1077.92L-614.724,935.419Z" style="fill:rgb(35,92,42);stroke:rgb(94,177,104);stroke-width:1.45px;"/>
+                        </g>
+                        <g transform="matrix(0.707107,-0.707107,0.707107,0.707107,-2451.84,1929.26)">
+                            <path d="M1904.01,715.544L1901.34,776.104L2038.99,638.613L2015.96,631.163L1904.01,715.544Z" style="fill:rgb(30,213,51);"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
     </g>
-  </g>
-  <rect class="cls-3" x="58.13" y="35.49" width="60.33" height="60.33" transform="translate(-20.57 81.67) rotate(-45)"/>
-  <polygon class="cls-7" points="147.84 52.86 176.21 61.65 88.3 149.56 .39 61.65 28.75 52.86 88.3 92.83 147.84 52.86"/>
-  <g class="cls-12">
-    <polygon class="cls-6" points="147.84 24.16 176.21 52.53 88.3 140.44 .39 52.53 28.75 24.16 88.3 83.71 147.84 24.16"/>
-    <polygon class="cls-5" points="147.84 24.16 176.21 52.53 88.3 140.44 .39 52.53 28.75 24.16 88.3 83.71 147.84 24.16"/>
-    <polygon class="cls-7" points="147.84 .39 176.21 39.68 90.11 103.15 .39 39.68 28.75 .39 88.3 59.93 147.84 .39"/>
-    <polygon class="cls-5" points="147.84 .39 176.21 39.68 90.11 103.15 .39 39.68 28.75 .39 88.3 59.93 147.84 .39"/>
-    <polygon class="cls-8" points="90.06 103.76 88.48 139.55 169.83 58.3 156.22 53.89 90.06 103.76"/>
-  </g>
 </svg>

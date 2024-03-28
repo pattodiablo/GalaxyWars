@@ -27,7 +27,8 @@ class Preload extends Phaser.Scene {
 		progressBar.setOrigin(0, 0);
 		progressBar.isFilled = true;
 		progressBar.fillColor = 14737632;
-
+		progressBar.setOrigin(0.5);
+		progressBar.x = this.cameras.main.width/2
 		// preloadUpdater
 		new PreloadBarUpdaterScript(progressBar);
 
@@ -36,12 +37,14 @@ class Preload extends Phaser.Scene {
 		progressBarBg.setOrigin(0, 0);
 		progressBarBg.fillColor = 14737632;
 		progressBarBg.isStroked = true;
+		progressBarBg.setOrigin(0.5);
+		progressBarBg.x = this.cameras.main.width/2
 
 		// loadingText
-		const loadingText = this.add.text(228, 432, "", {});
+		const loadingText = this.add.text(this.cameras.main.width/2, 432, "", {});
 		loadingText.text = "Loading...";
 		loadingText.setStyle({ "color": "#e0e0e0", "fontFamily": "arial", "fontSize": "20px" });
-
+		loadingText.setOrigin(0.5);
 		this.events.emit("scene-awake");
 	}
 

@@ -269,6 +269,16 @@
                 "key": "Triangle"
             },
             {
+                "url": "assets/images/svg/upgrade.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "upgrade"
+            },
+            {
                 "url": "assets/Prefabs/VitualJoystick.js",
                 "type": "script",
                 "key": "VitualJoystick"

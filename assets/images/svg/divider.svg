@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 715.67 259.65">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-        stroke: #5a9689;
-        stroke-linejoin: round;
-        stroke-width: 3px;
-      }
-    </style>
-  </defs>
-  <polyline class="cls-1" points="1.5 259.65 1.5 187.23 357.63 187.23 357.63 0"/>
-  <polyline class="cls-1" points="714.17 259.65 714.17 187.23 358.05 187.23"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 731 272" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,0,-961.015)">
+        <g id="divider" transform="matrix(0.975545,0,0,0.957566,237.652,51.664)">
+            <rect x="-243.61" y="949.648" width="748.39" height="283.134" style="fill:none;"/>
+            <g transform="matrix(0.576601,0,0,1.85656,-437.514,-6.75458)">
+                <g transform="matrix(1.77778,0,0,0.5625,0,0)">
+                    <path d="M197.624,1183.2L197.624,1110.78L553.753,1110.78L553.753,923.546" style="fill:none;stroke:rgb(90,150,137);stroke-width:3px;"/>
+                </g>
+                <g transform="matrix(-1.77778,0,0,0.5625,1969.64,0)">
+                    <path d="M197.624,1183.2L197.624,1110.78L553.753,1110.78" style="fill:none;stroke:rgb(90,150,137);stroke-width:3px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg>

@@ -187,7 +187,7 @@ addTimer(){
     });
 
     // Establecer la duración total del temporizador en milisegundos
-    this.timer.totalDuration = 3000; // 60 segundos en este ejemplo
+    this.timer.totalDuration = 30000; // 60 segundos en este ejemplo
 	this.timerholder = 0;
 	}
 

@@ -4,8 +4,8 @@
 
 var largoJuego = window.innerWidth;
 var altoJuego = window.innerHeight;
-
-
+console.log(largoJuego);
+console.log(altoJuego);
 window.addEventListener('load', function () {
 
 	var game = new Phaser.Game({
@@ -23,7 +23,7 @@ window.addEventListener('load', function () {
 			pixelArt: false,
 			antialias: true,
 			roundPixels:true,
-			resolution: window.devicePixelRatio, // Usar la resolución del dispositivo
+			resolution: window.devicePixelRatio/2, // Usar la resolución del dispositivo
 			clearBeforeRender:false,
 			autoResize:true
 		},
@@ -40,7 +40,8 @@ window.addEventListener('load', function () {
 	},
         backgroundColor: "#000",
 		scale: {
-			mode: Phaser.Scale.FIT,
+			mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
+			
 			autoCenter: Phaser.Scale.CENTER_BOTH
 		}
 	});
