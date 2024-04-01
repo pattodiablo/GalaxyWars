@@ -22,10 +22,12 @@ class Bullet extends Phaser.GameObjects.Image {
 	create(){
 
 		this.scene.physics.world.enable(this);
-
+		this.body.enable=true;
 		this.scene.time.delayedCall(3000, function() {
 		//	this.scene.playerShip.returnBullet(this);
 		}, [], this);
+
+		
 	}
 
 	updateBulletRotationAndSpeed(){

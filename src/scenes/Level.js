@@ -187,7 +187,7 @@ addTimer(){
     });
 
     // Establecer la duración total del temporizador en milisegundos
-    this.timer.totalDuration = 30000; // 60 segundos en este ejemplo
+    this.timer.totalDuration = 4000; // 60 segundos en este ejemplo
 	this.timerholder = 0;
 	}
 
@@ -235,10 +235,11 @@ ProgresionPhase(){
 
 	this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 
-		this.scene.start('ProgessionPhase'); // Reemplaza 'NuevaEscena' con el nombre de la escena a la que deseas cambiar
-
+		//this.scene.start('ProgessionPhase'); // Reemplaza 'NuevaEscena' con el nombre de la escena a la que deseas cambiar
+		this.scene.start('ProgessionPhase');
 		// Detén y olvida la escena actual
-		this.scene.stop(this); // Reemplaza 'NombreEscenaActual' con el nombre de la escena actual
+		this.scene.remove(this.scene.keys);
+	//	this.scene.stop(this); // Reemplaza 'NombreEscenaActual' con el nombre de la escena actual
 
 
 

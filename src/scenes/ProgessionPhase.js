@@ -380,7 +380,7 @@ class ProgessionPhase extends Phaser.Scene {
 		// Función que se ejecutará cuando se haga clic en el botón de lanzamiento
 		const launchButtonClicked = () => {
 			// Llevar al jugador a la escena "Level"
-			this.scene.start("Level");
+			this.scene.start('Level');
 		};
 
 		// Asociar la función de clic con el evento de clic en el botón de lanzamiento
