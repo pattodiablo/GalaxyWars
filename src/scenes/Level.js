@@ -236,7 +236,7 @@ ProgresionPhase(){
 	this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 
 		//this.scene.start('ProgessionPhase'); // Reemplaza 'NuevaEscena' con el nombre de la escena a la que deseas cambiar
-		this.scene.start('ProgessionPhase');
+		this.scene.start('ProgessionPhase', { ParticlesCollected: this.playerShip.ParticlesCollected });
 		// Detén y olvida la escena actual
 		this.scene.remove(this.scene.keys);
 	//	this.scene.stop(this); // Reemplaza 'NombreEscenaActual' con el nombre de la escena actual

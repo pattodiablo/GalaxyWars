@@ -12,10 +12,16 @@ class ProgessionPhase extends Phaser.Scene {
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
+	
 
 	/** @returns {void} */
+
+	
+
+
 	editorCreate() {
 
+	
 		// bg1
 		const bg1 = this.add.sprite(0, 0, "bg1");
 		bg1.setOrigin(0, 0);
@@ -199,8 +205,8 @@ class ProgessionPhase extends Phaser.Scene {
 
 	// Write your code here
 
-	create() {
-
+	create(data) {
+		this.datosNivel = data;
 		this.editorCreate();
 
 		var screenWidth = this.cameras.main.width;
@@ -242,6 +248,12 @@ class ProgessionPhase extends Phaser.Scene {
 		this.coinAmount.y = this.holder.y + this.holder.displayHeight/2-3;
 		this.coinAmount.setOrigin(0.5,0.5);
 		this.coinAmount.fontSize = 72*this.progressionLevelBg.scaleY;
+		if(this.datosNivel.ParticlesCollected != undefined){
+			this.coinAmount.text = this.datosNivel.ParticlesCollected;
+		}else{
+			this.coinAmount.text = "---";
+		}
+		
 
 		this.diamond.x = this.holder.x-this.holder.displayWidth/4;
 		this.diamond.y = this.holder.y + this.holder.displayHeight/2;
@@ -380,7 +392,10 @@ class ProgessionPhase extends Phaser.Scene {
 		// Función que se ejecutará cuando se haga clic en el botón de lanzamiento
 		const launchButtonClicked = () => {
 			// Llevar al jugador a la escena "Level"
+		
 			this.scene.start('Level');
+			//this.scene.setLevel("Level");
+		//	this.scene.start('Level');
 		};
 
 		// Asociar la función de clic con el evento de clic en el botón de lanzamiento
@@ -395,6 +410,13 @@ class ProgessionPhase extends Phaser.Scene {
 			this.game.canvas.style.cursor = 'default';
 			this.launchBtn.removePostPipeline();
 		});
+	}
+
+	preload(){
+
+		this.load.sceneFile("Level", 'src/scenes/Level.js');
+		this.scene.get("Level");
+		
 	}
 
 	/* END-USER-CODE */
