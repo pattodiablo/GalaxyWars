@@ -95,11 +95,13 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 					const shipCompanion = new ShipCompanion(this.scene, this.x, this.y);
 					shipCompanion.offsetX = 10; // Distancia horizontal entre los dos objetos
 					shipCompanion.offsetY = -20; // Distancia vertical entre los dos objetos
+					shipCompanion.CompanionType=0;
 					this.scene.add.existing(shipCompanion);
 
 					const shipCompanion2 = new ShipCompanion(this.scene, this.x, this.y);
 					shipCompanion2.offsetX = -10; // Distancia horizontal entre los dos objetos
 					shipCompanion2.offsetY = -20; // Distancia vertical entre los dos objetos
+					shipCompanion2.CompanionType=1;
 					this.scene.add.existing(shipCompanion2);
 
 

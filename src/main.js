@@ -4,6 +4,23 @@
 
 var largoJuego = window.innerWidth;
 var altoJuego = window.innerHeight;
+
+if(largoJuego>altoJuego){
+	if(largoJuego>=1920){
+			largoJuego=1080;
+		}
+	if(altoJuego>=1080){
+			altoJuego=1080;
+		}
+	}else{
+		if(largoJuego>=640){
+		largoJuego=640;
+	}
+		if(altoJuego>=960){
+		altoJuego=960;
+	}
+}
+
 console.log(largoJuego);
 console.log(altoJuego);
 window.addEventListener('load', function () {

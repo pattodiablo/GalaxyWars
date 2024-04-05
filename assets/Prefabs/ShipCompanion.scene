@@ -1,39 +1,40 @@
 {
     "id": "3f7af6a3-4254-49d7-b2f6-a923f8b0c98c",
-    "settings": {
-        "createMethodName": "",
-        "preloadMethodName": "",
-        "compilerOutputLanguage": "JAVA_SCRIPT",
-        "exportClass": false,
-        "autoImport": false,
-        "generateAwakeHandler": false,
-        "compilerInsertSpaces": false,
-        "compilerTabSize": 4,
-        "borderWidth": 640,
-        "borderHeight": 960,
-        "borderX": 0,
-        "borderY": 0
-    },
     "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 640,
+        "borderHeight": 960
+    },
     "displayList": [
         {
-            "unlock": [
-                "x",
-                "y"
-            ],
             "type": "Image",
             "id": "301d5ecc-3a79-4766-ab04-54b7f7f18903",
             "label": "shipCompanion",
             "texture": {
                 "key": "ShipCompanion"
-            },
-            "x": 0,
-            "y": 0
+            }
         }
     ],
+    "plainObjects": [],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
-        "contentType": "phasereditor2d.core.scene.SceneContentType"
-    }
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    },
+    "prefabProperties": [
+        {
+            "name": "CompanionType",
+            "label": "CompanionType",
+            "tooltip": "",
+            "defValue": 1,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        }
+    ]
 }

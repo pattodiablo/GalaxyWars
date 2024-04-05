@@ -110,10 +110,10 @@ class Level extends Phaser.Scene {
 		this.addTimer();
 
 
-		this.maximunEnemies = 30;
+		this.maximunEnemies = 60;
 
 		this.SpwawerTimer = this.time.addEvent({
-            delay: 1000, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
+            delay: 500, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
             callback: this.enemySpawner,
             callbackScope: this,
             loop: true // Para que el evento se repita indefinidamente
@@ -145,7 +145,7 @@ class Level extends Phaser.Scene {
 			frequency: 10
 		});
 
-		this.bg2.postFX.addShine(0.5, 1, 5,0,false);
+		//this.bg2.postFX.addShine(0.5, 1, 5,0,false);
 
 
 
@@ -454,12 +454,12 @@ LevelSystem(){
 		const cam = this.cameras.main;
 
 
-		cam.setRoundPixels(true);
+		cam.setRoundPixels(false);
 		cam.disableCull = false; 
 
+		
+		
 		cam.startFollow(this.playerShip, true, 0, 0);
-
-
 		cam.setLerp(1);
 		this.fadeInAndCheck();
 

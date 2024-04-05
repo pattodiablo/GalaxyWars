@@ -9,8 +9,8 @@ class Enemy2 extends EnemyBase {
 		super(scene, x ?? 0, y ?? 0, texture || "Enemy2", frame);
 
 		this.setInteractive(new Phaser.Geom.Polygon("0.3414751022435638 37.994162330695396 27.82398957078553 -0.27778374401489714 53.06718804559445 38.19773651194386 27.620415389537072 28.83332417451474"), Phaser.Geom.Polygon.Contains);
-		this.scaleX = 0.5;
-		this.scaleY = 0.5;
+		this.scaleX = 0.4;
+		this.scaleY = 0.4;
 
 		/* START-USER-CTR-CODE */
 this.enemyLife = this.enemyLife;

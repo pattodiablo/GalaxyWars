@@ -213,7 +213,7 @@ class ProgessionPhase extends Phaser.Scene {
 		var screenHeigth = this.cameras.main.height;
 
 	
-			console.log("is vertical");
+		
 				// Establecer la escala horizontal de la imagen para que ocupe todo el ancho de la pantalla
 		this.stripe.displayWidth = this.cameras.main.width;
 		this.stripe.scaleY = this.stripe.scaleX; // Mantiene la proporción de la imagen
