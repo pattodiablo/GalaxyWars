@@ -229,6 +229,21 @@
                 "key": "ShipBg"
             },
             {
+                "url": "assets/images/ShipCompanion.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "ShipCompanion"
+            },
+            {
+                "url": "assets/Prefabs/ShipCompanion.js",
+                "type": "script",
+                "key": "ShipCompanion_1"
+            },
+            {
                 "url": "assets/images/ShipV1.svg",
                 "svgConfig": {
                     "width": 0,

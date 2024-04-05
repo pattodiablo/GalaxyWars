@@ -410,6 +410,29 @@ class ProgessionPhase extends Phaser.Scene {
 			this.game.canvas.style.cursor = 'default';
 			this.launchBtn.removePostPipeline();
 		});
+
+		this.fadeInAndCheck();
+
+	}
+
+	fadeInAndCheck(){
+
+
+        const fxCamera = this.cameras.main.postFX.addPixelate(120);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+
+		this.cameras.main.fadeIn(2000);
+		this.cameras.main.once('camerafadeincomplete', function () {	
+
+
+
+			}, this);
+
+
 	}
 
 	preload(){

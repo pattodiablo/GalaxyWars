@@ -23,23 +23,25 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	BulletRate = 150;
 	/** @type {number} */
-	damage = 1;
+	damage = 10;
 	/** @type {number} */
 	lives = 3;
 	/** @type {number} */
 	reaparecerTimer = 2000;
 	/** @type {number} */
-	Weapon1Level = 3;
+	Weapon1Level = 2;
 	/** @type {number} */
 	ParticlesCollected = 0;
 	/** @type {number} */
-	MagnetPower = 50;
+	MagnetPower = 100;
 	/** @type {number} */
 	shootingRange = 200;
 	/** @type {number} */
 	BaseLevelFill = 10;
 	/** @type {number} */
 	PlayerLevel = 1;
+	/** @type {number} */
+	CompanionNumber = 2;
 
 	/* START-USER-CODE */
 
@@ -63,10 +65,10 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		//this.emitter.setDepth(-1);
 		//this.preFX.addPixelate(0.5);
 		// this.setTint(0xF38F1E); // Tint rojo
-		 this.fx = this.preFX.addGlow(0x6FFF21,1, 1, false, 0.1, 100);
+		// this.fx = this.preFX.addGlow(0x6FFF21,1, 1, false, 0.1, 100);
 
 		//this.fx = this.postFX.addGlow();
-
+/*
 		this.scene.tweens.add({
             targets: this.fx,
             outerStrength: 1,
@@ -75,11 +77,43 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
             loop: -1,
             ease: 'sine.inout'
         });
-
+*/
 
 		this.lastFrameTime = 0;
 		this.deltaTime = 0;
 		this.setDepth(1);
+
+		if(this.CompanionNumber>0){
+
+			switch(this.CompanionNumber){
+
+				case 1:
+
+					break;
+
+				case 2:
+					const shipCompanion = new ShipCompanion(this.scene, this.x, this.y);
+					shipCompanion.offsetX = 10; // Distancia horizontal entre los dos objetos
+					shipCompanion.offsetY = -20; // Distancia vertical entre los dos objetos
+					this.scene.add.existing(shipCompanion);
+
+					const shipCompanion2 = new ShipCompanion(this.scene, this.x, this.y);
+					shipCompanion2.offsetX = -10; // Distancia horizontal entre los dos objetos
+					shipCompanion2.offsetY = -20; // Distancia vertical entre los dos objetos
+					this.scene.add.existing(shipCompanion2);
+
+
+					break;
+
+				case 3:
+					break;
+
+				case 4:
+					break;
+
+
+			}
+		}
 
 	}
 
@@ -131,14 +165,13 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 	destroyShip(player){
 
+		this.lives--;
 		this.body.enable=false;
-		console.log(player);
+
 		this.emitter.destroy();
 		if(this.timerEvento){
 				this.timerEvento.remove();
 		}
-
-		this.lives--;
 
 		if(this.lives>0){
 			this.destroyParticles();
@@ -159,7 +192,11 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 			});
 
 		}else{
-			player.destroy();
+
+		
+			player.setVisible =false;
+			this.scene.ProgresionPhase();
+			//player.destroy();
 		}
 
 	}
@@ -242,7 +279,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 			}
 		}
-			
+
 
 
 
@@ -308,8 +345,9 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 						return (this.angle - 180) + Phaser.Math.Between(-10, 10);
 					}
 				},
-				scale: { start: 0.6, end: 0 },
-				blendMode: 'ADD'
+				scale: { start: 1, end: 0 },
+			
+				frequency: 50
 			});
 
 			this.emitter.setDepth(0);
@@ -321,17 +359,17 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		this.ParticlesCollected++;
 		var currentFillLevel = this.BaseLevelFill * this.PlayerLevel;
-	
+
 		if (this.ParticlesCollected >= currentFillLevel) {
-		
+
 			this.ParticlesCollected = 0;
 			this.PlayerLevel++;
-		
+
 			this.scene.userLevel.text = this.PlayerLevel.toString();
 		}
 
 		this.currentFillPercentage = (this.ParticlesCollected / currentFillLevel) ;
-	
+
 	}
 
 

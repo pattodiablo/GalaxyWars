@@ -62,7 +62,7 @@
             "name": "damage",
             "label": "damage",
             "tooltip": "",
-            "defValue": 1,
+            "defValue": 10,
             "customDefinition": false,
             "type": {
                 "id": "number"
@@ -92,7 +92,7 @@
             "name": "Weapon1Level",
             "label": "Weapon1Level",
             "tooltip": "",
-            "defValue": 3,
+            "defValue": 2,
             "customDefinition": false,
             "type": {
                 "id": "number"
@@ -112,7 +112,7 @@
             "name": "MagnetPower",
             "label": "MagnetPower",
             "tooltip": "",
-            "defValue": 50,
+            "defValue": 100,
             "customDefinition": false,
             "type": {
                 "id": "number"
@@ -143,6 +143,16 @@
             "label": "PlayerLevel",
             "tooltip": "",
             "defValue": 1,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "CompanionNumber",
+            "label": "CompanionNumber",
+            "tooltip": "",
+            "defValue": 2,
             "customDefinition": false,
             "type": {
                 "id": "number"

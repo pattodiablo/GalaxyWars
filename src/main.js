@@ -11,17 +11,17 @@ window.addEventListener('load', function () {
 	var game = new Phaser.Game({
 		width:  largoJuego,
 		height: altoJuego,
-		type: Phaser.AUTO,
+		type: Phaser.WEBGL,
 		physics: {
         default: 'arcade',
 		fps: {
 			target: 90,
-			min: 30,
+			min: 90,
 			forceSetTimeOut: true
 		},
 		render: {
 			pixelArt: false,
-			antialias: true,
+			antialias: false,
 			roundPixels:true,
 			resolution: window.devicePixelRatio/2, // Usar la resolución del dispositivo
 			clearBeforeRender:false,

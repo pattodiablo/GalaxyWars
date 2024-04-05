@@ -20,31 +20,29 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 	}
 
 	/** @type {number} */
-	enemyLife = 1;
+	enemyLife = 10;
 
 	/* START-USER-CODE */
 
 	create(){
 
-		this.ownCreate();
 		this.scene.physics.world.enable(this);
 		this.scene.enemyGroup.add(this);
 		this.animacionDeInicio();
         this.animacionIdle();
-        this.glowSettings(0xffffff,1,0.3, false, 1, 100)
+      //  this.glowSettings(0xffffff,1,0.3, false, 1, 100)
 		this.body.enable=false;
+
+	
 		
 	}
 
     glowSettings(color,n,p,b,s,tiempo){
         this.fx = this.preFX.addGlow(color,n,p,b,s,tiempo);
     }
-	ownCreate(){
-
-	}
+	
     animacionDeInicio(){
 	
-
 
 			const appearParicles =  this.scene.add.particles(0, 0, 'appearParticle', {
 				x: this.x,
@@ -75,7 +73,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 				targets: this,
 				scaleX: 1, // Escala X final
 				scaleY: 1, // Escala Y final
-				duration: 1000, // Duración en milisegundos
+				duration: 500, // Duración en milisegundos
 				ease: 'Linear'
 			});
 
@@ -110,9 +108,41 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 	reducirVida(damage){
 	
 		this.scene.tweens.killTweensOf(this);
-		this.enemyLife-=damage;
+		
 
-		const explosionParticles =  this.scene.add.particles(0, 0, 'particleShip', {
+		var damageDeal = this.enemyLife-damage*Phaser.Math.Between(0 , 1);
+	
+		this.enemyLife-=damageDeal;
+
+		const lifeTook = this.scene.add.bitmapText(this.x, this.y, "lemon", "01");
+		lifeTook.text = damageDeal;
+		lifeTook.fontSize = 15;
+		lifeTook.setScale(2);
+		this.scene.tweens.add({
+			targets: lifeTook,
+			y: lifeTook.y - 20, // Desplazar hacia arriba
+			x: Phaser.Math.Between(this.x-30, this.x+30), // Desplazar hacia arriba
+			alpha: 0, // Cambiar la opacidad a 0
+			scale: 0,
+			duration: 1000, // Duración de la animación en milisegundos
+			yoyo: false, // No se revierte al final
+			ease: 'Cubic', // Función de interpolación lineal
+			repeat: 0, // No repetir la animación
+			onComplete: function () {
+				// Función que se ejecuta al completarse la animación
+				lifeTook.destroy(); // Destruir el objeto lifeTook
+			}
+		});
+		
+
+	
+
+		// Detener el sistema de partículas después de un tiempo y luego destruirlo
+		
+
+		if (this.enemyLife <= 0) {
+			
+			const explosionParticles =  this.scene.add.particles(0, 0, 'particleShip', {
 
 			x: this.x,
 			y: this.y,
@@ -122,22 +152,17 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 			blendMode: 'ADD',
 			tint: 0xFFFFFF, // Color de las chispas (blanco)
 			scale: { start: 2, end: 0 },
-			quantity: 1,
-			maxParticles: 5,
-			frequency: 10
+			quantity: 3,
+			maxParticles: 3,
+			frequency: 5
 		});
 
-		// Detener el sistema de partículas después de un tiempo y luego destruirlo
 		this.scene.time.delayedCall(1000, function() {
 			explosionParticles.destroy();
 		});
 
-
-		if (this.enemyLife <= 0) {
-			
-		
 			// Generar un número aleatorio entre 3 y 4 para determinar cuántas partículas crear
-			const numberOfParticles = Phaser.Math.Between(3, 4);
+			const numberOfParticles = Phaser.Math.Between(1, 3);
 		
 			// Crear las partículas aleatorias
 			for (let i = 0; i < numberOfParticles; i++) {

@@ -16,6 +16,7 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		this.lasersGroup = this.add.group();
 		// bg1
 		const bg1 = this.add.image(0, 0, "bg1");
 		bg1.setOrigin(0, 0);
@@ -187,7 +188,7 @@ addTimer(){
     });
 
     // Establecer la duración total del temporizador en milisegundos
-    this.timer.totalDuration = 4000; // 60 segundos en este ejemplo
+    this.timer.totalDuration = 60000; // 60 segundos en este ejemplo
 	this.timerholder = 0;
 	}
 
@@ -217,7 +218,6 @@ updateTimer(){
 ProgresionPhase(){
 
 	this.SpwawerTimer.remove();
-	console.log(this.enemyGroup.countActive());
 
 	// Itera sobre cada elemento del grupo
 	this.enemyGroup.getChildren().forEach(function(enemy) {
@@ -259,7 +259,7 @@ formatTime(milliseconds) {
 		  // Asegurarse de que el tiempo se muestra en el formato 00:00
 		  var strMinutes = (minutes < 10) ? '0' + minutes : minutes;
 		  var strSeconds = (seconds < 10) ? '0' + seconds : seconds;
-		  console.log(strSeconds)
+
 		  return strMinutes + ':' + strSeconds;
 }
 createLevelBar(){
@@ -339,7 +339,7 @@ LevelSystem(){
 
 		this.BarraDeNivel.scaleX=this.playerShip.currentFillPercentage;
 		//this.BarraDeNivel.x=10;
-		console.log(this.BarraDeNivel.x);
+
 	}
 
 
@@ -356,7 +356,7 @@ LevelSystem(){
         // O usando el método getLength()
         // const numeroEnemigos = this.enemyGroup.getLength();
 
-        console.log("Número de enemigos:", numeroEnemigos);
+
         // Iterar sobre cada enemigo y llamar al método reducirVida(100)
         enemigos.forEach(enemigo => {
 
@@ -421,6 +421,7 @@ LevelSystem(){
 		this.physics.add.overlap(this.playerShip, this.enemyGroup,this.colisionplayerEnemy, null, this);
 		this.physics.add.overlap(this.playerShip, this.LevelParticleGroup,this.colisionplayerLevelParticle, null, this);
 		this.physics.add.collider(this.enemyGroup, this.enemyGroup);
+		this.physics.add.overlap(this.lasersGroup, this.enemyGroup,this.colisionLaserEnemigo, null, this);
 //	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}
 
@@ -437,6 +438,9 @@ LevelSystem(){
 		this.playerShip.returnBullet(bala);
 		enemigo.reducirVida(this.playerShip.damage);
 
+	}
+	colisionLaserEnemigo(laser, enemigo){
+		enemigo.reducirVida(laser.damage);
 	}
 
 

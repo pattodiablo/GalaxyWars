@@ -62,7 +62,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 		}
 
 
-		if(this.active){
+		if(this.active && this.scene.playerShip.body.enable){
 
 			const distanceToPlayer = Phaser.Math.Distance.Between(this.x, this.y, this.scene.playerShip.x, this.scene.playerShip.y);
 			

@@ -13,9 +13,12 @@ class Enemy2 extends EnemyBase {
 		this.scaleY = 0.5;
 
 		/* START-USER-CTR-CODE */
-
+this.enemyLife = this.enemyLife;
 		/* END-USER-CTR-CODE */
 	}
+
+	/** @type {number} */
+	enemyLife = 40;
 
 	/* START-USER-CODE */
 
@@ -28,7 +31,7 @@ class Enemy2 extends EnemyBase {
 
 
 
-		if (this.active) {
+		if (this.active && this.scene.playerShip.body.enable) {
 
 			// Obtener la posición del jugador
 			const playerX = this.scene.playerShip.x;
@@ -56,9 +59,8 @@ class Enemy2 extends EnemyBase {
 			this.x += dirX * speed;
 			this.y += dirY * speed;
 
-		} else {
-			// El objeto no existe en el grupo
 		}
+
 
 
 
