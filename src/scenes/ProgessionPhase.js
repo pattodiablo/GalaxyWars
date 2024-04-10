@@ -412,7 +412,7 @@ class ProgessionPhase extends Phaser.Scene {
 		});
 
 		this.fadeInAndCheck();
-
+		enableFullscreen.call(this);
 	}
 
 	fadeInAndCheck(){
@@ -444,6 +444,34 @@ class ProgessionPhase extends Phaser.Scene {
 
 	/* END-USER-CODE */
 }
+
+
+// Dentro de tu escena de Phaser
+function enableFullscreen() {
+    const scale = this.scale;
+    const fullscreenElement = document.documentElement;
+
+    // Escucha el evento de clic para habilitar la pantalla completa
+    this.input.on('pointerup', () => {
+        if (scale.isFullscreen) {
+            scale.stopFullscreen();
+        } else {
+            scale.startFullscreen();
+        }
+    });
+
+    // Escucha el evento de cambio de pantalla completa de Phaser
+    scale.on('fullscreenchange', () => {
+        if (scale.isFullscreen) {
+            // La pantalla está en modo de pantalla completa
+            console.log('Pantalla completa habilitada');
+        } else {
+            // La pantalla ya no está en modo de pantalla completa
+            console.log('Pantalla completa deshabilitada');
+        }
+    });
+}
+
 
 /* END OF COMPILED CODE */
 

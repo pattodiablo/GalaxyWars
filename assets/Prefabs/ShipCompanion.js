@@ -34,7 +34,7 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 					loop: true // Para que el temporizador se repita infinitamente
 				});
 
-				this.setDepth(1);
+		
 
 			}
 
@@ -48,9 +48,24 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 					loop: true // Para que el temporizador se repita infinitamente
 				});
 
-				this.setDepth(1);
+		
 
 			}
+
+			if(this.CompanionType==2){
+			
+				this.laserTimer = this.scene.time.addEvent({
+					delay: 300,
+					callback: this.fireLaser2,
+					callbackScope: this,
+					loop: true // Para que el temporizador se repita infinitamente
+				});
+
+	
+
+			}
+
+			this.setDepth(1);
 
 
 		}
@@ -59,13 +74,16 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 
 
 			// Calcular la nueva posición del objeto seguidor
+			if(this.CompanionType!==2){
+
+		
 			var targetX = this.scene.playerShip.x + this.offsetX;
 			var targetY = this.scene.playerShip.y + this.offsetY;
-
 			// Establecer la posición del objeto seguidor
 			this.x = targetX;
 			this.y = targetY;
 
+			}
 			// Establece la rotación del objeto igual a la rotación de playerShip
 
 		}
@@ -92,7 +110,6 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 							// Convertir el ángulo a grados y ajustarlo según la rotación deseada
 							const angleInDegrees = Phaser.Math.RadToDeg(angleToEnemy);
 
-							console.log("hay un enemigo cerca");
 							this.rotation = angleInDegrees;
 							shortestDistance = distance;
 							closestEnemy = enemy;
@@ -142,8 +159,7 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 
 
 		fireLaser1() {
-			let closestEnemy = null;
-			let shortestDistance = Infinity;
+			
 			this.rotation += 0.5;
 
 
@@ -177,6 +193,72 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 
 			} 
 
+
+
+		fireLaser2() {
+	
+			let closestEnemy = null;
+			let shortestDistance = Infinity;
+
+			// Itera sobre cada elemento del grupo
+			this.scene.enemyGroup.getChildren().forEach(function(enemy) {
+
+				 // Calcular la distancia entre ShipCompanion y el enemigo actual
+				 const dx = this.x - enemy.x;
+				 const dy = this.y - enemy.y;
+				 const distance = Math.sqrt(dx * dx + dy * dy);
+
+					// Por ejemplo, puedes realizar una acción si la distancia es menor que cierto valor
+					if (distance < 200) {
+
+						if (distance < shortestDistance) {
+
+								const angleToEnemy = Math.atan2(dy, dx);
+
+							// Convertir el ángulo a grados y ajustarlo según la rotación deseada
+							const angleInDegrees = Phaser.Math.RadToDeg(angleToEnemy);
+
+							this.rotation = angleInDegrees;
+							shortestDistance = distance;
+							closestEnemy = enemy;
+						}
+
+					}
+
+			}, this);
+
+
+			if (closestEnemy) {
+				// Realizar acciones con el enemigo más cercano (closestEnemy)
+				// Por ejemplo, atacar al enemigo más cercano o realizar alguna acción específica
+				const laser = this.scene.add.rectangle(this.x, this.y, 5, 50, 0x1BF0FF);
+				this.scene.physics.add.existing(laser); // Si quieres que el láser tenga físicas
+
+				laser.angle=this.angle+90;
+				const laserSpeed = 700; // Velocidad del láser, ajusta según sea necesario
+				laser.setDepth(this.depth-1);
+
+				// Aplicar velocidad al láser en la dirección calculada
+
+				this.KillTimer = this.scene.time.addEvent({
+					delay: 2000,
+					callback: function(){
+						laser.destroy();
+					},
+					callbackScope: this,
+					loop: true // Para que el temporizador se repita infinitamente
+				});
+
+				this.velocidadX = Math.cos(this.rotation) * laserSpeed
+				this.velocidadY = Math.sin(this.rotation) * laserSpeed
+
+				laser.body.setVelocity(this.velocidadX, this.velocidadY);
+				laser.damage = this.laserDamage;
+				this.scene.lasersGroup.add(laser);
+
+			} 
+
+			} 
 
 		
 
