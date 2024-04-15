@@ -12,16 +12,10 @@ class ProgessionPhase extends Phaser.Scene {
 		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
-	
 
 	/** @returns {void} */
-
-	
-
-
 	editorCreate() {
 
-	
 		// bg1
 		const bg1 = this.add.sprite(0, 0, "bg1");
 		bg1.setOrigin(0, 0);
@@ -44,7 +38,7 @@ class ProgessionPhase extends Phaser.Scene {
 		lvText.fontSize = 72;
 
 		// engranaje
-		const engranaje = this.add.image(935, 48, "engranaje");
+		const engranaje = this.add.image(1852, 77, "engranaje");
 
 		// LvNumber
 		const lvNumber = this.add.bitmapText(87, 3, "lemon", "01");
@@ -52,69 +46,69 @@ class ProgessionPhase extends Phaser.Scene {
 		lvNumber.fontSize = 72;
 
 		// holder
-		const holder = this.add.image(329, 231, "holder");
+		const holder = this.add.image(992, 256, "holder");
 
 		// CoinAmount
-		const coinAmount = this.add.bitmapText(256, 187, "lemon", "300\n");
+		const coinAmount = this.add.bitmapText(911, 203, "lemon", "300\n");
 		coinAmount.text = "300\n";
 		coinAmount.fontSize = 72;
 
 		// diamond
-		const diamond = this.add.image(655, 254, "diamond");
+		const diamond = this.add.image(880, 250, "diamond");
 
 		// holder2
-		const holder2 = this.add.image(668, 389, "Holder2");
+		const holder2 = this.add.image(746, 414, "Holder2");
 
 		// holder3
-		const holder3 = this.add.image(-197.1842100783811, 170.9077810788872, "Holder2");
+		const holder3 = this.add.image(978, 412, "Holder2");
 
 		// holder4
-		const holder4 = this.add.image(-260.58676616149575, 186.21184634032866, "Holder2");
+		const holder4 = this.add.image(1238, 415, "Holder2");
 
 		// divider
-		const divider = this.add.image(292, 487, "divider");
+		const divider = this.add.image(976, 567, "divider");
 
 		// upgrade
-		const upgrade = this.add.image(-186, 356, "upgrade");
+		const upgrade = this.add.image(705, 623, "upgrade");
 
 		// upgrade2
-		const upgrade2 = this.add.image(-170.94866963019572, 347.9976791041384, "upgrade");
+		const upgrade2 = this.add.image(976, 625, "upgrade");
 
 		// upgrade3
-		const upgrade3 = this.add.image(-94.42834332298843, 341.4387939920921, "upgrade");
+		const upgrade3 = this.add.image(1229, 643, "upgrade");
 
 		// launchBtn
-		const launchBtn = this.add.image(-181.88014481693963, 452.9398408968799, "holder");
+		const launchBtn = this.add.image(985, 906, "holder");
 
 		// LauchText
-		const lauchText = this.add.bitmapText(93.59302988900669, 555.6957076522725, "lemon", "LAUNCH");
+		const lauchText = this.add.bitmapText(835, 863, "lemon", "LAUNCH");
 		lauchText.text = "LAUNCH";
 		lauchText.fontSize = 72;
 
 		// triangle
-		const triangle = this.add.image(822, 460, "Triangle");
+		const triangle = this.add.image(1072, 910, "Triangle");
 
 		// ship1
-		const ship1 = this.add.image(1089, 348, "ship1");
+		const ship1 = this.add.image(978, 418, "ship1");
 
 		// ship2
-		const ship2 = this.add.image(1293, 319, "ship2");
+		const ship2 = this.add.image(735, 420, "ship2");
 
 		// ship3
-		const ship3 = this.add.image(1259, 429, "ship3");
+		const ship3 = this.add.image(1239, 414, "ship3");
 
 		// ArmorText
-		const armorText = this.add.bitmapText(-681.2977625893114, 689.9724834243041, "lemon", "ARMOR\n");
+		const armorText = this.add.bitmapText(1140, 727, "lemon", "ARMOR\n");
 		armorText.text = "ARMOR\n";
 		armorText.fontSize = 72;
 
 		// MissileText
-		const missileText = this.add.bitmapText(-669, 819, "lemon", "MISSILE\n\n");
+		const missileText = this.add.bitmapText(575, 721, "lemon", "MISSILE\n\n");
 		missileText.text = "MISSILE\n\n";
 		missileText.fontSize = 72;
 
 		// MinesText
-		const minesText = this.add.bitmapText(-657, 961, "lemon", "MINES\n\n");
+		const minesText = this.add.bitmapText(872, 725, "lemon", "MINES\n\n");
 		minesText.text = "MINES\n\n";
 		minesText.fontSize = 72;
 
@@ -212,9 +206,42 @@ class ProgessionPhase extends Phaser.Scene {
 		var screenWidth = this.cameras.main.width;
 		var screenHeigth = this.cameras.main.height;
 
-	
-		
-				// Establecer la escala horizontal de la imagen para que ocupe todo el ancho de la pantalla
+
+		if(screenWidth>screenHeigth){
+
+			this.stripe.visible=false;
+			this.progressionLevelBg.visible = false;
+			this.lvText.visible=false;
+			this.lvNumber.visible=false;
+			this.holder.visible=false;
+			this.coinAmount.visible=false;
+			this.diamond.visible=false;
+			this.holder2.visible = false;
+			this.holder3.visible = false;
+			this.holder4.visible = false;
+			this.ship1.visible = false;
+			this.ship2.visible = false;
+			this.ship3.visible = false;
+			this.divider.visible = false;
+			this.upgrade.visible = false;
+			this.upgrade2.visible = false;
+			this.upgrade3.visible = false;
+			this.missileText.visible = false;
+			this.minesText.visible = false;
+			this.armorText.visible = false;
+
+			this.launchBtn.x = screenWidth/2;
+			this.launchBtn.y = screenHeigth/2;
+
+			this.lauchText.fontSize = 56*this.progressionLevelBg.scaleY;
+			this.lauchText.setOrigin(0.5,0.5);
+			this.lauchText.x = screenWidth/2;
+			this.lauchText.y = screenHeigth/2;
+
+			this.triangle.visible=false;
+
+		}else{
+		// Establecer la escala horizontal de la imagen para que ocupe todo el ancho de la pantalla
 		this.stripe.displayWidth = this.cameras.main.width;
 		this.stripe.scaleY = this.stripe.scaleX; // Mantiene la proporción de la imagen
 		this.engranaje.x = this.cameras.main.width - this.cameras.main.width/20;
@@ -253,7 +280,7 @@ class ProgessionPhase extends Phaser.Scene {
 		}else{
 			this.coinAmount.text = "---";
 		}
-		
+
 
 		this.diamond.x = this.holder.x-this.holder.displayWidth/4;
 		this.diamond.y = this.holder.y + this.holder.displayHeight/2;
@@ -365,6 +392,8 @@ class ProgessionPhase extends Phaser.Scene {
 		this.triangle.setOrigin(0.5,0.5);
 		this.triangle.displayWidth = this.launchBtn.displayWidth/6;
 		this.triangle.displayHeight = this.launchBtn.displayWidth/6;
+		}
+
 
 		this.bg1.displayWidth = screenWidth;
         this.bg1.displayHeight = screenHeigth;
@@ -384,7 +413,14 @@ class ProgessionPhase extends Phaser.Scene {
 			repeat: -1 // Repetir infinitamente
 		});
 
-		
+
+		const enterKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+
+		// Escucha el evento `onDown` de la tecla Enter
+		enterKey.on('down', () => {
+		  // Carga la escena Level.js
+		  this.scene.start('Level');
+		});
 
 
 	    this.launchBtn.setInteractive(); // Hacer el botón interactivo para poder hacer clic en él
@@ -392,11 +428,13 @@ class ProgessionPhase extends Phaser.Scene {
 		// Función que se ejecutará cuando se haga clic en el botón de lanzamiento
 		const launchButtonClicked = () => {
 			// Llevar al jugador a la escena "Level"
-		
+
 			this.scene.start('Level');
 			//this.scene.setLevel("Level");
 		//	this.scene.start('Level');
 		};
+
+		
 
 		// Asociar la función de clic con el evento de clic en el botón de lanzamiento
 		this.launchBtn.on('pointerdown', launchButtonClicked);
@@ -404,7 +442,7 @@ class ProgessionPhase extends Phaser.Scene {
 			this.game.canvas.style.cursor = 'pointer';
 			this.launchBtn.postFX.addShine(1, 0.5, 5,0.5,false);
 		});
-	
+
 		// Restaurar el cursor predeterminado cuando el mouse sale del botón de lanzamiento
 		this.launchBtn.on('pointerout', () => {
 			this.game.canvas.style.cursor = 'default';
@@ -412,7 +450,7 @@ class ProgessionPhase extends Phaser.Scene {
 		});
 
 		this.fadeInAndCheck();
-		enableFullscreen.call(this);
+	//	enableFullscreen.call(this);
 	}
 
 	fadeInAndCheck(){
@@ -439,39 +477,11 @@ class ProgessionPhase extends Phaser.Scene {
 
 		this.load.sceneFile("Level", 'src/scenes/Level.js');
 		this.scene.get("Level");
-		
+
 	}
 
 	/* END-USER-CODE */
 }
-
-
-// Dentro de tu escena de Phaser
-function enableFullscreen() {
-    const scale = this.scale;
-    const fullscreenElement = document.documentElement;
-
-    // Escucha el evento de clic para habilitar la pantalla completa
-    this.input.on('pointerup', () => {
-        if (scale.isFullscreen) {
-            scale.stopFullscreen();
-        } else {
-            scale.startFullscreen();
-        }
-    });
-
-    // Escucha el evento de cambio de pantalla completa de Phaser
-    scale.on('fullscreenchange', () => {
-        if (scale.isFullscreen) {
-            // La pantalla está en modo de pantalla completa
-            console.log('Pantalla completa habilitada');
-        } else {
-            // La pantalla ya no está en modo de pantalla completa
-            console.log('Pantalla completa deshabilitada');
-        }
-    });
-}
-
 
 /* END OF COMPILED CODE */
 

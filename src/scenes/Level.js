@@ -16,7 +16,6 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		this.lasersGroup = this.add.group();
 		// bg1
 		const bg1 = this.add.image(0, 0, "bg1");
 		bg1.setOrigin(0, 0);
@@ -62,6 +61,10 @@ class Level extends Phaser.Scene {
 		timerText.text = "0000";
 		timerText.fontSize = 20;
 
+		// shieldOne
+		const shieldOne = new ShieldOne(this, 331, 260);
+		this.add.existing(shieldOne);
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -100,8 +103,21 @@ class Level extends Phaser.Scene {
 
 	create() {
 
+		this.lasersGroup = this.add.group();
 		this.timerText = this.add.text(this.formatTime(0));
-		this.physics.world.setBounds(0, 0, 640, 960);
+
+		this.gameWidth = this.sys.game.config.width;
+        this.gameHeight = this.sys.game.config.height;
+		if(this.gameWidth>this.gameHeight){
+			this.LargoJuego = 960;
+			this.AltoJuego = 640;
+		}else{
+			this.LargoJuego = 640;
+			this.AltoJuego = 960;
+		}
+		
+
+		this.physics.world.setBounds(0, 0, this.LargoJuego, this.AltoJuego);
 		this.editorCreate();
 		this.initCamera();
 		this.configurarColisiones();
@@ -110,31 +126,33 @@ class Level extends Phaser.Scene {
 		this.addTimer();
 
 
-		this.maximunEnemies = 60;
+		this.maximunEnemies = 120;
 
 		this.SpwawerTimer = this.time.addEvent({
-            delay: 500, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
+            delay: 250, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
             callback: this.enemySpawner,
             callbackScope: this,
             loop: true // Para que el evento se repita indefinidamente
         });
 
-		this.gameWidth = this.sys.game.config.width;
-        this.gameHeight = this.sys.game.config.height;
-		this.bg1.displayWidth = 640;
-        this.bg1.displayHeight = 960;
-		this.bg2.displayWidth = 640;
-        this.bg2.displayHeight = 960;
-		this.playerShip.x=640/2;
-		this.playerShip.y=960/2;
+
+
+		this.bg1.displayWidth = this.LargoJuego;
+        this.bg1.displayHeight = this.AltoJuego;
+		this.bg2.displayWidth = this.LargoJuego;
+        this.bg2.displayHeight = this.AltoJuego;
+		this.playerShip.x=this.LargoJuego/2;
+		this.playerShip.y=this.AltoJuego/2;
 		this.playerShip.angle=-90;
 
+		this.gameBorder.displayWidth=this.LargoJuego;
+		this.gameBorder.displayHeight=this.AltoJuego;
 	// LevelBar
 
 
 		const borderParticles =  this.add.particles(0, 0, 'gameBorder', {
-			x: 320,
-			y: 480,
+			x: this.LargoJuego/2,
+			y: this.AltoJuego/2,
 			speed: { min: 0, max: 0 },
 			lifespan: { min: 30, max: 3000 },
 			blendMode: 'ADD',
@@ -146,9 +164,6 @@ class Level extends Phaser.Scene {
 		});
 
 		//this.bg2.postFX.addShine(0.5, 1, 5,0,false);
-
-
-
 
 		this.starsGroup = this.add.group();
 		for (let i = 0; i < 100; i++) {
@@ -172,10 +187,13 @@ class Level extends Phaser.Scene {
             }
         });
 
+
 	
-
-
+		
 	}
+
+	
+	
 
 addTimer(){
 	 // Crear el evento de tiempo con la duración total del temporizador
@@ -367,8 +385,8 @@ LevelSystem(){
 
 
 		if(this.enemyGroup.countActive()<this.maximunEnemies){
-		const screenWidth = 640;
-        const screenHeight = 960;
+		const screenWidth = this.LargoJuego;
+        const screenHeight = this.AltoJuego;
 
         // Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
         const spawnAreaWidth = screenWidth * 0.8; // Por ejemplo, el 80% del ancho de la pantalla
@@ -424,13 +442,31 @@ LevelSystem(){
 //	this.physics.add.collider(this.balas, this.enemyGroup, this.colisionBalaEnemigo, null, this);
 	}
 
-	colisionplayerLevelParticle(player,particle){
-		this.LevelSystem();
-		particle.body.enable=false;
-		particle.active = false;
-		particle.visible=false;
-		player.addParticle();
+	colisionplayerLevelParticle(player, particle) {
+		// Realiza acciones solo si la partícula está activa y visible
+		if (particle.active && particle.visible) {
+			// Realiza la lógica de tu LevelSystem aquí (asegúrate de que funcione correctamente)
+			this.LevelSystem();
+	
+			// Deshabilita la física y oculta la partícula
+			//particle.body.enable = false;
+			particle.setActive(false).setVisible(false);
+	
+			// Cancela y limpia todos los temporizadores y tweens asociados a la partícula
+			if (particle.Delayed5000) particle.Delayed5000.remove();
+			if (particle.Delayed3000) particle.Delayed3000.remove();
+			if (particle.Delayed1000) particle.Delayed1000.remove();
+			this.tweens.killTweensOf(particle);
+	
+			// Destruye la partícula
+			particle.destroy();
+	
+			// Realiza acciones adicionales después de destruir la partícula (por ejemplo, incrementar el contador de partículas del jugador)
+			player.addParticle();
+		}
 	}
+	
+	
 	colisionBalaEnemigo(bala, enemigo) {
 		// Emitir partículas en el lugar de la colisión
 
@@ -456,8 +492,8 @@ LevelSystem(){
 		cam.setRoundPixels(false);
 		cam.disableCull = false; 
 
-		
-		
+
+
 		cam.startFollow(this.playerShip, true, 0, 0);
 		cam.setLerp(1);
 		this.fadeInAndCheck();
@@ -484,7 +520,7 @@ LevelSystem(){
 
 	}
 
-	
+
 
 
 	/* END-USER-CODE */

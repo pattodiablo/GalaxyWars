@@ -7,7 +7,7 @@ var altoJuego = window.innerHeight;
 
 if(largoJuego>altoJuego){
 	if(largoJuego>=1920){
-			largoJuego=1080;
+			largoJuego=1920;
 		}
 	if(altoJuego>=1080){
 			altoJuego=1080;

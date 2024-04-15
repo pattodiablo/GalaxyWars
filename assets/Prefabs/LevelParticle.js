@@ -21,11 +21,20 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 
 	create(){
 		this.scene.LevelParticleGroup.add(this);
-		this.scene.physics.world.enable(this);
-		this.setTint(0xffffff);
-		this.scene.time.delayedCall(5000, () => {
-			this.destroy();
+
+		
+		
+	}
+
+	particlePlaced(){
+
+
+		this.Delayed5000 = this.scene.time.delayedCall(5000, () => {
+			if (this && this.scene) {
+				this.destroy(); // Destruye la partícula solo si aún existe y está vinculada a una escena
+			}
 		});
+		
 
 		
 
@@ -35,7 +44,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
         this.body.setAcceleration(-this.body.velocity.x, -this.body.velocity.y);
 
 
-		this.scene.time.delayedCall(3000, () => {
+		this.Delayed3000 = this.scene.time.delayedCall(3000, () => {
 			this.tween = this.scene.tweens.add({
 				targets: this,
 				alpha: 0, // Cambiar la opacidad a completamente transparente
@@ -48,13 +57,14 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 		});
 		
         // Detener el objeto después de un tiempo determinado (por ejemplo, 1 segundo)
-        this.scene.time.delayedCall(1000, () => {
-            // Detener el movimiento del objeto
-			this.scene.tweens.killTweensOf(this);
-            this.body.stop();
-        });
-	}
+		this.Delayed1000 = this.scene.time.delayedCall(1000, () => {
+			if (this && this.scene) {
+				this.scene.tweens.killTweensOf(this);
+				this.body.stop();
+			}
+		});
 
+	}
 	update(){
 
 		if (!this.scene || !this.body) {
@@ -62,7 +72,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 		}
 
 
-		if(this.active && this.scene.playerShip.body.enable){
+		if (this.active && this.scene.playerShip && this.scene.playerShip.body.enable) {
 
 			const distanceToPlayer = Phaser.Math.Distance.Between(this.x, this.y, this.scene.playerShip.x, this.scene.playerShip.y);
 			

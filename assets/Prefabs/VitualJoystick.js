@@ -49,6 +49,24 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.canGo=0;
 		this.joystickBg.setScrollFactor(0,0);
 		this.joystickBtn.setScrollFactor(0,0);
+
+
+
+		this.gameWidth = this.scene.sys.game.config.width;
+        this.gameHeight = this.scene.sys.game.config.height;
+
+
+		if (this.gameWidth < this.gameHeight) {
+			// It's mobile!
+			console.log("Playing on mobile");
+			// Implement mobile-specific logic here
+		  } else {
+			// It's likely PC
+			this.joystickBg.alpha = 0;
+			this.joystickBtn.alpha = 0;
+			// Implement PC-specific logic here
+		  }
+
 	}
 
 	mouseClickDown(pointer){

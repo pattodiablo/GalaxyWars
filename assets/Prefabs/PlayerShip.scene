@@ -92,7 +92,7 @@
             "name": "Weapon1Level",
             "label": "Weapon1Level",
             "tooltip": "",
-            "defValue": 2,
+            "defValue": 3,
             "customDefinition": false,
             "type": {
                 "id": "number"

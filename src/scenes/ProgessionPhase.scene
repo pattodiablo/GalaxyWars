@@ -7,8 +7,8 @@
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "ProgessionPhase",
-        "borderWidth": 640,
-        "borderHeight": 960
+        "borderWidth": 1920,
+        "borderHeight": 1080
     },
     "displayList": [
         {
@@ -75,8 +75,8 @@
             "texture": {
                 "key": "engranaje"
             },
-            "x": 935,
-            "y": 48
+            "x": 1852,
+            "y": 77
         },
         {
             "type": "BitmapText",
@@ -97,16 +97,16 @@
             "texture": {
                 "key": "holder"
             },
-            "x": 329,
-            "y": 231
+            "x": 992,
+            "y": 256
         },
         {
             "type": "BitmapText",
             "id": "84fdf7c7-9215-4a70-ba43-80c083ef09be",
             "label": "CoinAmount",
             "scope": "PUBLIC",
-            "x": 256,
-            "y": 187,
+            "x": 911,
+            "y": 203,
             "text": "300\n",
             "font": "lemon",
             "fontSize": 72
@@ -119,8 +119,8 @@
             "texture": {
                 "key": "diamond"
             },
-            "x": 655,
-            "y": 254
+            "x": 880,
+            "y": 250
         },
         {
             "type": "Image",
@@ -130,8 +130,8 @@
             "texture": {
                 "key": "Holder2"
             },
-            "x": 668,
-            "y": 389
+            "x": 746,
+            "y": 414
         },
         {
             "type": "Image",
@@ -141,8 +141,8 @@
             "texture": {
                 "key": "Holder2"
             },
-            "x": -197.1842100783811,
-            "y": 170.9077810788872
+            "x": 978,
+            "y": 412
         },
         {
             "type": "Image",
@@ -152,8 +152,8 @@
             "texture": {
                 "key": "Holder2"
             },
-            "x": -260.58676616149575,
-            "y": 186.21184634032866
+            "x": 1238,
+            "y": 415
         },
         {
             "type": "Image",
@@ -163,8 +163,8 @@
             "texture": {
                 "key": "divider"
             },
-            "x": 292,
-            "y": 487
+            "x": 976,
+            "y": 567
         },
         {
             "type": "Image",
@@ -174,8 +174,8 @@
             "texture": {
                 "key": "upgrade"
             },
-            "x": -186,
-            "y": 356
+            "x": 705,
+            "y": 623
         },
         {
             "type": "Image",
@@ -185,8 +185,8 @@
             "texture": {
                 "key": "upgrade"
             },
-            "x": -170.94866963019572,
-            "y": 347.9976791041384
+            "x": 976,
+            "y": 625
         },
         {
             "type": "Image",
@@ -196,8 +196,8 @@
             "texture": {
                 "key": "upgrade"
             },
-            "x": -94.42834332298843,
-            "y": 341.4387939920921
+            "x": 1229,
+            "y": 643
         },
         {
             "type": "Image",
@@ -207,16 +207,16 @@
             "texture": {
                 "key": "holder"
             },
-            "x": -181.88014481693963,
-            "y": 452.9398408968799
+            "x": 985,
+            "y": 906
         },
         {
             "type": "BitmapText",
             "id": "2e78e6cc-0d9a-4ee8-8a1c-86501dccbd24",
             "label": "LauchText",
             "scope": "PUBLIC",
-            "x": 93.59302988900669,
-            "y": 555.6957076522725,
+            "x": 835,
+            "y": 863,
             "text": "LAUNCH",
             "font": "lemon",
             "fontSize": 72
@@ -229,8 +229,8 @@
             "texture": {
                 "key": "Triangle"
             },
-            "x": 822,
-            "y": 460
+            "x": 1072,
+            "y": 910
         },
         {
             "type": "Image",
@@ -240,8 +240,8 @@
             "texture": {
                 "key": "ship1"
             },
-            "x": 1089,
-            "y": 348
+            "x": 978,
+            "y": 418
         },
         {
             "type": "Image",
@@ -251,8 +251,8 @@
             "texture": {
                 "key": "ship2"
             },
-            "x": 1293,
-            "y": 319
+            "x": 735,
+            "y": 420
         },
         {
             "type": "Image",
@@ -262,16 +262,16 @@
             "texture": {
                 "key": "ship3"
             },
-            "x": 1259,
-            "y": 429
+            "x": 1239,
+            "y": 414
         },
         {
             "type": "BitmapText",
             "id": "c61dc272-83a8-4c69-811f-7dbe816f74bd",
             "label": "ArmorText",
             "scope": "PUBLIC",
-            "x": -681.2977625893114,
-            "y": 689.9724834243041,
+            "x": 1140,
+            "y": 727,
             "text": "ARMOR\n",
             "font": "lemon",
             "fontSize": 72
@@ -281,8 +281,8 @@
             "id": "160ef9ec-54fc-4201-80b4-70a34f508826",
             "label": "MissileText",
             "scope": "PUBLIC",
-            "x": -669,
-            "y": 819,
+            "x": 575,
+            "y": 721,
             "text": "MISSILE\n\n",
             "font": "lemon",
             "fontSize": 72
@@ -292,8 +292,8 @@
             "id": "98265d7e-ab83-4615-b236-8daf5ed898d4",
             "label": "MinesText",
             "scope": "PUBLIC",
-            "x": -657,
-            "y": 961,
+            "x": 872,
+            "y": 725,
             "text": "MINES\n\n",
             "font": "lemon",
             "fontSize": 72

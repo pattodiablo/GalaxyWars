@@ -29,13 +29,34 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 		this.scene.physics.world.enable(this);
 		this.scene.enemyGroup.add(this);
 		this.animacionDeInicio();
-        this.animacionIdle();
+      //  this.animacionIdle();
       //  this.glowSettings(0xffffff,1,0.3, false, 1, 100)
 		this.body.enable=false;
+		this.levelParticlesPool = [];
 
-	
+		for (let i = 0; i < 3; i++) {
+			const levelParticle = new LevelParticle(this.scene, 0, 0); // Crear nueva partícula
+			levelParticle.setActive(false).setVisible(false); // Desactivar y ocultar la partícula
+			this.levelParticlesPool.push(levelParticle); // Agregar la partícula al pool
+		}
+
 		
 	}
+
+	   // Función para obtener una partícula del pool o crear una nueva si no hay disponibles
+	   getLevelParticle() {
+        let particle = this.levelParticlesPool.pop(); // Obtener la última partícula del pool
+        if (!particle) {
+            particle = new LevelParticle(this.scene, 0, 0); // Crear una nueva partícula si no hay disponibles en el pool
+            this.scene.add.existing(particle);
+        }
+        return particle;
+    }
+
+	recycleLevelParticle(particle) {
+        this.levelParticlesPool.push(particle);
+        particle.setActive(false).setVisible(false); // Desactivar y ocultar la partícula
+    }
 
     glowSettings(color,n,p,b,s,tiempo){
         this.fx = this.preFX.addGlow(color,n,p,b,s,tiempo);
@@ -86,7 +107,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 					duration: 250, // Duración de la animación en milisegundos
 					yoyo: true, // Hacer que la animación se revierta al final
 					ease: 'Linear', // Función de interpolación (puede ajustarse según el efecto deseado)
-					repeat: -1
+					repeat: 2
 				});
 			});
 			
@@ -165,10 +186,13 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 			const numberOfParticles = Phaser.Math.Between(1, 3);
 		
 			// Crear las partículas aleatorias
-			for (let i = 0; i < numberOfParticles; i++) {
-				const levelParticle = new LevelParticle(this.scene, this.x, this.y);
-				this.scene.add.existing(levelParticle);
-			}
+		     for (let i = 0; i < numberOfParticles; i++) {
+            const levelParticle = this.getLevelParticle(); // Obtener una partícula del pool
+			this.scene.add.existing(levelParticle);
+			levelParticle.particlePlaced();
+            levelParticle.setPosition(this.x, this.y); // Establecer la posición de la partícula
+            levelParticle.setActive(true).setVisible(true); // Activar y mostrar la partícula
+        }
 		
 			// Destruir el enemigo
 			this.destroy();

@@ -29,7 +29,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	reaparecerTimer = 2000;
 	/** @type {number} */
-	Weapon1Level = 2;
+	Weapon1Level = 3;
 	/** @type {number} */
 	ParticlesCollected = 0;
 	/** @type {number} */
@@ -303,8 +303,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 		bullet.setActive(false);
-		bullet.setVisible(false);
-		bullet.body.enable=true;
+	//	bullet.setVisible(false);
+	
 		this.scene.bulletGroup.killAndHide(bullet);
 
 
@@ -315,18 +315,35 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 			speed: { min: -500, max: 500 },
 			angle: { min: 0, max: 360 },
 			lifespan: { min: 30, max: 250 },
-			blendMode: 'ADD',
+	
 			tint: 0xFFFFFF, // Color de las chispas (blanco)
 			scale: { start: 0.5, end: 0 },
 			quantity: 1,
 			maxParticles: 2,
-			frequency: 5
+			frequency: 10
 		});
 
 		// Detener el sistema de partículas después de un tiempo y luego destruirlo
-		this.scene.time.delayedCall(1000, function() {
+		this.scene.time.delayedCall(50, function() {
 			explosionParticles.destroy();
 		});
+
+		bullet.body.enable=true;
+	}
+	}
+
+	returnBulletFromOutsideBounds(bullet) {
+
+		if(this.active){
+
+
+		bullet.setActive(false);
+	//	bullet.setVisible(false);
+	
+		this.scene.bulletGroup.killAndHide(bullet);
+
+
+		bullet.body.enable=true;
 	}
 	}
 
@@ -396,23 +413,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		const enemies = this.scene.enemyGroup.getChildren();
 
-    // Recorrer todos los enemigos
-    for (const enemy of enemies) {
-        // Calcular la distancia entre el PlayerShip y el enemigo actual
-        const distance = Phaser.Math.Distance.Between(this.x, this.y, enemy.x, enemy.y);
-
-        // Si el enemigo está a una distancia menor que la distancia de disparo, comienza a disparar
-
-        if (distance < this.shootingRange) {
-            // Lógica para comenzar a disparar
-         //  this.canShoot=true;
-            // No necesitas continuar verificando la distancia a otros enemigos, así que sal del bucle
-
-        }else{
-		//	this.canShoot=false;
-
-		}
-    }
+ 
 
 
 	}

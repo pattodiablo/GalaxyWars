@@ -118,6 +118,17 @@
             "text": "0000",
             "font": "lemon",
             "fontSize": 20
+        },
+        {
+            "prefabId": "3315ae87-ccf1-4486-9d59-c8768cbd1ce3",
+            "id": "448c1d3b-c8c8-418c-a587-11729ab01c05",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "shieldOne",
+            "x": 331,
+            "y": 260
         }
     ],
     "plainObjects": [],
