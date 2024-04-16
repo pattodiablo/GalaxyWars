@@ -37,7 +37,9 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 		
 
 		
+		if(this !== null){
 
+		
 		this.body.setVelocity(Phaser.Math.Between(-50, 50), Phaser.Math.Between(-50, 50));
 
         // Establecer una aceleración negativa para que se detenga gradualmente
@@ -63,7 +65,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 				this.body.stop();
 			}
 		});
-
+	}
 	}
 	update(){
 

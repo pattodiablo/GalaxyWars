@@ -183,7 +183,7 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 		});
 
 			// Generar un número aleatorio entre 3 y 4 para determinar cuántas partículas crear
-			const numberOfParticles = Phaser.Math.Between(1, 3);
+			const numberOfParticles = Phaser.Math.Between(0, 2);
 		
 			// Crear las partículas aleatorias
 		     for (let i = 0; i < numberOfParticles; i++) {

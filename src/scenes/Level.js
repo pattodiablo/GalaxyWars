@@ -498,6 +498,8 @@ LevelSystem(){
 		cam.setLerp(1);
 		this.fadeInAndCheck();
 
+	
+
 	}
 
 	fadeInAndCheck(){

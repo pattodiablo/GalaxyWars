@@ -14,10 +14,16 @@ class ShieldOne extends Phaser.GameObjects.Image {
 		/* END-USER-CTR-CODE */
 	}
 
+	/** @type {number} */
+	OriginalDamage = 10;
+
 	/* START-USER-CODE */
 
 	create(){
-this.setScale(0.5,0.5);
+
+		this.scene.physics.world.enable(this);
+		this.body.enable=true;
+		this.setScale(0.5,0.5);
 		this.rotateTween = this.scene.tweens.add({
             targets: this,
             angle: -360,          // Rotación completa (360 grados)
@@ -25,8 +31,17 @@ this.setScale(0.5,0.5);
             repeat: -1,          // Repetir indefinidamente
             ease: 'Linear',      // Función de easing lineal para una rotación constante
         });
-    
+
+		this.scene.physics.add.collider(this.scene.enemyGroup, this, this.enmyColliding);
+
+
 	}
+
+	enmyColliding(shield,enemy){
+		console.log("reducing live");
+		enemy.reducirVida(shield.OriginalDamage);
+	}
+
 
 	update(){
 

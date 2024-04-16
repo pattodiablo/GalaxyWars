@@ -23,7 +23,7 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 		create(){
 			this.laserDamage = 30;	
 			const laserInterval = 500; // Por ejemplo, un láser cada 2 segundo
-
+			this.smoothFactor = 0.5; 
 
 			if(this.CompanionType==0){
 
@@ -71,22 +71,22 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 		}
 		update() {
 			// Velocidad de seguimiento (ajusta según sea necesario)
-
-
-			// Calcular la nueva posición del objeto seguidor
-			if(this.CompanionType!==2){
-
+			const smoothFactor = 0.1; // Ajusta el factor de suavizado
 		
-			var targetX = this.scene.playerShip.x + this.offsetX;
-			var targetY = this.scene.playerShip.y + this.offsetY;
-			// Establecer la posición del objeto seguidor
-			this.x = targetX;
-			this.y = targetY;
-
+			if (this.CompanionType !== 2) {
+				// Calcular la posición objetivo suavizada
+				const targetX = this.x + (this.scene.playerShip.x + this.offsetX - this.x) * smoothFactor;
+				const targetY = this.y + (this.scene.playerShip.y + this.offsetY - this.y) * smoothFactor;
+		
+				// Interpolar la posición actual hacia la posición objetivo
+				this.x += targetX - this.x;
+				this.y += targetY - this.y;
 			}
-			// Establece la rotación del objeto igual a la rotación de playerShip
-
+		
+			// Establecer la rotación del objeto igual a la rotación de playerShip
+			this.rotation = this.scene.playerShip.rotation;
 		}
+		
 
 		fireLaser() {
 			let closestEnemy = null;

@@ -39,8 +39,8 @@ window.addEventListener('load', function () {
 		render: {
 			pixelArt: false,
 			antialias: false,
-			roundPixels:true,
-			resolution: window.devicePixelRatio/2, // Usar la resolución del dispositivo
+			roundPixels:false,
+		//	resolution: window.devicePixelRatio/2, // Usar la resolución del dispositivo
 			clearBeforeRender:false,
 			autoResize:true
 		},
