@@ -42,7 +42,7 @@ window.addEventListener('load', function () {
 			roundPixels:false,
 		//	resolution: window.devicePixelRatio/2, // Usar la resolución del dispositivo
 			clearBeforeRender:false,
-			autoResize:true
+			autoResize:false
 		},
 		input: {
 			activePointers: 1

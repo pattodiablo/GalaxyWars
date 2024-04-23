@@ -109,8 +109,8 @@ class Level extends Phaser.Scene {
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
 		if(this.gameWidth>this.gameHeight){
-			this.LargoJuego = 960;
-			this.AltoJuego = 640;
+			this.LargoJuego = 1920;
+			this.AltoJuego = 1080;
 		}else{
 			this.LargoJuego = 640;
 			this.AltoJuego = 960;
