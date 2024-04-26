@@ -24,46 +24,49 @@ class ShipCompanion extends Phaser.GameObjects.Image {
 			this.laserDamage = 30;	
 			const laserInterval = 500; // Por ejemplo, un láser cada 2 segundo
 			this.smoothFactor = 0.5; 
-
-			if(this.CompanionType==0){
-
-				this.laserTimer = this.scene.time.addEvent({
-					delay: laserInterval,
-					callback: this.fireLaser,
-					callbackScope: this,
-					loop: true // Para que el temporizador se repita infinitamente
-				});
-
-		
-
-			}
-
-
-			if(this.CompanionType==1){
-
-				this.laserTimer = this.scene.time.addEvent({
-					delay: 300,
-					callback: this.fireLaser1,
-					callbackScope: this,
-					loop: true // Para que el temporizador se repita infinitamente
-				});
-
-		
-
-			}
-
-			if(this.CompanionType==2){
 			
-				this.laserTimer = this.scene.time.addEvent({
-					delay: 300,
-					callback: this.fireLaser2,
-					callbackScope: this,
-					loop: true // Para que el temporizador se repita infinitamente
-				});
+			if(this.scene.playerShip.canShoot){
+				if(this.CompanionType==0){
 
-	
+					this.laserTimer = this.scene.time.addEvent({
+						delay: laserInterval,
+						callback: this.fireLaser,
+						callbackScope: this,
+						loop: true // Para que el temporizador se repita infinitamente
+					});
 
-			}
+
+
+				}
+
+
+				if(this.CompanionType==1){
+
+					this.laserTimer = this.scene.time.addEvent({
+						delay: 300,
+						callback: this.fireLaser1,
+						callbackScope: this,
+						loop: true // Para que el temporizador se repita infinitamente
+					});
+
+
+
+				}
+
+				if(this.CompanionType==2){
+				
+					this.laserTimer = this.scene.time.addEvent({
+						delay: 300,
+						callback: this.fireLaser2,
+						callbackScope: this,
+						loop: true // Para que el temporizador se repita infinitamente
+					});
+
+
+
+				}
+}
+			
 
 			this.setDepth(1);
 

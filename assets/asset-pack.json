@@ -82,6 +82,20 @@
                 "key": "engranaje"
             },
             {
+                "url": [
+                    "assets/audio/Explosion16.mp3"
+                ],
+                "type": "audio",
+                "key": "Explosion16"
+            },
+            {
+                "url": [
+                    "assets/audio/Explosion30.wav"
+                ],
+                "type": "audio",
+                "key": "Explosion30"
+            },
+            {
                 "textureURL": "assets/Fonts/font.png",
                 "fontDataURL": "assets/Fonts/font.xml",
                 "type": "bitmapFont",
@@ -91,6 +105,20 @@
                 "url": "assets/gameBorder.png",
                 "type": "image",
                 "key": "gameBorder"
+            },
+            {
+                "url": [
+                    "assets/audio/Hit_Hurt46.wav"
+                ],
+                "type": "audio",
+                "key": "Hit_Hurt46"
+            },
+            {
+                "url": [
+                    "assets/audio/Hit_Hurt52.wav"
+                ],
+                "type": "audio",
+                "key": "Hit_Hurt52"
             },
             {
                 "url": "assets/images/svg/holder.svg",
@@ -162,6 +190,13 @@
                 },
                 "type": "svg",
                 "key": "missilesIcon"
+            },
+            {
+                "url": [
+                    "assets/audio/musicBG2.wav"
+                ],
+                "type": "audio",
+                "key": "musicBG2"
             },
             {
                 "url": "assets/images/particleShip.png",

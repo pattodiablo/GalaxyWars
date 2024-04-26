@@ -24,6 +24,8 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 
 	/* START-USER-CODE */
 
+	
+
 	create(){
 
 		this.scene.physics.world.enable(this);
@@ -162,7 +164,9 @@ class EnemyBase extends Phaser.GameObjects.Sprite {
 		
 
 		if (this.enemyLife <= 0) {
-			
+			//this.scene.sound.play('Explosion16');
+			this.scene.sound.play('Hit_Hurt46');
+
 			const explosionParticles =  this.scene.add.particles(0, 0, 'particleShip', {
 
 			x: this.x,

@@ -15,7 +15,7 @@ class Level extends Phaser.Scene {
 
 	/** @returns {void} */
 	editorCreate() {
-
+		this.sound.play('musicBG2');
 		// bg1
 		const bg1 = this.add.image(0, 0, "bg1");
 		bg1.setOrigin(0, 0);

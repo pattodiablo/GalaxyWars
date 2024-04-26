@@ -8,8 +8,6 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x ?? 0, y ?? 0, texture || "ShipV1", frame);
 
-		this.setInteractive(new Phaser.Geom.Polygon("5.143580404407441 18.762727587488307 -0.2619543898581753 8.852580464668009 4.918349787979707 0.9695088896973161 14.152805061516801 1.4199701225527832 45.9103219778273 25.519646080320328 62.126926360624154 31.600872723869145 62.126926360624154 37.006407518134765 46.586013827110506 41.73625046311718 13.927574445089068 66.96207950302339 4.693119171551974 66.96207950302339 -0.2619543898581753 59.304238544480434 5.3688110208351745 50.06978327094333 1.5398905415636968 47.817477106666 4.46788855512424 43.31286477811132 12.801421362950396 34.52887073742969 2.6660436237023646 21.690725601048847"), Phaser.Geom.Polygon.Contains);
-
 		/* START-USER-CTR-CODE */
 		this.createEvent =	this.scene.events.once(Phaser.Scenes.Events.UPDATE, this.create, this);
 		this.scene.events.on("update", () => this.updatePlayer())
@@ -42,6 +40,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	PlayerLevel = 1;
 	/** @type {number} */
 	CompanionNumber = 2;
+	/** @type {boolean} */
+	CanShot = true;
 
 	/* START-USER-CODE */
 
@@ -50,7 +50,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		 this.cursors = this.scene.input.keyboard.createCursorKeys();
 
  		 this.scene.physics.world.enable(this);
-		 this.canShoot=true;
+		 this.canShoot=this.CanShot;
 		 this.body.setDrag(1200);
 		 this.body.setAngularDrag(600);
 		 this.body.setMaxVelocity(this.speed);
@@ -236,7 +236,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	}
 
 	createBullet(){
-
+		this.scene.sound.play('Explosion30');
 
 		if(this.canShoot){
 
@@ -304,7 +304,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		bullet.setActive(false);
 	//	bullet.setVisible(false);
-	
+
 		this.scene.bulletGroup.killAndHide(bullet);
 
 
@@ -315,7 +315,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 			speed: { min: -500, max: 500 },
 			angle: { min: 0, max: 360 },
 			lifespan: { min: 30, max: 250 },
-	
+
 			tint: 0xFFFFFF, // Color de las chispas (blanco)
 			scale: { start: 0.5, end: 0 },
 			quantity: 1,
@@ -339,7 +339,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		bullet.setActive(false);
 	//	bullet.setVisible(false);
-	
+
 		this.scene.bulletGroup.killAndHide(bullet);
 
 
@@ -413,7 +413,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		const enemies = this.scene.enemyGroup.getChildren();
 
- 
+
 
 
 	}
