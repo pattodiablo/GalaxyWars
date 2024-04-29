@@ -15,7 +15,7 @@ class Level extends Phaser.Scene {
 
 	/** @returns {void} */
 	editorCreate() {
-		this.sound.play('musicBG2');
+
 		// bg1
 		const bg1 = this.add.image(0, 0, "bg1");
 		bg1.setOrigin(0, 0);
@@ -61,9 +61,11 @@ class Level extends Phaser.Scene {
 		timerText.text = "0000";
 		timerText.fontSize = 20;
 
-		// shieldOne
-		const shieldOne = new ShieldOne(this, 331, 260);
-		this.add.existing(shieldOne);
+		// waveNumber
+		const waveNumber = this.add.bitmapText(-101, -34, "lemon", "001\n");
+		waveNumber.text = "001\n";
+		waveNumber.fontSize = 40;
+		waveNumber.align = 1;
 
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
@@ -76,6 +78,7 @@ class Level extends Phaser.Scene {
 		this.levelName = levelName;
 		this.userLevel = userLevel;
 		this.timerText = timerText;
+		this.waveNumber = waveNumber;
 
 		this.events.emit("scene-awake");
 	}
@@ -96,15 +99,29 @@ class Level extends Phaser.Scene {
 	userLevel;
 	/** @type {Phaser.GameObjects.BitmapText} */
 	timerText;
+	/** @type {Phaser.GameObjects.BitmapText} */
+	waveNumber;
 
 	/* START-USER-CODE */
 
 	// Write more your code here
 
+
+	beginToplay(){
+		this.SpwawerTimer = this.time.addEvent({
+            delay: 250, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
+            callback: this.enemySpawner,
+            callbackScope: this,
+            loop: true // Para que el evento se repita indefinidamente
+        });
+		this.waveNumber.visible=false;
+		this.playerShip.appearShip();
+		this.playerShip.canShoot = true;
+	}
+
 	create() {
 
-		this.lasersGroup = this.add.group();
-		this.timerText = this.add.text(this.formatTime(0));
+		this.editorCreate();
 
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
@@ -115,25 +132,43 @@ class Level extends Phaser.Scene {
 			this.LargoJuego = 640;
 			this.AltoJuego = 960;
 		}
-		
+
+		this.game.currentWave++;
+		this.waveNumber.text = "WAVE " + this.game.currentWave;
+		this.canPlay =  false;
+		this.maximunEnemies = 120;
+
+
+		this.initCamera();
+
+
+		this.playerShip.canShoot = false;
+
+		this.beginToplay = this.time.addEvent({
+            delay: 4000, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
+            callback: this.beginToplay,
+            callbackScope: this,
+            loop: false // Para que el evento se repita indefinidamente
+        });
+
+
+
+		this.lasersGroup = this.add.group();
+		this.timerText = this.add.text(this.formatTime(0));
+
+
 
 		this.physics.world.setBounds(0, 0, this.LargoJuego, this.AltoJuego);
-		this.editorCreate();
-		this.initCamera();
-		this.configurarColisiones();
 
+		//this.initCamera();
+		this.configurarColisiones();
 		this.createLevelBar();
 		this.addTimer();
 
 
-		this.maximunEnemies = 120;
 
-		this.SpwawerTimer = this.time.addEvent({
-            delay: 250, // Intervalo de tiempo en milisegundos (por ejemplo, cada 3 segundos)
-            callback: this.enemySpawner,
-            callbackScope: this,
-            loop: true // Para que el evento se repita indefinidamente
-        });
+
+
 
 
 
@@ -147,6 +182,14 @@ class Level extends Phaser.Scene {
 
 		this.gameBorder.displayWidth=this.LargoJuego;
 		this.gameBorder.displayHeight=this.AltoJuego;
+
+		this.waveNumber.x = this.LargoJuego/2-this.waveNumber.width/2
+		this.waveNumber.y = this.AltoJuego/2
+
+
+
+
+
 	// LevelBar
 
 
@@ -188,12 +231,12 @@ class Level extends Phaser.Scene {
         });
 
 
-	
-		
+
+
 	}
 
-	
-	
+
+
 
 addTimer(){
 	 // Crear el evento de tiempo con la duración total del temporizador
@@ -447,26 +490,26 @@ LevelSystem(){
 		if (particle.active && particle.visible) {
 			// Realiza la lógica de tu LevelSystem aquí (asegúrate de que funcione correctamente)
 			this.LevelSystem();
-	
+
 			// Deshabilita la física y oculta la partícula
 			//particle.body.enable = false;
 			particle.setActive(false).setVisible(false);
-	
+
 			// Cancela y limpia todos los temporizadores y tweens asociados a la partícula
 			if (particle.Delayed5000) particle.Delayed5000.remove();
 			if (particle.Delayed3000) particle.Delayed3000.remove();
 			if (particle.Delayed1000) particle.Delayed1000.remove();
 			this.tweens.killTweensOf(particle);
-	
+
 			// Destruye la partícula
 			particle.destroy();
-	
+
 			// Realiza acciones adicionales después de destruir la partícula (por ejemplo, incrementar el contador de partículas del jugador)
 			player.addParticle();
 		}
 	}
-	
-	
+
+
 	colisionBalaEnemigo(bala, enemigo) {
 		// Emitir partículas en el lugar de la colisión
 
@@ -498,7 +541,7 @@ LevelSystem(){
 		cam.setLerp(1);
 		this.fadeInAndCheck();
 
-	
+
 
 	}
 

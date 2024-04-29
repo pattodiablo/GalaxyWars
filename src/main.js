@@ -63,6 +63,7 @@ window.addEventListener('load', function () {
 		}
 	});
 
+	game.currentWave = 0;
 	game.scene.add("Preload", Preload);
 	game.scene.add("ProgessionPhase", ProgessionPhase);
 

@@ -120,15 +120,16 @@
             "fontSize": 20
         },
         {
-            "prefabId": "3315ae87-ccf1-4486-9d59-c8768cbd1ce3",
-            "id": "448c1d3b-c8c8-418c-a587-11729ab01c05",
-            "unlock": [
-                "x",
-                "y"
-            ],
-            "label": "shieldOne",
-            "x": 331,
-            "y": 260
+            "type": "BitmapText",
+            "id": "320e4879-c2f3-483a-aa02-b1782b6d8902",
+            "label": "waveNumber",
+            "scope": "PUBLIC",
+            "x": -101,
+            "y": -34,
+            "text": "001\n",
+            "font": "lemon",
+            "align": 1,
+            "fontSize": 40
         }
     ],
     "plainObjects": [],

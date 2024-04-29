@@ -13,7 +13,6 @@
             "type": "Sprite",
             "id": "141f7fc3-0619-4e80-812c-974533fa024d",
             "label": "shipV1",
-            "components": [],
             "texture": {
                 "key": "ShipV1"
             }
@@ -24,7 +23,7 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 5
     },
     "prefabProperties": [
         {
@@ -161,7 +160,7 @@
             "name": "CanShot",
             "label": "CanShot",
             "tooltip": "CanShot",
-            "defValue": true,
+            "defValue": false,
             "customDefinition": false,
             "type": {
                 "id": "boolean"

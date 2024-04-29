@@ -41,7 +41,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	CompanionNumber = 2;
 	/** @type {boolean} */
-	CanShot = true;
+	CanShot = false;
 
 	/* START-USER-CODE */
 
@@ -55,7 +55,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		 this.body.setAngularDrag(600);
 		 this.body.setMaxVelocity(this.speed);
 		 this.body.setCollideWorldBounds(true);
-		 this.appearShip();
+		// this.appearShip();
 
 		 this.xInicial=this.x;
 		 this.yInicial=this.y;
@@ -82,6 +82,12 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		this.lastFrameTime = 0;
 		this.deltaTime = 0;
 		this.setDepth(1);
+
+	
+
+	}
+
+	addCompanions(){
 
 		if(this.CompanionNumber>0){
 
@@ -123,7 +129,6 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 			}
 		}
-
 	}
 
 	startBulletSystem(){
@@ -145,6 +150,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 		this.startEmmiter();
 		this.startBulletSystem();
+		this.addCompanions();
 		 this.emitter.startFollow(this,true,0,0,0,0);
 		const appearParicles =  this.scene.add.particles(0, 0, 'appearParticle', {
 			x: this.x,
@@ -162,6 +168,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		},this);
 
 
+		const shieldOne = new ShieldOne(this.scene, 331, 260);
+		this.scene.add.existing(shieldOne);
 
 		// Detener el sistema de partículas después de un tiempo y luego destruirlo
 		this.scene.time.delayedCall(500, function() {
@@ -171,6 +179,8 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		}, [], this);
 
 	}
+
+
 
 	destroyShip(player){
 
