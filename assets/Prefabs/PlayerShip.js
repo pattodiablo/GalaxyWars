@@ -278,22 +278,31 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 				else if(this.Weapon1Level == 3 ){
 
 					const bullet1 = this.scene.bulletGroup.get(this.x, this.y);
-					bullet1.rotation = this.rotation-0.05;;
-					bullet1.updateBulletRotationAndSpeed();
-					bullet1.setActive(true);
-					bullet1.setVisible(true);
+					if(bullet1 !==null){
+						bullet1.rotation = this.rotation-0.05;;
+						bullet1.updateBulletRotationAndSpeed();
+						bullet1.setActive(true);
+						bullet1.setVisible(true);
+					}
+					
 
 					const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
-					bullet2.rotation = this.rotation;
-					bullet2.updateBulletRotationAndSpeed();
-					bullet2.setActive(true);
-					bullet2.setVisible(true);
+					if(bullet2 !==null){
+						bullet2.rotation = this.rotation;
+						bullet2.updateBulletRotationAndSpeed();
+						bullet2.setActive(true);
+						bullet2.setVisible(true);
 
+					}
+				
 					const bullet3 = this.scene.bulletGroup.get(this.x, this.y);
-					bullet3.rotation = this.rotation+0.05;
-					bullet3.updateBulletRotationAndSpeed();
-					bullet3.setActive(true);
-					bullet3.setVisible(true);
+					if(bullet3 !==null){
+						bullet3.rotation = this.rotation+0.05;
+						bullet3.updateBulletRotationAndSpeed();
+						bullet3.setActive(true);
+						bullet3.setVisible(true);
+					}
+					
 
 
 			}

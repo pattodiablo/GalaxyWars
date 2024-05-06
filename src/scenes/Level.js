@@ -67,6 +67,12 @@ class Level extends Phaser.Scene {
 		waveNumber.fontSize = 40;
 		waveNumber.align = 1;
 
+		// greatJOBText
+		const greatJOBText = this.add.bitmapText(-255.13711116495926, 53.805598224541356, "lemon", "GREAT JOB");
+		greatJOBText.text = "GREAT JOB";
+		greatJOBText.fontSize = 40;
+		greatJOBText.align = 1;
+
 		// joystickBg (prefab fields)
 		joystickBg.Player = playerShip;
 
@@ -79,6 +85,7 @@ class Level extends Phaser.Scene {
 		this.userLevel = userLevel;
 		this.timerText = timerText;
 		this.waveNumber = waveNumber;
+		this.greatJOBText = greatJOBText;
 
 		this.events.emit("scene-awake");
 	}
@@ -101,6 +108,8 @@ class Level extends Phaser.Scene {
 	timerText;
 	/** @type {Phaser.GameObjects.BitmapText} */
 	waveNumber;
+	/** @type {Phaser.GameObjects.BitmapText} */
+	greatJOBText;
 
 	/* START-USER-CODE */
 
@@ -114,17 +123,26 @@ class Level extends Phaser.Scene {
             callbackScope: this,
             loop: true // Para que el evento se repita indefinidamente
         });
-		this.waveNumber.visible=false;
-		this.playerShip.appearShip();
-		this.playerShip.canShoot = true;
+			this.waveNumber.visible=false;
+			this.playerShip.appearShip();
+			this.playerShip.canShoot = true;
+			this.addTimer();
 	}
 
 	create() {
 
 		this.editorCreate();
 
+		this.enemiesCreated = 0;
+		this.enemiesMultiplayer=10;
+		this.game.currentWave++;
+		this.enemiesPerWave=this.game.currentWave*this.enemiesMultiplayer;
+
+		console.log("enemies per wve " + this.enemiesPerWave);
+
 		this.gameWidth = this.sys.game.config.width;
         this.gameHeight = this.sys.game.config.height;
+
 		if(this.gameWidth>this.gameHeight){
 			this.LargoJuego = 1920;
 			this.AltoJuego = 1080;
@@ -133,7 +151,7 @@ class Level extends Phaser.Scene {
 			this.AltoJuego = 960;
 		}
 
-		this.game.currentWave++;
+
 		this.waveNumber.text = "WAVE " + this.game.currentWave;
 		this.canPlay =  false;
 		this.maximunEnemies = 120;
@@ -156,19 +174,11 @@ class Level extends Phaser.Scene {
 		this.lasersGroup = this.add.group();
 		this.timerText = this.add.text(this.formatTime(0));
 
-
-
 		this.physics.world.setBounds(0, 0, this.LargoJuego, this.AltoJuego);
 
 		//this.initCamera();
 		this.configurarColisiones();
 		this.createLevelBar();
-		this.addTimer();
-
-
-
-
-
 
 
 
@@ -186,9 +196,11 @@ class Level extends Phaser.Scene {
 		this.waveNumber.x = this.LargoJuego/2-this.waveNumber.width/2
 		this.waveNumber.y = this.AltoJuego/2
 
+		
+		this.greatJOBText.x = this.LargoJuego/2-this.greatJOBText.width/2
+		this.greatJOBText.y = this.AltoJuego/2
 
-
-
+		this.greatJOBText.visible=false;
 
 	// LevelBar
 
@@ -267,17 +279,33 @@ updateTimer(){
 
 	 // Establecer el texto del temporizador en 00:00
 	 this.timerText.setText("00:00");
-	 this.ProgresionPhase();
+	 this.GotoProgresionPhase();
  } else {
 	 // Actualizar el texto del temporizador
 	 this.timerText.setText(this.formatTime(remainingTime));
+
+	 if(this.enemyGroup.countActive()<=0){
+		this.greatJOBText.visible=true;
+		this.greatJOBText.x = this.playerShip.x;
+		this.greatJOBText.y = this.playerShip.y;
+			this.timer.remove(false);
+		this.timer = this.time.addEvent({
+			delay: 2000,
+			callback: this.GotoProgresionPhase,
+			callbackScope: this,
+			loop: false
+		});
+	 }
  }
 
 }
 
-ProgresionPhase(){
+GotoProgresionPhase(){
 
-	this.SpwawerTimer.remove();
+	if(this.SpwawerTimer !==null ){
+
+		this.SpwawerTimer.remove();
+	}
 
 	// Itera sobre cada elemento del grupo
 	this.enemyGroup.getChildren().forEach(function(enemy) {
@@ -426,38 +454,51 @@ LevelSystem(){
 
 	enemySpawner(){
 
+	if(this.enemiesCreated<this.enemiesPerWave){
+
+
+
 
 		if(this.enemyGroup.countActive()<this.maximunEnemies){
-		const screenWidth = this.LargoJuego;
-        const screenHeight = this.AltoJuego;
 
-        // Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
-        const spawnAreaWidth = screenWidth * 0.8; // Por ejemplo, el 80% del ancho de la pantalla
-        const spawnAreaHeight = screenHeight * 0.8; // Por ejemplo, el 80% de la altura de la pantalla
-        const spawnAreaX = (screenWidth - spawnAreaWidth) / 2; // Centrar horizontalmente
-        const spawnAreaY = (screenHeight - spawnAreaHeight) / 2; // Centrar verticalmente
+			const screenWidth = this.LargoJuego;
+			const screenHeight = this.AltoJuego;
 
-        // Generar coordenadas x e y aleatorias dentro del rango definido
-        const randomX = Phaser.Math.Between(spawnAreaX, spawnAreaX + spawnAreaWidth);
-        const randomY = Phaser.Math.Between(spawnAreaY, spawnAreaY + spawnAreaHeight);
+			// Definir un rango dentro de las dimensiones de la pantalla donde se generarán los enemigos
+			const spawnAreaWidth = screenWidth * 0.8; // Por ejemplo, el 80% del ancho de la pantalla
+			const spawnAreaHeight = screenHeight * 0.8; // Por ejemplo, el 80% de la altura de la pantalla
+			const spawnAreaX = (screenWidth - spawnAreaWidth) / 2; // Centrar horizontalmente
+			const spawnAreaY = (screenHeight - spawnAreaHeight) / 2; // Centrar verticalmente
+
+			// Generar coordenadas x e y aleatorias dentro del rango definido
+			const randomX = Phaser.Math.Between(spawnAreaX, spawnAreaX + spawnAreaWidth);
+			const randomY = Phaser.Math.Between(spawnAreaY, spawnAreaY + spawnAreaHeight);
 
 
-		const enemyType = Phaser.Math.RND.between(1, 2); // Puedes ajustar el rango según la cantidad de tipos de enemigos
-        if (enemyType === 1) {
-            // Crear un enemigo tipo Enemy en la posición aleatoria del vértice
-			const enemy = new Enemy(this, randomX, randomY);
-			this.add.existing(enemy);
-        } else {
-            // Crear un enemigo tipo Enemy2 en la posición aleatoria del vértice
-			const enemy = new Enemy2(this, randomX, randomY);
-			this.add.existing(enemy);
-        }
+			const enemyType = Phaser.Math.RND.between(1, 2); // Puedes ajustar el rango según la cantidad de tipos de enemigos
+			if (enemyType === 1) {
+				// Crear un enemigo tipo Enemy en la posición aleatoria del vértice
+				const enemy = new Enemy(this, randomX, randomY);
+				this.add.existing(enemy);
+			} else {
+				// Crear un enemigo tipo Enemy2 en la posición aleatoria del vértice
+				const enemy = new Enemy2(this, randomX, randomY);
+				this.add.existing(enemy);
+			}
 
-        // Crear un nuevo enemigo en las coordenadas aleatorias
+			// Crear un nuevo enemigo en las coordenadas aleatorias
 
 
 		}
 
+		this.enemiesCreated++;
+
+	}else if(this.enemiesCreated>=this.enemiesPerWave){
+		this.SpwawerTimer.remove(false); // El parámetro 'false' indica que no se debe eliminar el evento después de detenerlo
+
+// Limpiar la referencia al temporizador (opcional, pero una buena práctica)
+		this.SpwawerTimer = null;
+	}
 
 	}
 

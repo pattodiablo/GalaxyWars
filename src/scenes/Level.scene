@@ -130,6 +130,18 @@
             "font": "lemon",
             "align": 1,
             "fontSize": 40
+        },
+        {
+            "type": "BitmapText",
+            "id": "01951dd8-5c88-4ef3-b533-392ebd67ec95",
+            "label": "greatJOBText",
+            "scope": "PUBLIC",
+            "x": -255.13711116495926,
+            "y": 53.805598224541356,
+            "text": "GREAT JOB",
+            "font": "lemon",
+            "align": 1,
+            "fontSize": 40
         }
     ],
     "plainObjects": [],
