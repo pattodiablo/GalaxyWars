@@ -474,16 +474,35 @@ LevelSystem(){
 			const randomX = Phaser.Math.Between(spawnAreaX, spawnAreaX + spawnAreaWidth);
 			const randomY = Phaser.Math.Between(spawnAreaY, spawnAreaY + spawnAreaHeight);
 
-
-			const enemyType = Phaser.Math.RND.between(1, 2); // Puedes ajustar el rango según la cantidad de tipos de enemigos
-			if (enemyType === 1) {
+			console.log("currentWave " + this.game.currentWave);
+			if(this.game.currentWave == 1){
+				
+			this.enemyType = Phaser.Math.RND.between(0, 0); // Puedes ajustar el rango según la cantidad de tipos de enemigos
+			}
+			if(this.game.currentWave == 2){
+				
+				this.enemyType = Phaser.Math.RND.between(1, 1); // Puedes ajustar el rango según la cantidad de tipos de enemigos
+			}
+			if(this.game.currentWave == 3){
+				
+				this.enemyType = Phaser.Math.RND.between(1, 2); // Puedes ajustar el rango según la cantidad de tipos de enemigos
+			}
+			
+			if (this.enemyType === 1) {
 				// Crear un enemigo tipo Enemy en la posición aleatoria del vértice
-				const enemy = new Enemy(this, randomX, randomY);
-				this.add.existing(enemy);
-			} else {
-				// Crear un enemigo tipo Enemy2 en la posición aleatoria del vértice
 				const enemy = new Enemy2(this, randomX, randomY);
 				this.add.existing(enemy);
+			}
+			if (this.enemyType === 2) {
+				// Crear un enemigo tipo Enemy en la posición aleatoria del vértice
+				const enemy = new Enemy3(this, randomX, randomY);
+				this.add.existing(enemy);
+			}  
+			else {
+				// Crear un enemigo tipo Enemy2 en la posición aleatoria del vértice
+				const enemy = new Enemy(this, randomX, randomY);
+				this.add.existing(enemy);
+				
 			}
 
 			// Crear un nuevo enemigo en las coordenadas aleatorias

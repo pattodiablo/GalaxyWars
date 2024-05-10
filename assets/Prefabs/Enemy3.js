@@ -5,63 +5,69 @@
 
 class Enemy3 extends EnemyBase {
 
-	constructor(scene, x, y, frame) {
-		super(scene, x ?? 0, y ?? 0, frame);
+	constructor(scene, x, y, texture, frame) {
+		super(scene, x ?? 0, y ?? 0, texture || "ship3", frame);
 
-		this.setInteractive(this.scene.input.makePixelPerfect());
+		this.setInteractive(new Phaser.Geom.Polygon("0.3414751022435638 37.994162330695396 27.82398957078553 -0.27778374401489714 53.06718804559445 38.19773651194386 27.620415389537072 28.83332417451474"), Phaser.Geom.Polygon.Contains);
+		this.scaleX = 0.5;
+		this.scaleY = 0.5;
 
 		/* START-USER-CTR-CODE */
-	
-		this.createEvent =	this.scene.events.once(Phaser.Scenes.Events.UPDATE, this.create, this);
-		this.scene.events.on("update", () => this.update())
-  
-	
+this.enemyLife = this.enemyLife;
 		/* END-USER-CTR-CODE */
 	}
 
 	/** @type {number} */
-	enemyLife = 1;
+	enemyLife = 40;
 
 	/* START-USER-CODE */
-    animacionDeInicio(){
-        
-    }
-    animacionIdle(){
-       
-    }
-    ownCreate() {
-        console.log("enemy 3 created");
-        this.scene.physics.world.enable(this);
-    
-        const circle = new Phaser.Geom.Circle(0, 0, 100); // Ajusta las coordenadas del círculo según tu necesidad
-        circle.x = circle.diameter / 2;
-        circle.y = circle.diameter / 2;
-        const graphics = this.scene.add.graphics({ fillStyle: { color: 0x21EFDA } });
-        graphics.fillCircleShape(circle);
-    
-        // Generar una textura a partir del gráfico
-        const texture = graphics.generateTexture('circleTexture', circle.diameter); // Ajusta el tamaño de la textura
-    
-        // Asignar la textura al objeto Enemy3
-        this.setTexture('circleTexture');
-    
-        // Ajustar el cuerpo de físicas para que coincida con el tamaño de la textura
-        this.body.setSize(circle.diameter, circle.diameter);
-        
-        // Ajustar el desplazamiento del cuerpo para que el origen coincida con el centro del círculo
-        this.body.setOffset(0, 0);
-    
-        // Eliminar el gráfico y la textura no utilizada
-        graphics.destroy();
-        texture.destroy();
-    }
-    
 
-   
-   
+	animacionIdle(){
 
 
-	
+	}
+
+	update() {
+
+
+
+		if (this.active && this.scene.playerShip.body.enable) {
+
+			// Obtener la posición del jugador
+			const playerX = this.scene.playerShip.x;
+			const playerY = this.scene.playerShip.y;
+
+			// Calcular la dirección hacia el jugador
+			const directionX = playerX - this.x;
+			const directionY = playerY - this.y;
+
+			// Calcular el ángulo hacia el jugador en radianes
+			const angleToPlayer = Math.atan2(directionY, directionX);
+
+			// Convertir el ángulo a grados y establecer la rotación del Enemy2
+			this.rotation = angleToPlayer + Math.PI / 2;
+
+			// Definir la velocidad a la que se moverá el Enemy2
+			const speed = 1;
+
+			// Normalizar la dirección para obtener la dirección unitaria
+			const distance = Math.sqrt(directionX * directionX + directionY * directionY);
+			const dirX = directionX / distance;
+			const dirY = directionY / distance;
+
+			// Actualizar la posición del Enemy2
+			this.x += dirX * speed;
+			this.y += dirY * speed;
+
+		}
+
+
+
+
+	}
+
+
+
 
 	/* END-USER-CODE */
 }

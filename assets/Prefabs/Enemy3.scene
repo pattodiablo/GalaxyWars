@@ -1,0 +1,45 @@
+{
+    "id": "664d9b5c-0091-4c1f-a34e-3572b3142535",
+    "sceneType": "PREFAB",
+    "settings": {
+        "superClassName": "EnemyBase",
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 640,
+        "borderHeight": 960
+    },
+    "displayList": [
+        {
+            "type": "Sprite",
+            "id": "ee62e07e-1a9a-4e2d-8011-a44218e518e2",
+            "label": "enemy2",
+            "hitArea.shape": "POLYGON",
+            "hitArea.points": "0.3414751022435638 37.994162330695396 27.82398957078553 -0.27778374401489714 53.06718804559445 38.19773651194386 27.620415389537072 28.83332417451474",
+            "texture": {
+                "key": "ship3"
+            },
+            "scaleX": 0.5,
+            "scaleY": 0.5
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    },
+    "prefabProperties": [
+        {
+            "name": "enemyLife",
+            "label": "enemyLife",
+            "tooltip": "",
+            "defValue": 40,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        }
+    ]
+}
