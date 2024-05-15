@@ -151,6 +151,13 @@
                 "key": "joystickBtn"
             },
             {
+                "url": [
+                    "assets/audio/laserShoot.mp3"
+                ],
+                "type": "audio",
+                "key": "laserShoot"
+            },
+            {
                 "textureURL": "assets/Fonts/lemon.png",
                 "fontDataURL": "assets/Fonts/lemon.xml",
                 "type": "bitmapFont",

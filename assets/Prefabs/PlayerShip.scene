@@ -30,7 +30,7 @@
             "name": "speed",
             "label": "speed",
             "tooltip": "speed",
-            "defValue": 200,
+            "defValue": 350,
             "customDefinition": false,
             "type": {
                 "id": "number"
@@ -50,7 +50,7 @@
             "name": "BulletRate",
             "label": "BulletRate",
             "tooltip": "",
-            "defValue": 150,
+            "defValue": 500,
             "customDefinition": false,
             "type": {
                 "id": "number"
@@ -150,7 +150,7 @@
             "name": "CompanionNumber",
             "label": "CompanionNumber",
             "tooltip": "",
-            "defValue": 2,
+            "defValue": 3,
             "customDefinition": false,
             "type": {
                 "id": "number"
@@ -164,6 +164,16 @@
             "customDefinition": false,
             "type": {
                 "id": "boolean"
+            }
+        },
+        {
+            "name": "rotationSpeedPC",
+            "label": "rotationSpeedPC",
+            "tooltip": "rotationSpeedPC",
+            "defValue": 7,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
             }
         }
     ]

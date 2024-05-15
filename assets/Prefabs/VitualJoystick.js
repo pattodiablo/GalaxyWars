@@ -49,6 +49,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		this.canGo=0;
 		this.joystickBg.setScrollFactor(0,0);
 		this.joystickBtn.setScrollFactor(0,0);
+		this.isJoystickEnabled = false;
 
 
 
@@ -59,6 +60,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 		if (this.gameWidth < this.gameHeight) {
 			// It's mobile!
 			console.log("Playing on mobile");
+			this.isJoystickEnabled=true;
 			// Implement mobile-specific logic here
 		  } else {
 			// It's likely PC
@@ -93,7 +95,7 @@ class VitualJoystick extends Phaser.GameObjects.Container {
 	}
 	update(pointer){
 
-		if(this.Player.active){
+		if(this.Player.active && this.isJoystickEnabled){
 			this.clampedDistance = Phaser.Math.Clamp(this.distancia, 0, this.maxDistance);
 			this.force = this.clampedDistance / this.maxDistance;
 

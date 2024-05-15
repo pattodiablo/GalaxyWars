@@ -15,11 +15,11 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	}
 
 	/** @type {number} */
-	speed = 200;
+	speed = 350;
 	/** @type {number} */
 	rotationSpeed = 250;
 	/** @type {number} */
-	BulletRate = 150;
+	BulletRate = 500;
 	/** @type {number} */
 	damage = 10;
 	/** @type {number} */
@@ -39,9 +39,11 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	/** @type {number} */
 	PlayerLevel = 1;
 	/** @type {number} */
-	CompanionNumber = 2;
+	CompanionNumber = 3;
 	/** @type {boolean} */
 	CanShot = false;
+	/** @type {number} */
+	rotationSpeedPC = 7;
 
 	/* START-USER-CODE */
 
@@ -83,7 +85,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 		this.deltaTime = 0;
 		this.setDepth(1);
 
-	
+
 
 	}
 
@@ -121,6 +123,26 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 					break;
 
 				case 3:
+
+				const shipCompanion4 = new ShipCompanion(this.scene, this.x, this.y);
+				shipCompanion4.offsetX = 10; // Distancia horizontal entre los dos objetos
+				shipCompanion4.offsetY = -20; // Distancia vertical entre los dos objetos
+				shipCompanion4.CompanionType=0;
+				this.scene.add.existing(shipCompanion4);
+
+				const shipCompanion5 = new ShipCompanion(this.scene, this.x, this.y);
+				shipCompanion5.offsetX = 0; // Distancia horizontal entre los dos objetos
+				shipCompanion5.offsetY = 1; // Distancia vertical entre los dos objetos
+				shipCompanion5.CompanionType=0;
+				this.scene.add.existing(shipCompanion5);
+
+				const shipCompanion6 = new ShipCompanion(this.scene, this.x, this.y);
+				shipCompanion6.offsetX = -10; // Distancia horizontal entre los dos objetos
+				shipCompanion6.offsetY = -20; // Distancia vertical entre los dos objetos
+				shipCompanion6.CompanionType=0;
+				this.scene.add.existing(shipCompanion6);
+
+
 					break;
 
 				case 4:
@@ -214,7 +236,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 
 			player.setVisible =false;
-			this.scene.ProgresionPhase();
+			this.scene.GotoProgresionPhase();
 			//player.destroy();
 		}
 
@@ -246,7 +268,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	}
 
 	createBullet(){
-		this.scene.sound.play('Explosion30');
+		this.scene.sound.play('laserShoot');
 
 		if(this.canShoot){
 
@@ -284,7 +306,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 						bullet1.setActive(true);
 						bullet1.setVisible(true);
 					}
-					
+
 
 					const bullet2 = this.scene.bulletGroup.get(this.x, this.y);
 					if(bullet2 !==null){
@@ -294,7 +316,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 						bullet2.setVisible(true);
 
 					}
-				
+
 					const bullet3 = this.scene.bulletGroup.get(this.x, this.y);
 					if(bullet3 !==null){
 						bullet3.rotation = this.rotation+0.05;
@@ -302,7 +324,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 						bullet3.setActive(true);
 						bullet3.setVisible(true);
 					}
-					
+
 
 
 			}
@@ -438,7 +460,7 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 	}
 
 
-/* 
+
 	if (this.cursors.up.isDown )
 		{
 
@@ -458,17 +480,17 @@ class PlayerShip extends Phaser.GameObjects.Sprite {
 
 	if (this.cursors.left.isDown) {
 
-            this.angle -= this.rotationSpeed;
+            this.angle -= this.rotationSpeedPC;
 
         } else if (this.cursors.right.isDown) {
 
-            this.angle += this.rotationSpeed;
+            this.angle += this.rotationSpeedPC;
         }else {
 
 			this.angle += 0;
 		}
 
-*/
+
 	}
 
 	/* END-USER-CODE */

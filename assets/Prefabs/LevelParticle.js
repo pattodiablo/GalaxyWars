@@ -37,7 +37,7 @@ class LevelParticle extends Phaser.GameObjects.Sprite {
 		
 
 		
-		if(this !== null){
+		if(this.body !== null){
 
 		
 		this.body.setVelocity(Phaser.Math.Between(-50, 50), Phaser.Math.Between(-50, 50));
