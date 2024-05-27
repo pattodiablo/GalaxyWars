@@ -39,6 +39,7 @@ class ProgessionPhase extends Phaser.Scene {
 
 		// engranaje
 		const engranaje = this.add.image(1852, 77, "engranaje");
+		engranaje.visible = false;
 
 		// LvNumber
 		const lvNumber = this.add.bitmapText(87, 3, "lemon", "01");
@@ -434,7 +435,7 @@ class ProgessionPhase extends Phaser.Scene {
 		//	this.scene.start('Level');
 		};
 
-		
+
 
 		// Asociar la función de clic con el evento de clic en el botón de lanzamiento
 		this.launchBtn.on('pointerdown', launchButtonClicked);

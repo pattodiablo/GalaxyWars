@@ -17,7 +17,7 @@
             "hitArea.shape": "POLYGON",
             "hitArea.points": "0.3414751022435638 37.994162330695396 27.82398957078553 -0.27778374401489714 53.06718804559445 38.19773651194386 27.620415389537072 28.83332417451474",
             "texture": {
-                "key": "ship3"
+                "key": "Enemy_3"
             },
             "scaleX": 0.5,
             "scaleY": 0.5
@@ -35,7 +35,17 @@
             "name": "enemyLife",
             "label": "enemyLife",
             "tooltip": "",
-            "defValue": 40,
+            "defValue": 80,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
+        },
+        {
+            "name": "enemySpeed",
+            "label": "enemySpeed",
+            "tooltip": "",
+            "defValue": 2,
             "customDefinition": false,
             "type": {
                 "id": "number"

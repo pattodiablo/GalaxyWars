@@ -6,7 +6,7 @@
 class Enemy3 extends EnemyBase {
 
 	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 0, y ?? 0, texture || "ship3", frame);
+		super(scene, x ?? 0, y ?? 0, texture || "Enemy_3", frame);
 
 		this.setInteractive(new Phaser.Geom.Polygon("0.3414751022435638 37.994162330695396 27.82398957078553 -0.27778374401489714 53.06718804559445 38.19773651194386 27.620415389537072 28.83332417451474"), Phaser.Geom.Polygon.Contains);
 		this.scaleX = 0.5;
@@ -18,7 +18,9 @@ this.enemyLife = this.enemyLife;
 	}
 
 	/** @type {number} */
-	enemyLife = 40;
+	enemyLife = 80;
+	/** @type {number} */
+	enemySpeed = 2;
 
 	/* START-USER-CODE */
 
@@ -48,7 +50,7 @@ this.enemyLife = this.enemyLife;
 			this.rotation = angleToPlayer + Math.PI / 2;
 
 			// Definir la velocidad a la que se moverá el Enemy2
-			const speed = 1;
+			const speed = this.enemySpeed;
 
 			// Normalizar la dirección para obtener la dirección unitaria
 			const distance = Math.sqrt(directionX * directionX + directionY * directionY);

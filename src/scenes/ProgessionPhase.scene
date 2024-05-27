@@ -76,7 +76,8 @@
                 "key": "engranaje"
             },
             "x": 1852,
-            "y": 77
+            "y": 77,
+            "visible": false
         },
         {
             "type": "BitmapText",
